@@ -1,0 +1,20 @@
+﻿public enum KindOfRes
+{
+    Wool,
+    Hair,
+    Squama,
+    SpiderLeg,
+    Essence,
+    Flute,
+    Tail,
+    Soul,
+    Book,
+    Ash,
+    Flesh,
+    Tentacle,
+    Scythe,
+    Bone,
+    EmptyGlass,
+    Arrow,
+    Nitro
+}
