@@ -12,7 +12,7 @@ public class GoodPotion : MonoBehaviour
     AnimationClip goodPotionAnim;
     private PlayerStats playerStats;
     private MeleeWeapon meleeWeapon;
-    private ThrowingWeapon throwingWeapon;
+    //private ThrowingWeapon throwingWeapon;
     private float meleeDefaultDmg, throwingDefaultDmg;
     private void Awake()
     {

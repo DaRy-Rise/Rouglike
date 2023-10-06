@@ -105,6 +105,6 @@ public class EnemySpawner : MonoBehaviour
     }
     public void OnEnemyKilled()
     {
-        enemiesAlive--;
+        --enemiesAlive;
     }
 }
