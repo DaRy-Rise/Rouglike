@@ -20,24 +20,12 @@
             }
           },
           {
-            "id": "7af4b9d496dee317",
+            "id": "7b2ad3c0947db286",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Enemies.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c14e2ca820c359c8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Enemies.md",
+                "file": "Global level.md",
                 "mode": "source",
                 "source": false
               }
@@ -55,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Enemies.md",
+                "file": "Player.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Enemies.md",
+                "file": "Player.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Enemies.md"
+                "file": "Player.md"
               }
             }
           }
@@ -184,13 +171,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c14e2ca820c359c8",
+  "active": "4a7f193eb20e8eb7",
   "lastOpenFiles": [
+    "Global level.md",
+    "Player.md",
+    "Masters.md",
+    "Enemies.md",
     "GG.md",
     "Level progress.md",
-    "Masters.md",
-    "Player.md",
-    "Enemies.md",
     "Untitled"
   ]
 }
