@@ -1,6 +1,15 @@
 
 public class StonePlayerEffect : PlayerEffect
 {
+    public static System.Action onReturn;
+    private void OnEnable()
+    {
+        GoodPotion.onAntidoteEffect += ReturnAsWas;
+    }
+    private void OnDisable()
+    {
+        GoodPotion.onAntidoteEffect -= ReturnAsWas;
+    }
     public override void MakeEffect(float damage)
     {
         if (!isInvincibleForEffect)
@@ -13,8 +22,8 @@ public class StonePlayerEffect : PlayerEffect
             Invoke("ReturnAsWas", dur);
         }
     }
-    public static void ReturnAsWas()
+    public void ReturnAsWas()
     {
-        PlayerMovement.isStoneEffect = false;
+        onReturn?.Invoke();
     }
 }

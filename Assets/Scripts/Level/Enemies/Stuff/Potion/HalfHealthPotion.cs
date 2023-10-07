@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HalfHealthPotion : ThrowStuff
+public class HalfHealthPotion : ThrowEnemyWeapon
 {
     HalfHealthPlayerEffect playerEffect;
     protected override void Start()

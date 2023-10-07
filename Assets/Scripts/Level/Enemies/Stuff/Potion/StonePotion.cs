@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StonePotion : ThrowStuff
+public class StonePotion : ThrowEnemyWeapon
 {
     StonePlayerEffect playerEffect;
     protected override void Start()

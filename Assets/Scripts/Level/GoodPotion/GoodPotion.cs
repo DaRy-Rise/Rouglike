@@ -12,6 +12,9 @@ public class GoodPotion : MonoBehaviour
     AnimationClip goodPotionAnim;
     private PlayerStats playerStats;
     private MeleeWeapon meleeWeapon;
+    private ThrowingWeapon throwingWeapon;
+    private float defaultValue, defaultValue2;
+    public static System.Action onAntidoteEffect;
     //private ThrowingWeapon throwingWeapon;
     private float meleeDefaultDmg, throwingDefaultDmg;
     private void Awake()
@@ -114,8 +117,8 @@ public class GoodPotion : MonoBehaviour
         }
         FindObjectOfType<IconController>().Antidote();
 
-        StonePlayerEffect.ReturnAsWas();
-        SlowPlayerEffect.ReturnAsWas();
+        onAntidoteEffect?.Invoke();
+        FindAnyObjectByType<PlayerEffect>().isEffected = false;
     }
 
     void DamageEffect()

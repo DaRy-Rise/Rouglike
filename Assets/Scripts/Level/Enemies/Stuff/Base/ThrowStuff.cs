@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ThrowStuff : MonoBehaviour
+public class ThrowEnemyWeapon : MonoBehaviour
 {
     [SerializeField]
     protected float currentSpeed, currentDamage;

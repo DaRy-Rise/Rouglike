@@ -1,5 +1,5 @@
 
-public class Scythe : ThrowStuff
+public class Scythe : ThrowEnemyWeapon
 {
     
 }

@@ -39,8 +39,8 @@ public class IconController : MonoBehaviour
 
     private void ReturnIndex()
     {
-        effects.RemoveAt(index);
         index--;
+        effects.RemoveAt(index);
     }
     private void Spawn(GameObject icon, float dur)
     {
@@ -48,7 +48,7 @@ public class IconController : MonoBehaviour
         Destroy(effects[index], dur);
         StartBar(dur);
         index++;
-        Invoke("ReturnIndex", dur);
+        Invoke("ReturnIndex", dur);      
     }
 
     public void Antidote()

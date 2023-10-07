@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlowPotion : ThrowStuff
+public class SlowPotion : ThrowEnemyWeapon
 {
     SlowPlayerEffect playerEffect;
     protected override void Start()
