@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 7
-  currentDamage: 0
+  currentDamage: 1.5
 --- !u!60 &7918000284000680045
 PolygonCollider2D:
   m_ObjectHideFlags: 0

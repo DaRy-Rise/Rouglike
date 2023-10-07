@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BloodPotion : ThrowStuff
+public class BloodPotion : ThrowEnemyWeapon
 {
     BloodlyPlayerEffect playerEffect;
     protected override void Start()

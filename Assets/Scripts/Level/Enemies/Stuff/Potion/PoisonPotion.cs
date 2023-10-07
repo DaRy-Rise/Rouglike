@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PoisonPotion : ThrowStuff
+public class PoisonPotion : ThrowEnemyWeapon
 {
     PoisonPlayerEffect playerEffect;
     protected override void Start()

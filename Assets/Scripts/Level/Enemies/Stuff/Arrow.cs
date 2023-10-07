@@ -1,5 +1,5 @@
 
-public class Arrow : ThrowStuff
+public class Arrow : ThrowEnemyWeapon
 {
 
 }

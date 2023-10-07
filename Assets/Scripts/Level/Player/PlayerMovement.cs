@@ -16,7 +16,16 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f);
     }
-
+    private void OnEnable()
+    {
+        SlowPlayerEffect.onReturn += RemoveDefaultSlow;
+        StonePlayerEffect.onReturn += RemoveDefaultStone;
+    }
+    private void OnDisable()
+    {
+        SlowPlayerEffect.onReturn -= RemoveDefaultSlow;
+        StonePlayerEffect.onReturn -= RemoveDefaultStone;
+    }
     void Update()
     {
         InputManagmnet();
@@ -72,5 +81,15 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
+    }
+
+    private void RemoveDefaultSlow()
+    {
+        isSlowEffect = false;
+    }
+
+    private void RemoveDefaultStone()
+    {
+        isStoneEffect = false;
     }
 }

@@ -1,6 +1,7 @@
 
 public class SlowPlayerEffect : PlayerEffect
 {
+    public static System.Action onReturn;
     public override void MakeEffect(float damage)
     {
         if (!isInvincibleForEffect)
@@ -13,8 +14,8 @@ public class SlowPlayerEffect : PlayerEffect
             Invoke("ReturnAsWas", dur);
         }
     }
-    public static void ReturnAsWas()
+    public void ReturnAsWas()
     {
-        PlayerMovement.isSlowEffect = false;
+        onReturn?.Invoke();
     }
 }
