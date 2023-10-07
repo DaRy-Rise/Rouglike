@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Global level.md",
+                "file": "Current goals.md",
                 "mode": "source",
                 "source": false
               }
@@ -43,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -109,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Player.md",
+                "file": "Current goals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Player.md",
+                "file": "Current goals.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Player.md"
+                "file": "Current goals.md"
               }
             }
           }
@@ -170,14 +171,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4a7f193eb20e8eb7",
+  "active": "7b2ad3c0947db286",
   "lastOpenFiles": [
     "Global level.md",
+    "Current goals.md",
     "Player.md",
-    "Masters.md",
-    "Enemies.md",
-    "GG.md",
     "Level progress.md",
+    "Enemies.md",
+    "Masters.md",
+    "GG.md",
     "Untitled"
   ]
 }
