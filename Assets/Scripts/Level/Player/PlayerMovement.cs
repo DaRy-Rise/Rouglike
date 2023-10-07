@@ -54,19 +54,20 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDir = new Vector2(moveX, moveY).normalized;
-        if (moveDir.x != 0)
+        if (moveDir != Vector2.zero)
         {
-            lastHorizontalVector = moveDir.x;
-            lastMovedVector = new Vector2(lastHorizontalVector, 0f);
-        }
-        if (moveDir.y != 0)
-        {
-            lastVerticalVector = moveDir.y;
-            lastMovedVector = new Vector2(lastVerticalVector, 0f);
-        }
-        if (moveDir.x != 0 && moveDir.y != 0)
-        {
-            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);
+            if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+            {
+                lastMovedVector = new Vector2(moveDir.x, 0f);
+            }
+            else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
+            {
+                lastMovedVector = new Vector2(0f, moveDir.y);
+            }
+            else
+            {
+                lastMovedVector = moveDir;
+            }
         }
     }
     private void Move()

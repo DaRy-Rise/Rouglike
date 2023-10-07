@@ -20,26 +20,31 @@ public class PlayerEffect : MonoBehaviour
     }
     protected void FixedUpdate()
     {
-        if (isEffected)
+        if (!isInvincibleForEffect)
         {
-            if (oneDamageCoolDown > 0)
+            if (isEffected)
             {
-                oneDamageCoolDown -= Time.deltaTime;
+                if (oneDamageCoolDown > 0)
+                {
+                    oneDamageCoolDown -= Time.deltaTime;
+                }
+                else
+                {
+                    oneDamageCoolDown = oneCoolDownSec;
+                    gameObject.GetComponent<PlayerStats>().TakeDamage(valueOfGettingDamage);
+                }
+                if (damageCoolDown > 0)
+                {
+                    damageCoolDown -= Time.deltaTime;
+                }
+                else
+                {
+                    isEffected = false;
+                }
             }
-            else if (isInvincibleForEffect)
-            {
-                oneDamageCoolDown = oneCoolDownSec;
-                gameObject.GetComponent<PlayerStats>().TakeDamage(valueOfGettingDamage);
-            }
-        }
-
-        if (damageCoolDown > 0)
+        } else
         {
-            damageCoolDown -= Time.deltaTime;
-        }
-        else if (isInvincibleForEffect)
-        {
-            isInvincibleForEffect = false;
+            isEffected = false;
         }
     }
     public virtual void MakeEffect(float damage)
@@ -48,7 +53,7 @@ public class PlayerEffect : MonoBehaviour
         {
             valueOfGettingDamage = damage;
             damageCoolDown = coolDownSec;
-            isInvincibleForEffect = true;
+            //isInvincibleForEffect = true;
             isEffected = true;
             iconController.SpawnIcon(kindOfIcons, dur);
         }
