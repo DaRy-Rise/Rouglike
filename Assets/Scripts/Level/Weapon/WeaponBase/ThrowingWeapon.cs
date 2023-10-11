@@ -38,12 +38,6 @@ public class ThrowingWeapon : MonoBehaviour
             enemy.TakeDamage(currentDamage);
             ReducePierce();
         }
-        else if (collision.CompareTag("Cage"))
-        {
-            Cage cage = collision.GetComponent<Cage>();
-            cage.TakeDamage(currentDamage);
-            ReducePierce();
-        }
     }
     public void DirectionChecker(Vector3 dir)
     {

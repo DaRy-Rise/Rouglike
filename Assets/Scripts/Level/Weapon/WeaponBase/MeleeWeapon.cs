@@ -35,11 +35,6 @@ public class MeleeWeapon : MonoBehaviour
             enemy.TakeDamage(currentDamage);
             //ReducePierce();
         }
-        else if (collision.CompareTag("Cage"))
-        {
-            Cage cage = collision.GetComponent<Cage>();
-            cage.TakeDamage(currentDamage);
-        }
     }
     public void DirectionChecker(Vector3 dir)
     {

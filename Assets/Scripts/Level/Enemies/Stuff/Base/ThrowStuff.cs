@@ -29,10 +29,5 @@ public class ThrowEnemyWeapon : MonoBehaviour
             PlayerStats player = collision.GetComponent<PlayerStats>();
             player.TakeDamage(currentDamage);
         }
-        else if (collision.CompareTag("Master"))
-        {
-            Master master = collision.GetComponent<Master>();
-            master.TakeDamage(currentDamage);
-        }
     }
 }

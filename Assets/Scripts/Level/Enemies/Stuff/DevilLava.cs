@@ -15,10 +15,5 @@ public class DevilLava : MonoBehaviour
             PlayerStats player = collision.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
         }
-        else if (collision.tag == "Master")
-        {
-            Master master = collision.GetComponent<Master>();
-            master.TakeDamage(damage);
-        }
     }
 }
