@@ -1,23 +1,30 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class IconController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject poisonIcon, stoneIcon, slowIcon, bloodIcon;
+    private Debuff poisonIcon, stoneIcon, slowIcon, bloodIcon;
     [SerializeField]
     private GameObject[] cells;
-    [SerializeField]
-    private IconBar[] bars;
-    List<GameObject> effects = new List<GameObject>();
-    private int index;
+    private static List<Debuff> effects = new List<Debuff>();
+    private static int index;
 
-    public void SpawnIcon(KindOfIcons kind, float dur)
+    private void OnEnable()
+    {
+        GoodPotion.onAntidoteEffect += Antidote;
+    }
+    private void OnDisable()
+    {
+        GoodPotion.onAntidoteEffect -= Antidote;
+    }
+    public int SpawnIcon(KindOfIcons kind, float dur)
     {
         switch (kind)
         {
             case KindOfIcons.Poison:
-                Spawn(poisonIcon, dur);            
+                Spawn(poisonIcon, dur);             
                 break;
             case KindOfIcons.Stone:
                 Spawn(stoneIcon, dur);
@@ -31,24 +38,20 @@ public class IconController : MonoBehaviour
             default:
                 break;
         }
-    }
-    private void StartBar(float dur)
-    {
-        bars[index].StartFill(dur);
+        return index-1;
     }
 
-    private void ReturnIndex()
+    public static void ReturnIndex()
     {
         index--;
-        effects.RemoveAt(index);
     }
-    private void Spawn(GameObject icon, float dur)
+    private void Spawn(Debuff icon, float dur)
     {
         effects.Add(Instantiate(icon, cells[index].transform));
-        Destroy(effects[index], dur);
-        StartBar(dur);
+        effects[effects.Count - 1].transform.position = cells[index].transform.position;
+        effects[effects.Count - 1].dur = dur;
+        effects[effects.Count - 1].indexOfCell = index;
         index++;
-        Invoke("ReturnIndex", dur);      
     }
 
     public void Antidote()
@@ -57,6 +60,25 @@ public class IconController : MonoBehaviour
         {
             Destroy(effects[i]);
             effects.RemoveAt(i);
+        }
+    }
+
+    public void RemoveEffect(int indexOfExistBar)
+    {
+        ReturnIndex();
+        effects.RemoveAt(indexOfExistBar);
+        if (index > 0 && effects.Count != 0)
+        {
+            ShiftEffects(indexOfExistBar);
+        }
+    }
+
+    private void ShiftEffects(int bound)
+    {
+        for (int i = index - 1; i >= bound; i--)
+        {
+            effects[i].transform.position = cells[i].transform.position;
+            effects[i].indexOfCell = i;
         }
     }
 }

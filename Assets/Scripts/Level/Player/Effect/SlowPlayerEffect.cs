@@ -1,21 +1,55 @@
 
 public class SlowPlayerEffect : PlayerEffect
 {
+    protected int isSlowEffect;
     public static System.Action onReturn;
-    public override void MakeEffect(float damage)
+
+    private void OnEnable()
     {
-        if (!isInvincibleForEffect)
+        GoodPotion.onAntidoteEffect += ReturnAsWas;
+        GoodPotion.onAntidoteEffect += Antidote;
+    }
+    private void OnDisable()
+    {
+        GoodPotion.onAntidoteEffect -= ReturnAsWas;
+        GoodPotion.onAntidoteEffect -= Antidote;
+    }
+    protected override void FixedUpdate()
+    {
+
+        if (isSlowEffect > 0 && !isEffected)
         {
-            damageCoolDown = coolDownSec;
-            isInvincibleForEffect = true;
-            isEffected = true;
-            iconController.SpawnIcon(kindOfIcons, dur);
-            PlayerMovement.isSlowEffect = true;
-            Invoke("ReturnAsWas", dur);
+            isSlowEffect = 0;
+            ReturnAsWas();
+        }
+
+        base.FixedUpdate();
+    }
+    public override void MakeEffect(float damage, float duration)
+    {
+        PlayerMovement.isSlowEffect = true;
+        isSlowEffect++;
+        base.MakeEffect(damage, duration);
+        if (isEffected && isSlowEffect == 1)
+        {
+            iconController.SpawnIcon(kindOfIcons, duration);
+        }
+        else if (isEffected && isSlowEffect > 1)
+        {
+
+            isSlowEffect = 1;
+            durProcess = duration;
+            //indAnyObjectByType<IconController>().ResetBarDuration(indexOfIcon, durProcess);
         }
     }
     public void ReturnAsWas()
     {
         onReturn?.Invoke();
+    }
+
+    private void Antidote()
+    {
+        isEffected = false;
+        isSlowEffect = 0;
     }
 }

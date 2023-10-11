@@ -1,29 +1,56 @@
 
 public class StonePlayerEffect : PlayerEffect
 {
+    protected int isStoneEffect;
     public static System.Action onReturn;
+
     private void OnEnable()
     {
         GoodPotion.onAntidoteEffect += ReturnAsWas;
+        GoodPotion.onAntidoteEffect += Antidote;
     }
     private void OnDisable()
     {
         GoodPotion.onAntidoteEffect -= ReturnAsWas;
+        GoodPotion.onAntidoteEffect -= Antidote;
     }
-    public override void MakeEffect(float damage)
+    protected override void FixedUpdate()
     {
-        if (!isInvincibleForEffect)
+
+        if (isStoneEffect > 0 && !isEffected)
         {
-            damageCoolDown = coolDownSec;
-            isInvincibleForEffect = true;
-            isEffected = true;
-            iconController.SpawnIcon(kindOfIcons, dur);
-            PlayerMovement.isStoneEffect = true;
-            Invoke("ReturnAsWas", dur);
+            isStoneEffect = 0;
+            ReturnAsWas();
+        }
+
+        base.FixedUpdate();
+    }
+    public override void MakeEffect(float damage, float duration)
+    {
+        PlayerMovement.isStoneEffect = true;
+        isStoneEffect++;
+        base.MakeEffect(damage, duration);
+        if (isEffected && isStoneEffect == 1)
+        {
+            iconController.SpawnIcon(kindOfIcons, duration);
+        }
+        else if (isEffected && isStoneEffect > 1)
+        {
+
+            isStoneEffect = 1;
+            durProcess = duration;
+            //FindAnyObjectByType<IconController>().ResetBarDuration(indexOfIcon, durProcess);
         }
     }
     public void ReturnAsWas()
     {
         onReturn?.Invoke();
+    }
+
+
+    private void Antidote()
+    {
+        isEffected = false;
+        isStoneEffect = 0;
     }
 }

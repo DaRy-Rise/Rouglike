@@ -3,6 +3,9 @@ using UnityEngine;
 public class BloodPotion : ThrowEnemyWeapon
 {
     BloodlyPlayerEffect playerEffect;
+    [SerializeField]
+    private float duration;
+
     protected override void Start()
     {
         base.Start();
@@ -18,6 +21,6 @@ public class BloodPotion : ThrowEnemyWeapon
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, duration);
     }
 }

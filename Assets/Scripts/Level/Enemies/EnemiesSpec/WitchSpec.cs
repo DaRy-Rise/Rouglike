@@ -16,7 +16,6 @@ public class WitchSpec : ThrowingEnemies
     }
     private GameObject ChoosePotion()
     {
-        return potions[0];
-        //return potions[Random.Range(0, potions.Length)];
+        return potions[Random.Range(0, potions.Length)];
     }
 }

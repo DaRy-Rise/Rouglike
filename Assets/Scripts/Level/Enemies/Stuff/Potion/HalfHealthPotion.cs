@@ -18,6 +18,6 @@ public class HalfHealthPotion : ThrowEnemyWeapon
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, 0);
     }
 }

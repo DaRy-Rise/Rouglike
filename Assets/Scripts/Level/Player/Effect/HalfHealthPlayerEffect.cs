@@ -1,7 +1,7 @@
 public class HalfHealthPlayerEffect : PlayerEffect
 {
     private PlayerStats playerStats;
-    public override void MakeEffect(float damage)
+    public override void MakeEffect(float damage, float duration)
     {
         playerStats = FindAnyObjectByType<PlayerStats>();
 

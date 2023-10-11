@@ -110,15 +110,7 @@ public class GoodPotion : MonoBehaviour
 
     void AntidoteEffect()
     {
-        IconBar[] iconsBar = FindObjectsOfType<IconBar>();
-        foreach (var item in iconsBar)
-        {
-            item.StopFill();
-        }
-        FindObjectOfType<IconController>().Antidote();
-
         onAntidoteEffect?.Invoke();
-        FindAnyObjectByType<PlayerEffect>().isEffected = false;
     }
 
     void DamageEffect()

@@ -3,6 +3,8 @@ using UnityEngine;
 public class StonePotion : ThrowEnemyWeapon
 {
     StonePlayerEffect playerEffect;
+    [SerializeField]
+    private float duration;
     protected override void Start()
     {
         base.Start();
@@ -18,6 +20,6 @@ public class StonePotion : ThrowEnemyWeapon
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, duration);
     }
 }
