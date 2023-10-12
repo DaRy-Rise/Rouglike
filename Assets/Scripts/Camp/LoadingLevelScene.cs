@@ -15,6 +15,6 @@ public class LoadingLevelScene : MonoBehaviour
     {
         GlobalStat globalStat = FindObjectOfType<GlobalStat>();
         globalStat.SetInfo();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
