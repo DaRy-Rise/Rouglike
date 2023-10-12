@@ -5,6 +5,8 @@ public class PauseBtn : MonoBehaviour
 {
     [HideInInspector]
     public bool PauseGame;
+    [SerializeField]
+    private GameObject pauseMenu;
 
     public void Update()
     {
@@ -30,12 +32,14 @@ public class PauseBtn : MonoBehaviour
     public void ResumeToGame()
     {
         Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
         PauseGame = false;
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
         PauseGame = true;
     }
 }
