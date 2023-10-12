@@ -3,17 +3,19 @@ using UnityEngine.UI;
 
 public class IconBar : MonoBehaviour
 {
-    public float dur;
-    private float max;
+    [HideInInspector]
+    public float max, dur;
 
     private void Start()
     {
         gameObject.GetComponent<Image>().fillAmount = 0;
-        max = dur;
     }
     private void Update()
     {
-        dur -= Time.deltaTime;
-        gameObject.GetComponent<Image>().fillAmount = dur / max;
+        dur += Time.deltaTime;
+        if (dur < max)
+        {
+            gameObject.GetComponent<Image>().fillAmount = dur / max;
+        }     
     }
 }

@@ -22,7 +22,7 @@ public class BloodlyPlayerEffect : PlayerEffect
         {
             isBloodEffect = 1;
             durProcess = duration;
-            //FindAnyObjectByType<IconController>().ResetBarDuration(indexOfIcon, durProcess);
+            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Bloodly);
         }
     }
 

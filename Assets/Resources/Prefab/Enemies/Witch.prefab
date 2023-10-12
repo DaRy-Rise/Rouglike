@@ -326,6 +326,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDownDur: 10
   weaponPrefab: {fileID: 0}
-  potions:
-  - {fileID: 7936127122135370787, guid: 5af07e679b310b84abd553dc9cee799b, type: 3}
-  - {fileID: 3147864705308623590, guid: a855807a1410fd64f803abbf017c361d, type: 3}

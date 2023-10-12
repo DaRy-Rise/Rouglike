@@ -39,7 +39,7 @@ public class SlowPlayerEffect : PlayerEffect
 
             isSlowEffect = 1;
             durProcess = duration;
-            //indAnyObjectByType<IconController>().ResetBarDuration(indexOfIcon, durProcess);
+            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Slow);
         }
     }
     public void ReturnAsWas()

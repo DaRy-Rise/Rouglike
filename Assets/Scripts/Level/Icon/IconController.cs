@@ -24,16 +24,16 @@ public class IconController : MonoBehaviour
         switch (kind)
         {
             case KindOfIcons.Poison:
-                Spawn(poisonIcon, dur);             
+                Spawn(poisonIcon, dur, KindOfIcons.Poison);             
                 break;
             case KindOfIcons.Stone:
-                Spawn(stoneIcon, dur);
+                Spawn(stoneIcon, dur, KindOfIcons.Stone);
                 break;
             case KindOfIcons.Bloodly:
-                Spawn(bloodIcon, dur);
+                Spawn(bloodIcon, dur, KindOfIcons.Bloodly);
                 break;
             case KindOfIcons.Slow:
-                Spawn(slowIcon, dur);
+                Spawn(slowIcon, dur, KindOfIcons.Slow);
                 break;
             default:
                 break;
@@ -45,12 +45,13 @@ public class IconController : MonoBehaviour
     {
         index--;
     }
-    private void Spawn(Debuff icon, float dur)
+    private void Spawn(Debuff icon, float dur, KindOfIcons kindOfIcons)
     {
         effects.Add(Instantiate(icon, cells[index].transform));
         effects[effects.Count - 1].transform.position = cells[index].transform.position;
-        effects[effects.Count - 1].dur = dur;
+        effects[effects.Count - 1].durDefault = dur;
         effects[effects.Count - 1].indexOfCell = index;
+        effects[effects.Count - 1].kindOfIcons = kindOfIcons;
         index++;
     }
 
@@ -79,6 +80,17 @@ public class IconController : MonoBehaviour
         {
             effects[i].transform.position = cells[i].transform.position;
             effects[i].indexOfCell = i;
+        }
+    }
+
+    public void ResetBarDuration(KindOfIcons kindOfIcons)
+    {
+        foreach (var item in effects)
+        {
+            if (item.kindOfIcons == kindOfIcons)
+            {
+                item.ResetDuration();
+            }
         }
     }
 }
