@@ -13,6 +13,7 @@ public class HalfHealthPotion : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 

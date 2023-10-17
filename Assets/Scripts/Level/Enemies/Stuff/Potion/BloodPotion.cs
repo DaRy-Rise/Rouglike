@@ -16,6 +16,7 @@ public class BloodPotion : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 

@@ -15,6 +15,7 @@ public class PoisonPotion : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 

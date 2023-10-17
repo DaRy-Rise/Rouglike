@@ -15,6 +15,7 @@ public class StonePotion : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 

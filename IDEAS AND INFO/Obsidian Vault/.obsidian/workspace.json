@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Current goals.md",
+                "file": "Global level.md",
                 "mode": "source",
                 "source": false
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Current goals.md",
+                "file": "Global level.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Current goals.md",
+                "file": "Global level.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Current goals.md"
+                "file": "Global level.md"
               }
             }
           }
@@ -198,14 +198,14 @@
   },
   "active": "d87cce851d9429b5",
   "lastOpenFiles": [
-    "Ideas.md",
-    "Current goals.md",
     "Оружие.md",
-    "Masters.md",
-    "Global level.md",
-    "Enemies.md",
-    "Level progress.md",
     "Player.md",
+    "Level progress.md",
+    "Masters.md",
+    "Ideas.md",
+    "Enemies.md",
+    "Global level.md",
+    "Current goals.md",
     "GG.md",
     "Untitled"
   ]

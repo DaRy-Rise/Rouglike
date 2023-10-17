@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SlowPotion : ThrowEnemyWeapon
@@ -12,9 +13,11 @@ public class SlowPotion : ThrowEnemyWeapon
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Derrived collide");
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 
