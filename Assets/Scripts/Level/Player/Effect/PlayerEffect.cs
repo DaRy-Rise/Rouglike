@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerEffect : MonoBehaviour
 {
     protected IconController iconController;
-    protected float damageCoolDown;
+    protected float durProcess;
     protected bool isInvincibleForEffect;
     protected float valueOfGettingDamage;
     [HideInInspector]
     public bool isEffected;
     [SerializeField]
-    protected float oneCoolDownSec, coolDownSec, dur;
-    protected float oneDamageCoolDown;
+    protected float coolDownDefault;
+    protected float coolDown;
     [SerializeField]
     protected KindOfIcons kindOfIcons;
 
@@ -18,39 +18,34 @@ public class PlayerEffect : MonoBehaviour
     {
         iconController = FindAnyObjectByType<IconController>();
     }
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (isEffected)
         {
-            if (oneDamageCoolDown > 0)
+            if (coolDown > 0)
             {
-                oneDamageCoolDown -= Time.deltaTime;
+                coolDown -= Time.deltaTime;
             }
-            else if (isInvincibleForEffect)
+            else
             {
-                oneDamageCoolDown = oneCoolDownSec;
-                gameObject.GetComponent<PlayerStats>().TakeDamage(valueOfGettingDamage);
+                coolDown = coolDownDefault;
+                gameObject.GetComponent<PlayerStats>().TakeDamageFromEffect(valueOfGettingDamage);
             }
-        }
-
-        if (damageCoolDown > 0)
-        {
-            damageCoolDown -= Time.deltaTime;
-        }
-        else if (isInvincibleForEffect)
-        {
-            isInvincibleForEffect = false;
+            if (durProcess > 0)
+            {
+                durProcess -= Time.deltaTime;
+            }
+            else
+            {
+                isEffected = false;
+            }
         }
     }
-    public virtual void MakeEffect(float damage)
+    public virtual void MakeEffect(float damage, float duration)
     {
-        if (!isInvincibleForEffect)
-        {
-            valueOfGettingDamage = damage;
-            damageCoolDown = coolDownSec;
-            isInvincibleForEffect = true;
-            isEffected = true;
-            iconController.SpawnIcon(kindOfIcons, dur);
-        }
+        
+        valueOfGettingDamage = damage;
+        durProcess = duration;
+        isEffected = true;
     }
 }

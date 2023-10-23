@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HalfHealthPotion : ThrowStuff
+public class HalfHealthPotion : ThrowEnemyWeapon
 {
     HalfHealthPlayerEffect playerEffect;
     protected override void Start()
@@ -13,11 +13,12 @@ public class HalfHealthPotion : ThrowStuff
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, 0);
     }
 }

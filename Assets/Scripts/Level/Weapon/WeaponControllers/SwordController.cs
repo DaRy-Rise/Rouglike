@@ -73,13 +73,21 @@ public class SwordController : WeaponController
         {
             animator.SetBool("IsLeft", true);
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if(Input.GetKey(KeyCode.LeftArrow)) 
+        {
+            animator.SetBool("IsLeft", true);
+        }
+        else if(Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetBool("IsRight", true);
+        }
+        /*else if (Input.GetKey(KeyCode.W))
         {
             animator.SetBool("IsUp", true);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             animator.SetBool("IsDown", true);
-        }
+        }*/
     }
 }

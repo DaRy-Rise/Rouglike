@@ -1,21 +1,44 @@
-using UnityEngine;
-
 public class PoisonPlayerEffect : PlayerEffect
 {
-    public override void MakeEffect(float damage)
+    protected int isPoisonEffect;
+
+    private void OnEnable()
     {
-        if (!isInvincibleForEffect)
+        GoodPotion.onAntidoteEffect += Antidote;
+    }
+    private void OnDisable()
+    {
+        GoodPotion.onAntidoteEffect -= Antidote;
+    }
+    public override void MakeEffect(float damage, float duration)
+    {
+        isPoisonEffect++;
+        base.MakeEffect(damage, duration);
+        if (isEffected && isPoisonEffect == 1)
         {
-            damageCoolDown = coolDownSec;
-            isInvincibleForEffect = true;
-            isEffected = true;
-            iconController.SpawnIcon(kindOfIcons, dur);
-            //PlayerStats.is = true;
-            Invoke("ReturnAsWas", dur);
+            iconController.SpawnIcon(kindOfIcons, duration);
+        }
+        else if (isEffected && isPoisonEffect > 1)
+        {
+            isPoisonEffect = 1;
+            durProcess = duration;
+            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Poison);
         }
     }
-    public static void ReturnAsWas()
+
+    protected override void FixedUpdate()
     {
-        PlayerMovement.isSlowEffect = false;
+        if (isPoisonEffect > 0 && !isEffected)
+        {
+            isPoisonEffect = 0;
+        }
+
+        base.FixedUpdate();
+    }
+
+    private void Antidote()
+    {
+        isEffected = false;
+        isPoisonEffect = 0;
     }
 }

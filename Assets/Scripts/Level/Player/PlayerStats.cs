@@ -58,7 +58,21 @@ public class PlayerStats : MonoBehaviour
         LevelUpChecker();
         CageSpawnChecker();
     }
-
+    
+    public void TakeDamageFromEffect(float damage)
+    {
+        if (!isInvincible)
+        {
+            isInvincible = true;
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            Invoke("ReturnDefaultColor", 0.25f);
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Kill();
+            }
+        }
+    }
     public void TakeDamage(float damage)
     {
         if (!isInvincible)

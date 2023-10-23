@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class StonePotion : ThrowStuff
+public class StonePotion : ThrowEnemyWeapon
 {
     StonePlayerEffect playerEffect;
+    [SerializeField]
+    private float duration;
     protected override void Start()
     {
         base.Start();
@@ -13,11 +15,12 @@ public class StonePotion : ThrowStuff
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, duration);
     }
 }

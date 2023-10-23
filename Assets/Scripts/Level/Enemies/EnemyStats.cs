@@ -79,11 +79,6 @@ public class EnemyStats : MonoBehaviour
             PlayerStats player = collision.GetComponent<PlayerStats>();
             player.TakeDamage(currentDamage);
         }
-        else if (collision.tag == "Master")
-        {
-            Master master = collision.GetComponent<Master>();
-            master.TakeDamage(currentDamage);
-        }
     }
     protected void OnTriggerExit2D(Collider2D collision)
     {

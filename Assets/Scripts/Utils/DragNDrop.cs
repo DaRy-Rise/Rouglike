@@ -14,14 +14,12 @@ public class DragNDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        MasterCard.isDrag = true;
         rb.gravityScale = 0;
         Drag = true;
     }
 
     private void OnMouseUp()
     {
-        MasterCard.isDrag = false;
         rb.gravityScale = 100;
         Drag = false;
     }

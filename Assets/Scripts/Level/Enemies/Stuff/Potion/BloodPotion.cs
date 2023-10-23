@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class BloodPotion : ThrowStuff
+public class BloodPotion : ThrowEnemyWeapon
 {
     BloodlyPlayerEffect playerEffect;
+    [SerializeField]
+    private float duration;
+
     protected override void Start()
     {
         base.Start();
@@ -13,11 +16,12 @@ public class BloodPotion : ThrowStuff
         if (collision.CompareTag("Player"))
         {
             GetEffect();
+            Destroy(gameObject);
         }
     }
 
     private void GetEffect()
     {
-        playerEffect.MakeEffect(currentDamage);
+        playerEffect.MakeEffect(currentDamage, duration);
     }
 }

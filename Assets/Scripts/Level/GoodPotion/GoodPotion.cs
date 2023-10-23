@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class GoodPotion : MonoBehaviour
@@ -7,10 +8,15 @@ public class GoodPotion : MonoBehaviour
     private Vector3 defaultPosition;
     [SerializeField]
     private ImprovePlate improvePlate;
+    [SerializeField]
+    AnimationClip goodPotionAnim;
     private PlayerStats playerStats;
     private MeleeWeapon meleeWeapon;
     private ThrowingWeapon throwingWeapon;
     private float defaultValue, defaultValue2;
+    public static System.Action onAntidoteEffect;
+    //private ThrowingWeapon throwingWeapon;
+    private float meleeDefaultDmg, throwingDefaultDmg;
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -19,10 +25,11 @@ public class GoodPotion : MonoBehaviour
     {
         playerStats = FindAnyObjectByType<PlayerStats>();
     }
+
     void OnEnable()
     {
         ChoosePotion();
-        Invoke("TurnOff", 0.32f);
+        Invoke("TurnOff", goodPotionAnim.length);
     }
     void TurnOff()
     {
@@ -103,21 +110,13 @@ public class GoodPotion : MonoBehaviour
 
     void AntidoteEffect()
     {
-        IconBar[] iconsBar = FindObjectsOfType<IconBar>();
-        foreach (var item in iconsBar)
-        {
-            item.StopFill();
-        }
-        FindObjectOfType<IconController>().Antidote();
-
-        StonePlayerEffect.ReturnAsWas();
-        SlowPlayerEffect.ReturnAsWas();
+        onAntidoteEffect?.Invoke();
     }
 
     void DamageEffect()
     {
-        defaultValue = meleeWeapon.currentDamage;
-        defaultValue2 = ThrowingWeapon.currentDamage;
+        meleeDefaultDmg = meleeWeapon.currentDamage;
+        throwingDefaultDmg = ThrowingWeapon.currentDamage;
         meleeWeapon.currentDamage = meleeWeapon.currentDamage + (meleeWeapon.currentDamage * 10) / 100;
         ThrowingWeapon.currentDamage = ThrowingWeapon.currentDamage + (ThrowingWeapon.currentDamage * 10) / 100;
         Invoke("ReturnDamage", 5);
@@ -125,7 +124,7 @@ public class GoodPotion : MonoBehaviour
 
     void ReturnDamage()
     {
-        meleeWeapon.currentDamage = defaultValue;
-        ThrowingWeapon.currentDamage = defaultValue2;
+        meleeWeapon.currentDamage = meleeDefaultDmg;
+        ThrowingWeapon.currentDamage = throwingDefaultDmg;
     }
 }
