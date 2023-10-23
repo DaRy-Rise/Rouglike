@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isSwordAttack)
+       if (isSwordAttack)
         {
             moveSpeed = characterData.MoveSpeed - characterData.MoveSpeed * 0.2f;
         }

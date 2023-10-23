@@ -29,7 +29,7 @@ public class PlayerEffect : MonoBehaviour
             else
             {
                 coolDown = coolDownDefault;
-                gameObject.GetComponent<PlayerStats>().TakeDamage(valueOfGettingDamage);
+                gameObject.GetComponent<PlayerStats>().TakeDamageFromEffect(valueOfGettingDamage);
             }
             if (durProcess > 0)
             {
@@ -43,8 +43,9 @@ public class PlayerEffect : MonoBehaviour
     }
     public virtual void MakeEffect(float damage, float duration)
     {
+        
         valueOfGettingDamage = damage;
         durProcess = duration;
-        isEffected = true;      
+        isEffected = true;
     }
 }

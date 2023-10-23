@@ -26,7 +26,6 @@ public class ThrowEnemyWeapon : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("BASE COLLIDE");
         if (collision.CompareTag("Player"))
         {
             PlayerStats player = collision.GetComponent<PlayerStats>();
