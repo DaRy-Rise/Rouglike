@@ -34,13 +34,6 @@ public class PlayerStats : MonoBehaviour
             isInvincible = false;
         }
     }
-    private void CageSpawnChecker()
-    {
-        if (exp/expCap*100 >= 90)
-        {
-            onNextLevel?.Invoke();
-        }
-    }
     private void LevelUpChecker()
     {
         if (exp >= expCap)
@@ -56,7 +49,6 @@ public class PlayerStats : MonoBehaviour
     {
         exp++;
         LevelUpChecker();
-        CageSpawnChecker();
     }
     
     public void TakeDamageFromEffect(float damage)
