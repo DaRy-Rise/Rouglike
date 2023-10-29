@@ -12,16 +12,6 @@ public class SwordController : WeaponController
         sword.GetComponent<PolygonCollider2D>().enabled = false;
         base.Start();
     }
-    private void OnEnable()
-    {
-        SwordAttackArea.onStartAttack+= StartAttack;
-        SwordAttackArea.onStopAttack += StopAttack;
-    }
-    private void OnDisable()
-    {
-        SwordAttackArea.onStartAttack -= StartAttack;
-        SwordAttackArea.onStopAttack -= StopAttack;
-    }
     protected override void Update()
     {
         sword.transform.position = transform.position;
