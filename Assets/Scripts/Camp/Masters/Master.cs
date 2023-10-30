@@ -8,6 +8,8 @@ public class Master : MonoBehaviour
     private Sprite masterFace;
     private GameObject tooltip;
     private bool isTooltipExist;
+    [SerializeField]
+    private bool isMainMaster;
 
 
     // Start is called before the first frame update
@@ -38,7 +40,7 @@ public class Master : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
@@ -46,5 +48,5 @@ public class Master : MonoBehaviour
             isTooltipExist = false;
             FindAnyObjectByType<DialogSystem>().StopDialog();
         }
-    }
+    }*/
 }
