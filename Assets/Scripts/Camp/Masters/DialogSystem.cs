@@ -11,6 +11,7 @@ public class DialogSystem : MonoBehaviour
     private GameObject dialogBox, masterFace;
     [HideInInspector]
     public static bool isBoxOpen;
+    public static bool isCloseDialog = false;
     [SerializeField]
     private List<TextMeshPro> phrases = new List<TextMeshPro>();
     private int numberOfChoosenPhrase;
@@ -46,7 +47,7 @@ public class DialogSystem : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (numberOfChoosenPhrase > phrases.Count)
+                if (numberOfChoosenPhrase >= phrases.Count - 1)
                 {
                     phrases[numberOfChoosenPhrase].color = Color.white;
                     numberOfChoosenPhrase = 0;
@@ -63,9 +64,11 @@ public class DialogSystem : MonoBehaviour
             {
                 ChoosePhrase();
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (isCloseDialog)
             {
                 StopDialog();
+                numberOfChoosenPhrase = 0;
+                isCloseDialog = false;
             }
         }
     }
@@ -90,7 +93,6 @@ public class DialogSystem : MonoBehaviour
     {
         if (isBoxOpen)
         {
-            print("StopDialog");
             dialogBox.SetActive(false);
             masterFace.SetActive(false);
             foreach (var item in phrases)

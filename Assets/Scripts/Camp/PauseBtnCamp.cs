@@ -10,18 +10,18 @@ public class PauseBtnCamp : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !DialogSystem.isBoxOpen)
-        {
-            print("PauseBtnCamp");
-            if (PauseGame)
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                ResumeToGame();
+                if (DialogSystem.isBoxOpen)
+                {
+                DialogSystem.isCloseDialog = true;
+                }
+                else
+                {
+                    TogglePause();
+                }
             }
-            else
-            {
-                Pause();
-            }
-        }
     }
 
     public void LoadMainMenuScene()
@@ -29,7 +29,17 @@ public class PauseBtnCamp : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
-
+    
+    public void TogglePause()
+    {
+        if(PauseGame)
+        {
+            ResumeToGame();
+        } else
+        {
+            Pause();
+        }
+    }
     public void ResumeToGame()
     {
         Time.timeScale = 1f;

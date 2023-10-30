@@ -16,7 +16,7 @@ public class SwordController : WeaponController
     {
         sword.transform.position = transform.position;
         sword.transform.parent = transform;
-        if (attack)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             AnimationControll();
         }
