@@ -4,7 +4,8 @@ public class SwordController : WeaponController
 {
     private GameObject sword;
     private Animator animator;
-    private bool attack;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
     protected override void Start()
     {
         sword = Instantiate(Resources.Load<GameObject>("Prefab/Weapons/Katana"));
@@ -18,58 +19,64 @@ public class SwordController : WeaponController
         sword.transform.parent = transform;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            AnimationControll();
+            if (PlayerMovement.isSwordAttack == false)
+            {
+                StartAttack();
+            }
+            else
+            {
+                AnimationControll();
+
+            }
+        }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            StopAttack();
         }
     }
 
     protected override void StartAttack()
     {
-        TurnAllAnimOff();
+        //TurnAllAnimOff();
         sword.GetComponent<PolygonCollider2D>().enabled = true;
         PlayerMovement.isSwordAttack = true;
-        animator.SetBool("IsStart", true);
-        Invoke("SetAttackTrue", 0.25f);
-    }
-    private void SetAttackTrue()
-    {
-        attack = true;
+        animator.SetTrigger("start");
     }
     private void StopAttack()
     {
-        attack = false;
-        TurnAllAnimOff();
+        //TurnAllAnimOff();
         sword.GetComponent<PolygonCollider2D>().enabled = false;
         PlayerMovement.isSwordAttack = false;
-        animator.SetBool("IsStop", true);
+        animator.SetTrigger("stop");
         Invoke("TurnAllAnimOff", 0.25f);
     }
-    private void TurnAllAnimOff()
-    {
-        animator.SetBool("IsStart", false);
-        animator.SetBool("IsStop", false);
-        animator.SetBool("IsRight", false);
-        animator.SetBool("IsLeft", false);
-        animator.SetBool("IsUp", false);
-        animator.SetBool("IsDown", false);
-    }
+    //private void TurnAllAnimOff()
+    //{
+    //    animator.SetBool("IsStart", false);
+    //    animator.SetBool("IsStop", false);
+    //    animator.SetBool("IsRight", false);
+    //    animator.SetBool("IsLeft", false);
+    //    animator.SetBool("IsUp", false);
+    //    animator.SetBool("IsDown", false);
+    //}
     private void AnimationControll()
     {
-        TurnAllAnimOff();
+        //TurnAllAnimOff();
         if (Input.GetKey(KeyCode.D))
         {
-            animator.SetBool("IsRight", true);
+            animator.SetTrigger("right");
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            animator.SetBool("IsLeft", true);
+            animator.SetTrigger("left");
         }
         else if(Input.GetKey(KeyCode.LeftArrow)) 
         {
-            animator.SetBool("IsLeft", true);
+            animator.SetTrigger("left");
         }
         else if(Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool("IsRight", true);
+            animator.SetTrigger("left");
         }
         /*else if (Input.GetKey(KeyCode.W))
         {
