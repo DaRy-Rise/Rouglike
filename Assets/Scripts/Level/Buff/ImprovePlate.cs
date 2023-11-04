@@ -38,7 +38,7 @@ public class ImprovePlate : MonoBehaviour
             case KindOfMasters.Sword:
                 sprite.sprite = sword;
                 break;
-            case KindOfMasters.Kata:
+            case KindOfMasters.Throwing:
                 sprite.sprite = kata;
                 break;
             default:

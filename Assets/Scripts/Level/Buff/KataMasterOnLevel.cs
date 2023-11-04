@@ -34,12 +34,12 @@ public class KataMasterOnLevel : MasterOnLevel
             case 0:
                 KataBehavior.currentDamage++;
                 levelOfBuff++;
-                masterController.ShowImprovePlate(KindOfMasters.Kata, KindOfBuff.Damage);
+                masterController.ShowImprovePlate(KindOfMasters.Throwing, KindOfBuff.Damage);
                 break;
             case 1:
                 KataBehavior.currentSpeed++;
                 levelOfBuff++;
-                masterController.ShowImprovePlate(KindOfMasters.Kata, KindOfBuff.Speed);
+                masterController.ShowImprovePlate(KindOfMasters.Throwing, KindOfBuff.Speed);
                 break;
             default:
                 break;
