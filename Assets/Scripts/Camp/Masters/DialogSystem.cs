@@ -18,11 +18,14 @@ public class DialogSystem : MonoBehaviour
     private int numberOfChoosenPhrase = 1;
     private Animation anim;
     private bool isMainMaster;
+    private KindOfMasters kindOfMasters;
     [SerializeField]
     private ParsingJson reader;
     private Phrases phrases;
     private string phrasesJsonPath = "Assets/Resources/Json/masterPhrases.json";
     private string swordImprovePhrases = "Улучшить меч", magicImprovePhrases = "Прокачать магию", throwImprovePhrases = "Научиться метко стрелять";
+    [SerializeField]
+    private TreeOfAbilityManager treeOfAbilityManager;
 
     private void Awake()
     {
@@ -49,12 +52,6 @@ public class DialogSystem : MonoBehaviour
             {
                 ChoosePhrase();
             }
-            if (isCloseDialog)
-            {
-                StopDialog();
-                numberOfChoosenPhrase = 1;
-                isCloseDialog = false;
-            }
         }
     }
     public void StartDialog(Sprite masterFace, KindOfMasters kindOfMasters, bool isMain)
@@ -73,7 +70,8 @@ public class DialogSystem : MonoBehaviour
             listOfPhrases[1].color = Color.red;
             FindAnyObjectByType<PlayerMovement>().enabled = false;
             isMainMaster = isMain;
-            SetPhrases(kindOfMasters);
+            this.kindOfMasters = kindOfMasters;
+            SetPhrases(this.kindOfMasters);
         }
     }
 
@@ -90,6 +88,7 @@ public class DialogSystem : MonoBehaviour
             }
             FindAnyObjectByType<PlayerMovement>().enabled = true;
             isBoxOpen = false;
+            numberOfChoosenPhrase = 1;
         }
     }
     private void SetBoxUnactive()
@@ -138,18 +137,29 @@ public class DialogSystem : MonoBehaviour
     }
     private void ChoosePhrase()
     {
-        switch (numberOfChoosenPhrase) 
+        switch (numberOfChoosenPhrase)
         {
-            case 0:
-                print("0");
-                break; 
             case 1:
-                print("1");
+                treeOfAbilityManager.OpenTreeOfAbility();
                 break;
-            default: 
+            case 2:
+                if (isMainMaster)
+                {
+                    print("ОТКРЫВАЮ ПОРТАЛ");
+                }
+                else
+                {
+                    StopDialog();
+                }
+                break;
+            case 3:
+                StopDialog();
+                break;
+            default:
                 break;
         }
     }
+
     private void SetPhrases(KindOfMasters kindOfMasters)
     {
         switch (kindOfMasters)
