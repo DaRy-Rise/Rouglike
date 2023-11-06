@@ -58,10 +58,12 @@ public class SwordController : WeaponController
         if (movement.lastMovedVector.x < 0)
         {
             animator.SetTrigger("left");
+            attackPoint.position = new Vector3(movement.transform.position.x - 1.261f, movement.transform.position.y - 0.006f);
         }
         else
         {
             animator.SetTrigger("right");
+            attackPoint.position = new Vector3(movement.transform.position.x + 1.261f, movement.transform.position.y - 0.006f);
         }
         behaviour.Attack(attackPoint, attackRange);
 
