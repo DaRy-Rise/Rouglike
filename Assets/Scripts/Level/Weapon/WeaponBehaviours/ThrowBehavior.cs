@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KataBehavior : ThrowingWeapon
+public class ThrowBehavior : ThrowingWeapon
 {
     protected override void Start()
     {

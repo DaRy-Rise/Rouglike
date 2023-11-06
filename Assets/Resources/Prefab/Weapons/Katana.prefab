@@ -195,6 +195,9 @@ MonoBehaviour:
   currentDamage: 0
   currentSpeed: 0
   currentCooldownDuration: 0
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!95 &-567001794987780163
 Animator:
   serializedVersion: 5
