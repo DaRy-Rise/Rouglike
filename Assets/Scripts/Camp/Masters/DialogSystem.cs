@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using System.Threading;
+using Unity.VisualScripting;
 
 public class DialogSystem : MonoBehaviour
 {
@@ -13,53 +14,37 @@ public class DialogSystem : MonoBehaviour
     public static bool isBoxOpen;
     public static bool isCloseDialog = false;
     [SerializeField]
-    private List<TextMeshPro> phrases = new List<TextMeshPro>();
-    private int numberOfChoosenPhrase;
+    private List<TextMeshProUGUI> listOfPhrases = new List<TextMeshProUGUI>();
+    private int numberOfChoosenPhrase = 1;
+    private Animation anim;
+    private bool isMainMaster;
+    [SerializeField]
+    private ParsingJson reader;
+    private Phrases phrases;
+    private string phrasesJsonPath = "Assets/Resources/Json/masterPhrases.json";
+    private string swordImprovePhrases = "Улучшить меч", magicImprovePhrases = "Прокачать магию", throwImprovePhrases = "Научиться метко стрелять";
 
+    private void Awake()
+    {
+        phrases = reader.GetInfo<Phrases>(phrasesJsonPath);
+    }
     void Start()
     {
         dialogBox.SetActive(false);
         masterFace.SetActive(false);
-        foreach (var item in phrases)
+        foreach (var item in listOfPhrases)
         {
             item.enabled = false;
         }
+        anim = dialogBox.GetComponent<Animation>();
     }
 
     void Update()
     {
         if (isBoxOpen)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                if (numberOfChoosenPhrase == 0 )
-                {
-                    phrases[numberOfChoosenPhrase].color = Color.white;
-                    numberOfChoosenPhrase = phrases.Count - 1;
-                    phrases[numberOfChoosenPhrase].color = Color.red;
-                }
-                else
-                {
-                    phrases[numberOfChoosenPhrase].color = Color.white;
-                    numberOfChoosenPhrase--;
-                    phrases[numberOfChoosenPhrase].color = Color.red;
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                if (numberOfChoosenPhrase >= phrases.Count - 1)
-                {
-                    phrases[numberOfChoosenPhrase].color = Color.white;
-                    numberOfChoosenPhrase = 0;
-                    phrases[numberOfChoosenPhrase].color = Color.red;
-                }
-                else
-                {
-                    phrases[numberOfChoosenPhrase].color = Color.white;
-                    numberOfChoosenPhrase++;
-                    phrases[numberOfChoosenPhrase].color = Color.red;
-                }
-            }
+            ChooseNumberOfPhrase();
+           
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
                 ChoosePhrase();
@@ -67,25 +52,28 @@ public class DialogSystem : MonoBehaviour
             if (isCloseDialog)
             {
                 StopDialog();
-                numberOfChoosenPhrase = 0;
+                numberOfChoosenPhrase = 1;
                 isCloseDialog = false;
             }
         }
     }
-    public void StartDialog(Sprite masterFace)
+    public void StartDialog(Sprite masterFace, KindOfMasters kindOfMasters, bool isMain)
     {
         if (!isBoxOpen)
         {
             dialogBox.SetActive(true);
+            anim.Play("DialogBoxAppear");
             this.masterFace.GetComponent<SpriteRenderer>().sprite = masterFace;
             this.masterFace.SetActive(true);
             isBoxOpen = true;
-            foreach (var item in phrases)
+            foreach (var item in listOfPhrases)
             {
                 item.enabled = true;
             }
-            phrases[0].color = Color.red;
-            Time.timeScale = 0f;
+            listOfPhrases[1].color = Color.red;
+            FindAnyObjectByType<PlayerMovement>().enabled = false;
+            isMainMaster = isMain;
+            SetPhrases(kindOfMasters);
         }
     }
 
@@ -93,25 +81,59 @@ public class DialogSystem : MonoBehaviour
     {
         if (isBoxOpen)
         {
-            dialogBox.SetActive(false);
-            masterFace.SetActive(false);
-            foreach (var item in phrases)
+            anim.Play("DialogBoxDisappear");
+            Invoke("SetBoxUnactive", 0.25f);
+            foreach (var item in listOfPhrases)
             {
                 item.color = Color.white;
+                item.text = "";
             }
-            Time.timeScale = 1f;
+            FindAnyObjectByType<PlayerMovement>().enabled = true;
             isBoxOpen = false;
         }
     }
+    private void SetBoxUnactive()
+    {
+        dialogBox.SetActive(false);
+        masterFace.SetActive(false);
+    }
     private void ChooseNumberOfPhrase()
     {
-        if (numberOfChoosenPhrase > phrases.Count)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            numberOfChoosenPhrase = 0;
+            if (numberOfChoosenPhrase == 1)
+            {
+                listOfPhrases[numberOfChoosenPhrase].color = Color.white;
+                numberOfChoosenPhrase = listOfPhrases.Count - 1;
+                listOfPhrases[numberOfChoosenPhrase].color = Color.red;
+            }
+            else
+            {
+                listOfPhrases[numberOfChoosenPhrase].color = Color.white;
+                numberOfChoosenPhrase--;
+                listOfPhrases[numberOfChoosenPhrase].color = Color.red;
+            }
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            numberOfChoosenPhrase++;
+            if (numberOfChoosenPhrase >= listOfPhrases.Count - 2 && !isMainMaster)
+            {
+                listOfPhrases[numberOfChoosenPhrase].color = Color.white;
+                numberOfChoosenPhrase = 1;
+                listOfPhrases[numberOfChoosenPhrase].color = Color.red;
+            }
+            else if (numberOfChoosenPhrase >= listOfPhrases.Count - 1)
+            {
+                listOfPhrases[numberOfChoosenPhrase].color = Color.white;
+                numberOfChoosenPhrase = 1;
+                listOfPhrases[numberOfChoosenPhrase].color = Color.red;
+            }
+            else
+            {
+                listOfPhrases[numberOfChoosenPhrase].color = Color.white;
+                numberOfChoosenPhrase++;
+                listOfPhrases[numberOfChoosenPhrase].color = Color.red;
+            }
         }
     }
     private void ChoosePhrase()
@@ -126,6 +148,35 @@ public class DialogSystem : MonoBehaviour
                 break;
             default: 
                 break;
+        }
+    }
+    private void SetPhrases(KindOfMasters kindOfMasters)
+    {
+        switch (kindOfMasters)
+        {
+            case KindOfMasters.Sword:
+                listOfPhrases[0].text = phrases.swordMasterPhrases.level1;
+                listOfPhrases[1].text = swordImprovePhrases;
+                break;
+            case KindOfMasters.Magic:
+                listOfPhrases[0].text = phrases.magicMasterPhrases.level1;
+                listOfPhrases[1].text = magicImprovePhrases;
+                break;
+            case KindOfMasters.Throwing:
+                listOfPhrases[0].text = phrases.throwMasterPhrases.level1;
+                listOfPhrases[1].text = throwImprovePhrases;
+                break;
+            default:
+                break;
+        }
+        if (isMainMaster)
+        {
+            listOfPhrases[2].text = "Открыть портал";
+            listOfPhrases[3].text = "Ничего";
+        }
+        else
+        {
+            listOfPhrases[2].text = "Ничего";
         }
     }
 }
