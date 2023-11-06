@@ -25,11 +25,11 @@ public class ImprovePlate : MonoBehaviour
     }
     private void OnEnable()
     {
-        PotionMasterOnLevel.onQTE += QTETurnOff;
+       // PotionMasterOnLevel.onQTE += QTETurnOff;
     }
     private void OnDisable()
     {
-        PotionMasterOnLevel.onQTE -= QTETurnOff;
+        //PotionMasterOnLevel.onQTE -= QTETurnOff;
     }
     public void Spawn(KindOfMasters master, KindOfBuff buff)
     {      
@@ -66,13 +66,13 @@ public class ImprovePlate : MonoBehaviour
         buffIconSR.enabled = true;
         onSpawnQTE?.Invoke();
         qteSR.enabled = true;
-        qte.Enable(PotionMasterOnLevel.kindOfPotion);
+      //  qte.Enable(PotionMasterOnLevel.kindOfPotion);
         appearAnimation.Play("PlateShake");
         Invoke("TurnOffPanel", 5);
     }
     private void ChoosePotion()
     {
-        switch (PotionMasterOnLevel.kindOfPotion)
+       /* switch (PotionMasterOnLevel.kindOfPotion)
         {
             case KindOfGoodPotion.Health:
                 buffIconSR.sprite = healthPotion;
@@ -88,7 +88,7 @@ public class ImprovePlate : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
     private void TurnOffPanel()
     {
