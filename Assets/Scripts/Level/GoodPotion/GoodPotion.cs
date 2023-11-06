@@ -28,12 +28,12 @@ public class GoodPotion : MonoBehaviour
 
     void OnEnable()
     {
-        ChoosePotion();
+       // ChoosePotion();
         Invoke("TurnOff", goodPotionAnim.length);
     }
     void TurnOff()
     {
-        PotionEffect();
+       // PotionEffect();
         gameObject.SetActive(false);
         ReturnToDefaultPosition();
     }
@@ -41,7 +41,7 @@ public class GoodPotion : MonoBehaviour
     {
         gameObject.transform.position = defaultPosition;
     }
-    void ChoosePotion()
+    /*void ChoosePotion()
     {
         switch (PotionMasterOnLevel.kindOfPotion)
         {
@@ -81,7 +81,7 @@ public class GoodPotion : MonoBehaviour
             default:
                 break;
         }
-    }
+    } */
     void HealthEffect()
     {
         float value = (playerStats.characterData.MaxHealth * 5) / 100;

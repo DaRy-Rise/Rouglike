@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c144bf6a5c356a84d91b8dda14113f0e, type: 3}
-  m_Name: KataWeapon
+  m_Name: ThrowWeapon
   m_EditorClassIdentifier: 
   pierce: 1
   damage: 5

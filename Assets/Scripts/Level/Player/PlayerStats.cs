@@ -12,14 +12,12 @@ public class PlayerStats : MonoBehaviour
     public float exp = 0, expCap = 10, expCapIncrease;
     public static int level = 1;
     public static System.Action onNextLevel;
-    [SerializeField]
-    IconController iconController;
 
     private void Awake()
     {
         currentHealth = characterData.MaxHealth;
         currentRecovery = characterData.Recovery;
-        currentMoveSpeed = characterData.MoveSpeed;
+        //currentMoveSpeed = characterData.MoveSpeed;
         currentMight = characterData.Might;
         currentThrowSpeed = characterData.ThrowSpeed;
     }

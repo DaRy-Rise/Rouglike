@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AmuletController : WeaponController
+public class MagicController : WeaponController
 {
     protected override void Start()
     {
