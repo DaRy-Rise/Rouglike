@@ -10,8 +10,8 @@ public class Master : MonoBehaviour
     private bool isTooltipExist;
     [SerializeField]
     private bool isMainMaster;
-    [SerializeField]
-    KindOfMasters kindOfMasters;
+    public KindOfMasters kindOfMasters;
+    private GameObject portal;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class Master : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !isTooltipExist)
+        if (collision.tag == "Player" && !isTooltipExist && portal == null)
         {
             tooltip = Instantiate(tooltipPrefab);
             tooltip.transform.position = gameObject.transform.position + new Vector3(0.7f,0.7f,0);
@@ -42,5 +42,11 @@ public class Master : MonoBehaviour
     {
         Destroy(tooltip);
         isTooltipExist = false;
+    }
+
+    public void OpenPortal()
+    {
+        portal = Instantiate(Resources.Load<GameObject>("Prefab/Portal/StartGamePortal"));
+        portal.transform.position = gameObject.transform.position + new Vector3(-2.5f, 0, 0);
     }
 }

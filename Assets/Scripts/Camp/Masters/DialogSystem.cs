@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Threading;
-using Unity.VisualScripting;
 
 public class DialogSystem : MonoBehaviour
 {
@@ -145,7 +143,14 @@ public class DialogSystem : MonoBehaviour
             case 2:
                 if (isMainMaster)
                 {
-                    print("Œ“ –€¬¿ﬁ œŒ–“¿À");
+                    foreach (var item in FindObjectsOfType<Master>())
+                    {
+                        if (item.kindOfMasters == kindOfMasters)
+                        {
+                            item.OpenPortal();
+                        }
+                    }
+                    StopDialog();
                 }
                 else
                 {

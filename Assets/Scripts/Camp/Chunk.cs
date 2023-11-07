@@ -15,6 +15,14 @@ public class Chunk : MonoBehaviour
     }
     public void SetChunk()
     {
-        mainCamera.transform.position = new Vector3(cameraSpawnPoint.transform.position.x, cameraSpawnPoint.transform.position.y, -10);
+        print("SetChunk");
+        try
+        {
+            mainCamera.transform.position = new Vector3(cameraSpawnPoint.transform.position.x, cameraSpawnPoint.transform.position.y, -10);
+        }
+        catch (System.Exception)
+        {
+            print("itsOk");
+        }
     }
 }
