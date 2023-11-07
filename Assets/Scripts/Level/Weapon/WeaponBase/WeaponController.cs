@@ -5,6 +5,7 @@ public class WeaponController : MonoBehaviour
     [Header("Weapon Stats")]
     public WeaponScriptableObject weaponData;
     protected float currentCoolDown;
+    protected bool isAttackAlowed = true;
     protected PlayerMovement playerMovement;
 
     protected virtual void Start()
@@ -15,14 +16,19 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Update()
     {
-        currentCoolDown -= Time.deltaTime;
+
         if (currentCoolDown <= 0f)
         {
-            StartAttack();
+            isAttackAlowed = true;
+        } else
+        {
+            currentCoolDown -= Time.deltaTime;
         }
     }
     protected virtual void StartAttack()
     {
+        isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
     }
+
 }

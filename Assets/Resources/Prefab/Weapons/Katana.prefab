@@ -194,7 +194,7 @@ MonoBehaviour:
   destroyAfterSeconds: 0
   currentDamage: 0
   currentSpeed: 0
-  currentCooldownDuration: 0
+  currentCooldownDuration: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
