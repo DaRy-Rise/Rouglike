@@ -38,7 +38,6 @@ public class MeleeWeapon : MonoBehaviour
         {
             if (enemy.isTrigger)
             {
-                Debug.Log("we hit" + enemy.isTrigger);
                 EnemyStats currentEnemy = enemy.GetComponent<EnemyStats>();
                 currentEnemy.TakeDamage(currentDamage);
             }

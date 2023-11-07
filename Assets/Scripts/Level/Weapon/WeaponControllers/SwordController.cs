@@ -22,51 +22,52 @@ public class SwordController : WeaponController
     {
         sword.transform.position = transform.position;
         sword.transform.parent = transform;
+        base.Update();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (PlayerMovement.isSwordAttack == false)
             {
-                StartAttack();
+                ShowKatana();
             }
-            else
+            else if(base.isAttackAlowed)
             {
-                Attack();
+                StartAttack();
 
             }
         }
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            StopAttack();
+            HideKatana();
         }
     }
 
     protected override void StartAttack()
     {
-        sword.GetComponent<PolygonCollider2D>().enabled = true;
-        PlayerMovement.isSwordAttack = true;
-        animator.SetTrigger("start");
-    }
-    private void StopAttack()
-    {
-        sword.GetComponent<PolygonCollider2D>().enabled = false;
-        PlayerMovement.isSwordAttack = false;
-        animator.SetTrigger("stop");
-        Invoke("TurnAllAnimOff", 0.25f);
-    }
-    private void Attack()
-    {
         if (movement.lastMovedVector.x < 0)
         {
             animator.SetTrigger("left");
-            attackPoint.position = new Vector3(movement.transform.position.x - 1.261f, movement.transform.position.y - 0.006f);
+            attackPoint.position = new Vector3(movement.transform.position.x - 1.150f, movement.transform.position.y - 0.006f);
         }
         else
         {
             animator.SetTrigger("right");
-            attackPoint.position = new Vector3(movement.transform.position.x + 1.261f, movement.transform.position.y - 0.006f);
+            attackPoint.position = new Vector3(movement.transform.position.x + 1.150f, movement.transform.position.y - 0.006f);
         }
+        base.StartAttack();
         behaviour.Attack(attackPoint, attackRange);
 
+    }
+    private void HideKatana()
+    {
+        sword.GetComponent<PolygonCollider2D>().enabled = false;
+        PlayerMovement.isSwordAttack = false;
+        animator.SetTrigger("stop");
+    }
+    private void ShowKatana()
+    {
+        sword.GetComponent<PolygonCollider2D>().enabled = true;
+        PlayerMovement.isSwordAttack = true;
+        animator.SetTrigger("start");
     }
     private void OnDrawGizmosSelected()//рисует кружок атаки в инспекторе
     {
