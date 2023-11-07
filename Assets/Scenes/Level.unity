@@ -1092,7 +1092,6 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: a08f8614227f65c4c9bad4dd71027da0, type: 2}
   attackPoint: {fileID: 624853102}
   attackRange: 0.75
-  cooldown: 0.5
 --- !u!1 &606053991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1754,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1387601239, guid: 3e7c9fbe5544dac4982447784cf06452, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

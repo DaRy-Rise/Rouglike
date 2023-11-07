@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    private GameObject[] terrainChunks;
+    private List<GameObject> terrainChunks;
     private PlayerMovement playerMovement;
     private Vector3 noTerrainPosition;
     private GameObject latestChunk;
@@ -18,10 +19,11 @@ public class MapController : MonoBehaviour
     private float opDist;
     private float optimizerCooldown;
     private float optimizerCooldownDur;
+    private KindOfDirection kindOfDirection;
 
     void Start()
     {
-        terrainChunks = Resources.LoadAll<GameObject>("Prefab/Chunks");
+        terrainChunks = Resources.LoadAll<GameObject>("Prefab/Chunks").ToList();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
     }
 
@@ -76,6 +78,7 @@ public class MapController : MonoBehaviour
         }
         else if (playerMovement.moveDir.x == 0 && playerMovement.moveDir.y > 0) //up
         {
+            kindOfDirection = KindOfDirection.Up;
             if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Up").position, checkerRadius, terrainMask))
             {
                 noTerrainPosition = currentChunk.transform.Find("Up").position;
@@ -186,11 +189,44 @@ public class MapController : MonoBehaviour
 
     private void SpawnChunk()
     {
-        int rand = Random.Range(0, terrainChunks.Length);
-        latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+        print("SpawnChunk");
+        //int rand = Random.Range(0, terrainChunks.Count);
+        //latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+
+        ShuffleList();
+        ChooseChunkToSpawn();
         spawnedChunks.Add(latestChunk);
     }
-
+    private void ShuffleList()
+    {
+        for (int i = 0; i < terrainChunks.Count; i++)
+        {
+            GameObject tmp = terrainChunks[0];
+            terrainChunks.RemoveAt(0);
+            terrainChunks.Insert(new System.Random().Next(terrainChunks.Count), tmp);
+        }
+    }
+    private void ChooseChunkToSpawn()
+    {
+        print("ChooseChunkToSpawn");
+        if (currentChunk.tag == "RoadRight" && kindOfDirection == KindOfDirection.Up)
+        {
+            foreach (var item in terrainChunks)
+            {
+                if (item.tag == "Random" || item.tag == "RoadRight")
+                {
+                    latestChunk = Instantiate(item, noTerrainPosition, Quaternion.identity);
+                    spawnedChunks.Add(latestChunk);
+                    break;
+                }
+            }
+        }
+        else if (currentChunk.tag == "Random")
+        {
+            int rand = Random.Range(0, terrainChunks.Count);
+            latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+        }
+    }
     private void ChunkOptimizer()
     {
         optimizerCooldown -= Time.deltaTime;
