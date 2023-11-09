@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChunkTrigger : MonoBehaviour
 {
     MapController mapController;
-    public GameObject targetMap;
+    public ChunkOnLevel targetMap;
 
     void Start()
     {
@@ -19,6 +19,7 @@ public class ChunkTrigger : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        print("ChunkTrigger.OnTriggerExit2D targetMap: " + targetMap);
         if (collision.CompareTag("Player"))
         {
             if (mapController.currentChunk == targetMap)

@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2279de6c10c9143aeee333bea8550a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMap: {fileID: 8980039421017094172}
+  targetMap: {fileID: -5298851858837229867}
 --- !u!61 &5092419870597665645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -556,9 +556,10 @@ GameObject:
   - component: {fileID: 8980039421017094173}
   - component: {fileID: 8980039421017094162}
   - component: {fileID: 4770697687892890760}
+  - component: {fileID: -5298851858837229867}
   m_Layer: 6
   m_Name: TerrainChunk 7
-  m_TagString: RoadRight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -653,6 +654,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 20}
   m_EdgeRadius: 0
+--- !u!114 &-5298851858837229867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980039421017094172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5693a8fb05216d545b42e70ef0de5a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoadUpDown: 0
+  RoadUp: 0
+  RoadDown: 1
+  RoadLeftRight: 0
+  RoadLeft: 0
+  RoadRight: 0
+  Random: 0
 --- !u!1 &8980039421047099803
 GameObject:
   m_ObjectHideFlags: 0
