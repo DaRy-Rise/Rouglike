@@ -208,14 +208,29 @@ public class MapController : MonoBehaviour
         {
             if (kindOfDirection == KindOfDirection.Up)
             {
-                foreach (var chunk in terrainChunks)
+                if (currentChunk.Continue)
                 {
-                    if (chunk.RoadDown || chunk.RoadUpDown || chunk.Random)
+                    foreach (var chunk in terrainChunks)
                     {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
+                        if (chunk.RoadDown || chunk.RoadUpDown)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var chunk in terrainChunks)
+                    {
+                        if (chunk.RoadDown || chunk.RoadUpDown || chunk.Random)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
+                    }
+                }
+
             }
             else if (kindOfDirection == KindOfDirection.Down)
             {
@@ -249,14 +264,29 @@ public class MapController : MonoBehaviour
             }
             else if (kindOfDirection == KindOfDirection.Down)
             {
-                foreach (var chunk in terrainChunks)
+                if (currentChunk.Continue)
                 {
-                    if (chunk.RoadUp || chunk.RoadUpDown || chunk.Random)
+                    foreach (var chunk in terrainChunks)
                     {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
+                        if (chunk.RoadUp || chunk.RoadUpDown)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var chunk in terrainChunks)
+                    {
+                        if (chunk.RoadUp || chunk.RoadUpDown || chunk.Random)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
+                    }
+                }
+
             }
             else
             {
@@ -279,14 +309,29 @@ public class MapController : MonoBehaviour
         {
             if (kindOfDirection == KindOfDirection.Right)
             {
-                foreach (var chunk in terrainChunks)
+                if (currentChunk.Continue)
                 {
-                    if (chunk.RoadLeft || chunk.RoadLeftRight || chunk.Random)
+                    foreach (var chunk in terrainChunks)
                     {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
+                        if (chunk.RoadLeft || chunk.RoadLeftRight)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var chunk in terrainChunks)
+                    {
+                        if (chunk.RoadLeft || chunk.RoadLeftRight || chunk.Random)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
+                    }
+                }
+
             }
             else if (kindOfDirection == KindOfDirection.Left)
             {
@@ -320,14 +365,29 @@ public class MapController : MonoBehaviour
             }
             else if (kindOfDirection == KindOfDirection.Left)
             {
-                foreach (var chunk in terrainChunks)
+                if (currentChunk.Continue)
                 {
-                    if (chunk.RoadRight || chunk.RoadLeftRight || chunk.Random)
+                    foreach (var chunk in terrainChunks)
                     {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
+                        if (chunk.RoadRight || chunk.RoadLeftRight)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var chunk in terrainChunks)
+                    {
+                        if (chunk.RoadRight || chunk.RoadLeftRight || chunk.Random)
+                        {
+                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
+                            break;
+                        }
+                    }
+                }
+
             }
             else
             {
