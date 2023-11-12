@@ -10,4 +10,7 @@ public class ChunkOnLevel : MonoBehaviour
     public bool RoadRight;
     public bool Random;
     public bool Continue;
+
+    [HideInInspector]
+    public int x, y;
 }
