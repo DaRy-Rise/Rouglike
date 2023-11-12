@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChunkTrigger : MonoBehaviour
 {
     MapController mapController;
-    public ChunkOnLevel targetMap;
+    public GameObject targetMap;
 
     void Start()
     {

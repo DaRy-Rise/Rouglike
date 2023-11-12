@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    private List<ChunkOnLevel> terrainChunks;
+    private List<GameObject> terrainChunks;
     private PlayerMovement playerMovement;
     private Vector3 noTerrainPosition;
-    private ChunkOnLevel latestChunk;
+    private GameObject latestChunk;
     [HideInInspector]
-    public ChunkOnLevel currentChunk;
+    public GameObject currentChunk;
     public float checkerRadius;
     public GameObject player;
     public LayerMask terrainMask;
     [Header("Optimization")]
-    public List<ChunkOnLevel> spawnedChunks;
+    public List<GameObject> spawnedChunks;
     public float maxOpDist;
     private float opDist;
     private float optimizerCooldown;
@@ -23,7 +23,7 @@ public class MapController : MonoBehaviour
 
     void Start()
     {
-        terrainChunks = Resources.LoadAll<ChunkOnLevel>("Prefab/Chunks").ToList();
+        terrainChunks = Resources.LoadAll<GameObject>("Prefab/Chunks").ToList();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
     }
 
@@ -197,22 +197,22 @@ public class MapController : MonoBehaviour
     {
         for (int i = 0; i < terrainChunks.Count; i++)
         {
-            ChunkOnLevel tmp = terrainChunks[0];
+            GameObject tmp = terrainChunks[0];
             terrainChunks.RemoveAt(0);
             terrainChunks.Insert(new System.Random().Next(terrainChunks.Count), tmp);
         }
     }
     private void ChooseChunkToSpawn()
     {
-        if (currentChunk.RoadUp)
+        if (currentChunk.GetComponent<ChunkOnLevel>().RoadUp)
         {
             if (kindOfDirection == KindOfDirection.Up)
             {
-                if (currentChunk.Continue)
+                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadDown || chunk.RoadUpDown)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -223,7 +223,7 @@ public class MapController : MonoBehaviour
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadDown || chunk.RoadUpDown || chunk.Random)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUpDown || chunk.GetComponent<ChunkOnLevel>().Random)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -236,7 +236,7 @@ public class MapController : MonoBehaviour
             {
                 foreach (var chunk in terrainChunks)
                 {
-                    if (!chunk.RoadUp)
+                    if (!chunk.GetComponent<ChunkOnLevel>().RoadUp)
                     {
                         latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                         break;
@@ -249,13 +249,13 @@ public class MapController : MonoBehaviour
                 latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
             }
         }
-        else if (currentChunk.RoadDown)
+        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadDown)
         {
             if (kindOfDirection == KindOfDirection.Up)
             {
                 foreach (var chunk in terrainChunks)
                 {
-                    if (!chunk.RoadDown)
+                    if (!chunk.GetComponent<ChunkOnLevel>().RoadDown)
                     {
                         latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                         break;
@@ -264,11 +264,11 @@ public class MapController : MonoBehaviour
             }
             else if (kindOfDirection == KindOfDirection.Down)
             {
-                if (currentChunk.Continue)
+                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadUp || chunk.RoadUpDown)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -279,7 +279,7 @@ public class MapController : MonoBehaviour
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadUp || chunk.RoadUpDown || chunk.Random)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown || chunk.GetComponent<ChunkOnLevel>().Random)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -294,26 +294,26 @@ public class MapController : MonoBehaviour
                 latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
             }
         }
-        else if (currentChunk.RoadUpDown)
+        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadUpDown)
         {
             foreach (var chunk in terrainChunks)
             {
-                if (chunk.RoadDown || chunk.RoadUp || chunk.RoadUpDown)
+                if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
                 {
                     latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                     break;
                 }
             }
         }
-        else if (currentChunk.RoadRight)
+        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadRight)
         {
             if (kindOfDirection == KindOfDirection.Right)
             {
-                if (currentChunk.Continue)
+                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadLeft || chunk.RoadLeftRight)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -324,7 +324,7 @@ public class MapController : MonoBehaviour
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadLeft || chunk.RoadLeftRight || chunk.Random)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight || chunk.GetComponent<ChunkOnLevel>().Random)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -337,7 +337,7 @@ public class MapController : MonoBehaviour
             {
                 foreach (var chunk in terrainChunks)
                 {
-                    if (!chunk.RoadRight)
+                    if (!chunk.GetComponent<ChunkOnLevel>().RoadRight)
                     {
                         latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                         break;
@@ -350,13 +350,13 @@ public class MapController : MonoBehaviour
                 latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
             }
         }
-        else if (currentChunk.RoadLeft)
+        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadLeft)
         {
             if (kindOfDirection == KindOfDirection.Right)
             {
                 foreach (var chunk in terrainChunks)
                 {
-                    if (!chunk.RoadLeft)
+                    if (!chunk.GetComponent<ChunkOnLevel>().RoadLeft)
                     {
                         latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                         break;
@@ -365,11 +365,11 @@ public class MapController : MonoBehaviour
             }
             else if (kindOfDirection == KindOfDirection.Left)
             {
-                if (currentChunk.Continue)
+                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadRight || chunk.RoadLeftRight)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -380,7 +380,7 @@ public class MapController : MonoBehaviour
                 {
                     foreach (var chunk in terrainChunks)
                     {
-                        if (chunk.RoadRight || chunk.RoadLeftRight || chunk.Random)
+                        if (chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight || chunk.GetComponent<ChunkOnLevel>().Random)
                         {
                             latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                             break;
@@ -395,11 +395,11 @@ public class MapController : MonoBehaviour
                 latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
             }
         }
-        else if (currentChunk.RoadLeftRight)
+        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
         {
             foreach (var chunk in terrainChunks)
             {
-                if (chunk.RoadLeft || chunk.RoadRight || chunk.RoadLeftRight)
+                if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
                 {
                     latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                     break;
@@ -410,7 +410,7 @@ public class MapController : MonoBehaviour
         {
             foreach (var chunk in terrainChunks)
             {
-                if (!chunk.Continue)
+                if (!chunk.GetComponent<ChunkOnLevel>().Continue)
                 {
                     latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
                     break;
@@ -431,16 +431,17 @@ public class MapController : MonoBehaviour
         {
             return;
         }
-        foreach (ChunkOnLevel chunk in spawnedChunks)
+
+        foreach (GameObject chunk in spawnedChunks)
         {
             opDist = Vector3.Distance(player.transform.position, chunk.transform.position);
             if (opDist > maxOpDist)
             {
-                chunk.enabled = false;
+                chunk.SetActive(false);
             }
             else
             {
-                chunk.enabled = true;
+                chunk.SetActive(true);
             }
         }
     }

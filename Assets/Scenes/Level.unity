@@ -337,7 +337,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   spawnedChunks:
-  - {fileID: 1641067432}
+  - {fileID: 307650345}
   maxOpDist: 50
 --- !u!4 &171206208
 Transform:
@@ -688,6 +688,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1453930618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &307650345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8980039421017094172, guid: ac0cf41ef14ae794981c144fb8b841fc, type: 3}
+  m_PrefabInstance: {fileID: 8980039419418037178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &326048172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,17 +2929,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1453930618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1641067432 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9187576893627125504, guid: ac0cf41ef14ae794981c144fb8b841fc, type: 3}
-  m_PrefabInstance: {fileID: 8980039419418037178}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5693a8fb05216d545b42e70ef0de5a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1645642932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,7 +3350,7 @@ PrefabInstance:
     - target: {fileID: 85565345460156743, guid: ac0cf41ef14ae794981c144fb8b841fc, type: 3}
       propertyPath: targetMap
       value: 
-      objectReference: {fileID: 1641067432}
+      objectReference: {fileID: 307650345}
     - target: {fileID: 8980039420182719359, guid: ac0cf41ef14ae794981c144fb8b841fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.48
