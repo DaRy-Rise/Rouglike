@@ -193,236 +193,34 @@ public class MapController : MonoBehaviour
 
     private void SpawnChunk()
     {
-        int rand = Random.Range(0, terrainChunks.Count);
-        latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+        List<GameObject> chunksToSpawn = ChooseChunkToSpawn();  
+        int rand = Random.Range(0, chunksToSpawn.Count);
+        latestChunk = Instantiate(chunksToSpawn[rand], noTerrainPosition, Quaternion.identity);
         spawnedChunks.Add(latestChunk);
+        chunksToSpawn.Clear();
     }
-    private void ShuffleList()
+
+    private List<GameObject> ChooseChunkToSpawn()
     {
-        for (int i = 0; i < terrainChunks.Count; i++)
+        List<GameObject> chunksAllowedToSpawn = new List<GameObject>(terrainChunks.Count);
+        terrainChunks.ForEach((item) =>
         {
-            GameObject tmp = terrainChunks[0];
-            terrainChunks.RemoveAt(0);
-            terrainChunks.Insert(new System.Random().Next(terrainChunks.Count), tmp);
+            chunksAllowedToSpawn.Add(item);
+        });
+        chunksAllowedToSpawn.RemoveAll(chunk => chunk.name == currentChunk.name || chunk.name + "(Clone)" == currentChunk.name);
+        List<string> chunkTypes = new List<string> { "RDown", "LDown", "Right", "RUp", "LUp", "Left", "Up", "Down" };
+        foreach (string chunkType in chunkTypes)
+        {
+            Transform chunkPosition = currentChunk.transform.Find(chunkType);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(chunkPosition.position, checkerRadius, terrainMask);
+
+            if (colliders.Length > 0)
+            {
+                chunksAllowedToSpawn.RemoveAll(chunk => chunk.name + "(Clone)" == colliders[0].gameObject.name || chunk.name == colliders[0].gameObject.name);
+            }
         }
+        return chunksAllowedToSpawn;
     }
-    /*private void ChooseChunkToSpawn()
-    {
-        if (currentChunk.GetComponent<ChunkOnLevel>().RoadUp)
-        {
-            if (kindOfDirection == KindOfDirection.Up)
-            {
-                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUpDown || chunk.GetComponent<ChunkOnLevel>().Random)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-
-            }
-            else if (kindOfDirection == KindOfDirection.Down)
-            {
-                foreach (var chunk in terrainChunks)
-                {
-                    if (!chunk.GetComponent<ChunkOnLevel>().RoadUp)
-                    {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                int rand = Random.Range(0, terrainChunks.Count);
-                latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-            }
-        }
-        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadDown)
-        {
-            if (kindOfDirection == KindOfDirection.Up)
-            {
-                foreach (var chunk in terrainChunks)
-                {
-                    if (!chunk.GetComponent<ChunkOnLevel>().RoadDown)
-                    {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
-                    }
-                }
-            }
-            else if (kindOfDirection == KindOfDirection.Down)
-            {
-                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown || chunk.GetComponent<ChunkOnLevel>().Random)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                int rand = Random.Range(0, terrainChunks.Count);
-                latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-            }
-        }
-        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadUpDown)
-        {
-            foreach (var chunk in terrainChunks)
-            {
-                if (chunk.GetComponent<ChunkOnLevel>().RoadDown || chunk.GetComponent<ChunkOnLevel>().RoadUp || chunk.GetComponent<ChunkOnLevel>().RoadUpDown)
-                {
-                    latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                    break;
-                }
-            }
-        }
-        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadRight)
-        {
-            if (kindOfDirection == KindOfDirection.Right)
-            {
-                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight || chunk.GetComponent<ChunkOnLevel>().Random)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-
-            }
-            else if (kindOfDirection == KindOfDirection.Left)
-            {
-                foreach (var chunk in terrainChunks)
-                {
-                    if (!chunk.GetComponent<ChunkOnLevel>().RoadRight)
-                    {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                int rand = Random.Range(0, terrainChunks.Count);
-                latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-            }
-        }
-        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadLeft)
-        {
-            if (kindOfDirection == KindOfDirection.Right)
-            {
-                foreach (var chunk in terrainChunks)
-                {
-                    if (!chunk.GetComponent<ChunkOnLevel>().RoadLeft)
-                    {
-                        latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                        break;
-                    }
-                }
-            }
-            else if (kindOfDirection == KindOfDirection.Left)
-            {
-                if (currentChunk.GetComponent<ChunkOnLevel>().Continue)
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var chunk in terrainChunks)
-                    {
-                        if (chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight || chunk.GetComponent<ChunkOnLevel>().Random)
-                        {
-                            latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                            break;
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                int rand = Random.Range(0, terrainChunks.Count);
-                latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-            }
-        }
-        else if (currentChunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
-        {
-            foreach (var chunk in terrainChunks)
-            {
-                if (chunk.GetComponent<ChunkOnLevel>().RoadLeft || chunk.GetComponent<ChunkOnLevel>().RoadRight || chunk.GetComponent<ChunkOnLevel>().RoadLeftRight)
-                {
-                    latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            foreach (var chunk in terrainChunks)
-            {
-                if (!chunk.GetComponent<ChunkOnLevel>().Continue)
-                {
-                    latestChunk = Instantiate(chunk, noTerrainPosition, Quaternion.identity);
-                    break;
-                }
-            }
-        }
-
-    }*/
 
     private void ChunkOptimizer()
     {
