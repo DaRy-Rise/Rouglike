@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Current goals.md",
+                "file": "Артбук.md",
                 "mode": "source",
                 "source": false
               }
@@ -71,40 +71,19 @@
             "id": "190c606c11147031",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Сюжет.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "38b4b8d6684ac36e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Механики.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "095376b7eb4d023a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Enemies.md",
-                "mode": "source",
-                "source": false
+                "file": "Structure.canvas",
+                "viewState": {
+                  "x": 827.5,
+                  "y": 313,
+                  "zoom": -1.3187621397155174
+                }
               }
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -170,7 +149,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Артбук.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +166,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Артбук.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -210,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Сюжет.md"
+                "file": "Артбук.md"
               }
             }
           }
@@ -231,18 +210,29 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "190c606c11147031",
+  "active": "c9abafdc9e3ca883",
   "lastOpenFiles": [
-    "Player.md",
-    "Механики.md",
+    "Pasted image 20231119221457.png",
+    "Current goals.md",
+    "Global level.md",
+    "Оружие.md",
+    "Structure.canvas",
+    "Tree.canvas",
+    "images/Pasted image 20231119211721.png",
     "Сюжет.md",
+    "images/Pasted image 20231119205451.png",
+    "Артбук.md",
+    "images/Pasted image 20231119204942.png",
+    "images/Pasted image 20231119204909.png",
+    "images/Pasted image 20231119204350.png",
+    "images/Pasted image 20231119204343.png",
+    "images/Pasted image 20231119201717.png",
+    "Enemies.md",
+    "Механики.md",
+    "Player.md",
     "Masters.md",
     "Level progress.md",
     "Ideas.md",
-    "Enemies.md",
-    "Current goals.md",
-    "Оружие.md",
-    "Global level.md",
     "Структура проекта/Untitled.md",
     "Структура проекта",
     "GG.md"
