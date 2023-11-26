@@ -23,21 +23,19 @@
             "id": "7b2ad3c0947db286",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Current goals.md",
-                "mode": "source",
-                "source": false
+                "file": "images/Pasted image 20231120012153.png"
               }
             }
           },
           {
-            "id": "c9abafdc9e3ca883",
+            "id": "938714e576a3d278",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Артбук.md",
+                "file": "Працюемо.md",
                 "mode": "source",
                 "source": false
               }
@@ -149,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Артбук.md",
+                "file": "Працюемо.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -166,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Артбук.md",
+                "file": "Працюемо.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -189,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Артбук.md"
+                "file": "Працюемо.md"
               }
             }
           }
@@ -210,32 +208,32 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c9abafdc9e3ca883",
+  "active": "938714e576a3d278",
   "lastOpenFiles": [
-    "Pasted image 20231120013418.png",
-    "Pasted image 20231120013313.png",
-    "Pasted image 20231120013303.png",
-    "Pasted image 20231120012234.png",
-    "Pasted image 20231120012210.png",
-    "Pasted image 20231120012155.png",
-    "Pasted image 20231120012153.png",
-    "Pasted image 20231119221457.png",
-    "Current goals.md",
+    "Сюжет.md",
+    "Працюемо.md",
+    "Артбук.md",
+    "images/Pasted image 20231120012153.png",
+    "images/Pasted image 20231120013418.png",
+    "Masters.md",
     "Global level.md",
+    "Level progress.md",
+    "Enemies.md",
+    "Current goals.md",
     "Оружие.md",
+    "Ideas.md",
+    "images/Pasted image 20231120013313.png",
+    "images/Pasted image 20231120013303.png",
+    "images/Pasted image 20231120012234.png",
+    "images/Pasted image 20231120012210.png",
+    "images/Pasted image 20231120012155.png",
+    "images/Pasted image 20231119221457.png",
     "Structure.canvas",
     "Tree.canvas",
     "images/Pasted image 20231119211721.png",
-    "Сюжет.md",
     "images/Pasted image 20231119205451.png",
-    "Артбук.md",
-    "images/Pasted image 20231119204942.png",
-    "Enemies.md",
     "Механики.md",
     "Player.md",
-    "Masters.md",
-    "Level progress.md",
-    "Ideas.md",
     "Структура проекта/Untitled.md",
     "Структура проекта",
     "GG.md"
