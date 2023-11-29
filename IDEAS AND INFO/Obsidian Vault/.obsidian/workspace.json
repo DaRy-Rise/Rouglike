@@ -35,7 +35,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Працюемо.md",
+                "file": "Сюжет.md",
                 "mode": "source",
                 "source": false
               }
@@ -47,7 +47,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Global level.md",
+                "file": "Працюемо.md",
                 "mode": "source",
                 "source": false
               }
@@ -64,24 +64,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "190c606c11147031",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Structure.canvas",
-                "viewState": {
-                  "x": 827.5,
-                  "y": 313,
-                  "zoom": -1.3187621397155174
-                }
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -208,19 +193,20 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "938714e576a3d278",
+  "active": "d87cce851d9429b5",
   "lastOpenFiles": [
-    "Сюжет.md",
+    "Оружие.md",
+    "Structure.canvas",
     "Працюемо.md",
+    "Сюжет.md",
+    "Global level.md",
     "Артбук.md",
     "images/Pasted image 20231120012153.png",
     "images/Pasted image 20231120013418.png",
     "Masters.md",
-    "Global level.md",
     "Level progress.md",
     "Enemies.md",
     "Current goals.md",
-    "Оружие.md",
     "Ideas.md",
     "images/Pasted image 20231120013313.png",
     "images/Pasted image 20231120013303.png",
@@ -228,7 +214,6 @@
     "images/Pasted image 20231120012210.png",
     "images/Pasted image 20231120012155.png",
     "images/Pasted image 20231119221457.png",
-    "Structure.canvas",
     "Tree.canvas",
     "images/Pasted image 20231119211721.png",
     "images/Pasted image 20231119205451.png",
