@@ -47,7 +47,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Працюемо.md",
+                "file": "Сюжет.md",
                 "mode": "source",
                 "source": false
               }
@@ -59,14 +59,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Оружие.md",
+                "file": "Працюемо.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -193,12 +193,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d87cce851d9429b5",
+  "active": "02788e3f2eb3fb73",
   "lastOpenFiles": [
-    "Оружие.md",
-    "Structure.canvas",
-    "Працюемо.md",
     "Сюжет.md",
+    "Оружие.md",
+    "Працюемо.md",
+    "Structure.canvas",
     "Global level.md",
     "Артбук.md",
     "images/Pasted image 20231120012153.png",
