@@ -23,21 +23,19 @@
             "id": "7b2ad3c0947db286",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Current goals.md",
-                "mode": "source",
-                "source": false
+                "file": "images/Pasted image 20231120012153.png"
               }
             }
           },
           {
-            "id": "c9abafdc9e3ca883",
+            "id": "938714e576a3d278",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Current goals.md",
+                "file": "Сюжет.md",
                 "mode": "source",
                 "source": false
               }
@@ -49,26 +47,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Global level.md",
+                "file": "Сюжет.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "095376b7eb4d023a",
+            "id": "02788e3f2eb3fb73",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Enemies.md",
+                "file": "Працюемо.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -134,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Global level.md",
+                "file": "Працюемо.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Global level.md",
+                "file": "Працюемо.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +172,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Global level.md"
+                "file": "Працюемо.md"
               }
             }
           }
@@ -182,31 +180,47 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d87cce851d9429b5",
+  "active": "02788e3f2eb3fb73",
   "lastOpenFiles": [
+    "Сюжет.md",
+    "Працюемо.md",
     "Оружие.md",
-    "Player.md",
-    "Level progress.md",
-    "Masters.md",
-    "Ideas.md",
-    "Enemies.md",
+    "Structure.canvas",
     "Global level.md",
+    "Артбук.md",
+    "images/Pasted image 20231120012153.png",
+    "images/Pasted image 20231120013418.png",
+    "Masters.md",
+    "Level progress.md",
+    "Enemies.md",
     "Current goals.md",
-    "GG.md",
-    "Untitled"
+    "Ideas.md",
+    "images/Pasted image 20231120013313.png",
+    "images/Pasted image 20231120013303.png",
+    "images/Pasted image 20231120012234.png",
+    "images/Pasted image 20231120012210.png",
+    "images/Pasted image 20231120012155.png",
+    "images/Pasted image 20231119221457.png",
+    "Tree.canvas",
+    "images/Pasted image 20231119211721.png",
+    "images/Pasted image 20231119205451.png",
+    "Механики.md",
+    "Player.md",
+    "Структура проекта/Untitled.md",
+    "Структура проекта",
+    "GG.md"
   ]
 }

@@ -7,6 +7,7 @@ public class MeleeWeapon : MonoBehaviour
     protected Vector3 direction;
     public float currentDamage, currentSpeed, currentCooldownDuration;
     protected int currentPierce;
+    public LayerMask enemyLayers;
 
     private void Awake()
     {
@@ -19,24 +20,30 @@ public class MeleeWeapon : MonoBehaviour
     {
         Destroy(gameObject, destroyAfterSeconds);
     }
-    private void ReducePierce()
-    {
-        currentPierce--;
-        if (currentPierce <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        //if (collision.CompareTag("Enemy"))
+        //{
+        //    EnemyStats enemy = collision.GetComponent<EnemyStats>();
+        //    enemy.TakeDamage(currentDamage);
+        //    //ReducePierce();
+        //}
+    }
+    public void Attack(Transform attackPoint, float attackRange)
+    {
+        Collider2D[] enemiesInCircle = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in enemiesInCircle)
         {
-            EnemyStats enemy = collision.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
-            //ReducePierce();
+            if (enemy.isTrigger)
+            {
+                EnemyStats currentEnemy = enemy.GetComponent<EnemyStats>();
+                currentEnemy.TakeDamage(currentDamage);
+            }
         }
     }
-    public void DirectionChecker(Vector3 dir)
+    /* public void DirectionChecker(Vector3 dir)
     {
         direction = dir;
         float dirX = direction.x;
@@ -85,6 +92,6 @@ public class MeleeWeapon : MonoBehaviour
             rotation.x = 180;
         }
         transform.localScale = scale;
-        transform.rotation = Quaternion.Euler(rotation);
-    }
+        transform.rotation = Quaternion.Euler(rotation); 
+    }*/
 }

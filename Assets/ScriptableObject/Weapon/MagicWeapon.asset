@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c144bf6a5c356a84d91b8dda14113f0e, type: 3}
+  m_Name: MagicWeapon
+  m_EditorClassIdentifier: 
+  pierce: 0
+  damage: 10
+  speed: 0
+  coolDownDur: 3
+  prefab: {fileID: 8437013005728341089, guid: 8a1af888c54ab5e4a86abe3bb1074a56, type: 3}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -51,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
         else if (isSpeedPotion)
         {
             moveSpeed = characterData.MoveSpeed * 1.5f;
+        }
+        else if (SceneManager.sceneCount == 1)
+        {
+            moveSpeed = 7;
         }
         else
         {

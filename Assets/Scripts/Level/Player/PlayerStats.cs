@@ -12,14 +12,12 @@ public class PlayerStats : MonoBehaviour
     public float exp = 0, expCap = 10, expCapIncrease;
     public static int level = 1;
     public static System.Action onNextLevel;
-    [SerializeField]
-    IconController iconController;
 
     private void Awake()
     {
         currentHealth = characterData.MaxHealth;
         currentRecovery = characterData.Recovery;
-        currentMoveSpeed = characterData.MoveSpeed;
+        //currentMoveSpeed = characterData.MoveSpeed;
         currentMight = characterData.Might;
         currentThrowSpeed = characterData.ThrowSpeed;
     }
@@ -32,13 +30,6 @@ public class PlayerStats : MonoBehaviour
         else if (isInvincible)
         {         
             isInvincible = false;
-        }
-    }
-    private void CageSpawnChecker()
-    {
-        if (exp/expCap*100 >= 90)
-        {
-            onNextLevel?.Invoke();
         }
     }
     private void LevelUpChecker()
@@ -56,7 +47,6 @@ public class PlayerStats : MonoBehaviour
     {
         exp++;
         LevelUpChecker();
-        CageSpawnChecker();
     }
     
     public void TakeDamageFromEffect(float damage)

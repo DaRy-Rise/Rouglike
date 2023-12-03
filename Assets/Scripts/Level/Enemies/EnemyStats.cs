@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
@@ -48,17 +49,17 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void OnDestroy()
     {
-        EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        es.OnEnemyKilled();
+        EnemySpawner es = FindObjectOfType<EnemySpawner>(); 
+        if (es != null) { es.OnEnemyKilled(); }
     }
     protected void ReturnEnemy()
     {
         EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        transform.position = player.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
+        transform.position = player.position + es.relativeSpawnPoints[UnityEngine.Random.Range(0, es.relativeSpawnPoints.Count)].position;
     }
     protected void CheckResDropChance()
     {
-        int i = Random.Range(0, 100);
+        int i = UnityEngine.Random.Range(0, 100);
         if (i <= enemyData.ChanceOfRes)
         {
             DropRes();

@@ -7,18 +7,26 @@ public class PauseBtnCamp : MonoBehaviour
     public bool PauseGame;
     [SerializeField]
     private GameObject pauseMenu;
+    [SerializeField]
+    DialogSystem dialogSystem;
+    [SerializeField]
+    TreeOfAbilityManager treeOfAbilityManager;
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseGame)
+            if (DialogSystem.isBoxOpen)
             {
-                ResumeToGame();
+                dialogSystem.StopDialog();
+            }
+            else if (TreeOfAbilityManager.isTreeOpen)
+            {
+                treeOfAbilityManager.CloseTree();
             }
             else
             {
-                Pause();
+                TogglePause();
             }
         }
     }
@@ -28,7 +36,17 @@ public class PauseBtnCamp : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
-
+    
+    public void TogglePause()
+    {
+        if(PauseGame)
+        {
+            ResumeToGame();
+        } else
+        {
+            Pause();
+        }
+    }
     public void ResumeToGame()
     {
         Time.timeScale = 1f;

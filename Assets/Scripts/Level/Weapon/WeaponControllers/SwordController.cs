@@ -4,90 +4,74 @@ public class SwordController : WeaponController
 {
     private GameObject sword;
     private Animator animator;
-    private bool attack;
+    [SerializeField]
+    private Transform attackPoint;
+    public float attackRange = 0.5f;
+    PlayerMovement movement;
+    private SwordBehaviour behaviour;
     protected override void Start()
     {
+        movement = FindAnyObjectByType<PlayerMovement>();
         sword = Instantiate(Resources.Load<GameObject>("Prefab/Weapons/Katana"));
         animator = sword.GetComponent<Animator>();
         sword.GetComponent<PolygonCollider2D>().enabled = false;
+        behaviour = FindAnyObjectByType<SwordBehaviour>();
         base.Start();
-    }
-    private void OnEnable()
-    {
-        SwordAttackArea.onStartAttack+= StartAttack;
-        SwordAttackArea.onStopAttack += StopAttack;
-    }
-    private void OnDisable()
-    {
-        SwordAttackArea.onStartAttack -= StartAttack;
-        SwordAttackArea.onStopAttack -= StopAttack;
     }
     protected override void Update()
     {
         sword.transform.position = transform.position;
         sword.transform.parent = transform;
-        if (attack)
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            AnimationControll();
+            if (PlayerMovement.isSwordAttack == false)
+            {
+                ShowKatana();
+            }
+            else if(base.isAttackAlowed)
+            {
+                StartAttack();
+
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            HideKatana();
         }
     }
 
     protected override void StartAttack()
     {
-        TurnAllAnimOff();
-        sword.GetComponent<PolygonCollider2D>().enabled = true;
-        PlayerMovement.isSwordAttack = true;
-        animator.SetBool("IsStart", true);
-        Invoke("SetAttackTrue", 0.25f);
+        if (movement.lastMovedVector.x < 0)
+        {
+            animator.SetTrigger("left");
+            attackPoint.position = new Vector3(movement.transform.position.x - 1.150f, movement.transform.position.y - 0.006f);
+        }
+        else
+        {
+            animator.SetTrigger("right");
+            attackPoint.position = new Vector3(movement.transform.position.x + 1.150f, movement.transform.position.y - 0.006f);
+        }
+        base.StartAttack();
+        behaviour.Attack(attackPoint, attackRange);
+
     }
-    private void SetAttackTrue()
+    private void HideKatana()
     {
-        attack = true;
-    }
-    private void StopAttack()
-    {
-        attack = false;
-        TurnAllAnimOff();
         sword.GetComponent<PolygonCollider2D>().enabled = false;
         PlayerMovement.isSwordAttack = false;
-        animator.SetBool("IsStop", true);
-        Invoke("TurnAllAnimOff", 0.25f);
+        animator.SetTrigger("stop");
     }
-    private void TurnAllAnimOff()
+    private void ShowKatana()
     {
-        animator.SetBool("IsStart", false);
-        animator.SetBool("IsStop", false);
-        animator.SetBool("IsRight", false);
-        animator.SetBool("IsLeft", false);
-        animator.SetBool("IsUp", false);
-        animator.SetBool("IsDown", false);
+        sword.GetComponent<PolygonCollider2D>().enabled = true;
+        PlayerMovement.isSwordAttack = true;
+        animator.SetTrigger("start");
     }
-    private void AnimationControll()
+    private void OnDrawGizmosSelected()//рисует кружок атаки в инспекторе
     {
-        TurnAllAnimOff();
-        if (Input.GetKey(KeyCode.D))
-        {
-            animator.SetBool("IsRight", true);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            animator.SetBool("IsLeft", true);
-        }
-        else if(Input.GetKey(KeyCode.LeftArrow)) 
-        {
-            animator.SetBool("IsLeft", true);
-        }
-        else if(Input.GetKey(KeyCode.RightArrow))
-        {
-            animator.SetBool("IsRight", true);
-        }
-        /*else if (Input.GetKey(KeyCode.W))
-        {
-            animator.SetBool("IsUp", true);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            animator.SetBool("IsDown", true);
-        }*/
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+    //направление меча, направление области, cooldown
 }

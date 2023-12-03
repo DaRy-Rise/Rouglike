@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class SlowPlayerEffect : PlayerEffect
 {
     protected int isSlowEffect;
@@ -22,8 +24,15 @@ public class SlowPlayerEffect : PlayerEffect
             isSlowEffect = 0;
             ReturnAsWas();
         }
-
-        base.FixedUpdate();
+        if (durProcess > 0)
+        {
+            durProcess -= Time.deltaTime;
+        }
+        else
+        {
+            isEffected = false;
+        }
+        //base.FixedUpdate();
     }
     public override void MakeEffect(float damage, float duration)
     {

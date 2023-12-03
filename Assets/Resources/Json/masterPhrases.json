@@ -1,0 +1,24 @@
+{
+  "swordMasterPhrases": {
+    "level1": "Да?",
+    "level2": "Неплохо справляешься, что тебе нужно?"
+  },
+  
+  "magicMasterPhrases": 
+    {
+      "level1": "Молодчинка, что пожелаешь?",
+      "level2": "Умница, чем могу быть полезен?"
+    },
+  
+  "throwMasterPhrases": 
+    {
+      "level1": "Так держать, боец! Давай помогу!",
+      "level2": "Я всегда в тебя верил! Что я могу для тебя сделать?"
+    },
+  
+  "mainMasterPhrases": 
+    {
+      "level1": "Level1",
+      "level2": "Level2"
+    }
+}
