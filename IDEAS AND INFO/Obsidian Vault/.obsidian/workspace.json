@@ -52,21 +52,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "02788e3f2eb3fb73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Працюемо.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -132,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Працюемо.md",
+                "file": "Сюжет.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Працюемо.md",
+                "file": "Сюжет.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Працюемо.md"
+                "file": "Сюжет.md"
               }
             }
           }
@@ -193,10 +181,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "02788e3f2eb3fb73",
+  "active": "d87cce851d9429b5",
   "lastOpenFiles": [
-    "Сюжет.md",
     "Працюемо.md",
+    "Сюжет.md",
     "Оружие.md",
     "Structure.canvas",
     "Global level.md",
