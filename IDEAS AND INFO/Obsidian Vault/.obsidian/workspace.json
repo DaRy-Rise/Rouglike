@@ -52,9 +52,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "02788e3f2eb3fb73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Працюемо.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2e6557cc738bae48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Працюемо.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -120,7 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Працюемо.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +161,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Працюемо.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +184,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Сюжет.md"
+                "file": "Працюемо.md"
               }
             }
           }
@@ -181,14 +205,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d87cce851d9429b5",
+  "active": "2e6557cc738bae48",
   "lastOpenFiles": [
+    "Оружие.md",
+    "Артбук.md",
     "Працюемо.md",
     "Сюжет.md",
-    "Оружие.md",
     "Structure.canvas",
     "Global level.md",
-    "Артбук.md",
     "images/Pasted image 20231120012153.png",
     "images/Pasted image 20231120013418.png",
     "Masters.md",
