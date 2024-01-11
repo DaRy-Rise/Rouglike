@@ -64,9 +64,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2e6557cc738bae48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Працюемо.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4a386feaa587f7ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Працюемо.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -193,14 +217,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "02788e3f2eb3fb73",
+  "active": "4a386feaa587f7ab",
   "lastOpenFiles": [
-    "Сюжет.md",
-    "Працюемо.md",
     "Оружие.md",
+    "Артбук.md",
+    "Працюемо.md",
+    "Сюжет.md",
     "Structure.canvas",
     "Global level.md",
-    "Артбук.md",
     "images/Pasted image 20231120012153.png",
     "images/Pasted image 20231120013418.png",
     "Masters.md",
