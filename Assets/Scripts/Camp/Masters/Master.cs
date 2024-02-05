@@ -34,7 +34,7 @@ public class Master : MonoBehaviour
         if (collision.tag == "Player" && !isTooltipExist && portal == null)
         {
             tooltip = Instantiate(tooltipPrefab);
-            tooltip.transform.position = gameObject.transform.position + new Vector3(0.7f,0.7f,0);
+            tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f,0.9f,0);
             isTooltipExist = true;          
         }
     }
@@ -46,7 +46,20 @@ public class Master : MonoBehaviour
 
     public void OpenPortal()
     {
-        portal = Instantiate(Resources.Load<GameObject>("Prefab/Portal/StartGamePortal"));
-        portal.transform.position = gameObject.transform.position + new Vector3(-2.5f, 0, 0);
+        switch (kindOfMasters)
+        {
+            case KindOfMasters.Sword:
+                portal = Instantiate(Resources.Load<GameObject>("Prefab/Portal/Red_portal"));
+                break;
+            case KindOfMasters.Magic:
+                portal = Instantiate(Resources.Load<GameObject>("Prefab/Portal/Blue_portal"));
+                break;
+            case KindOfMasters.Throwing:
+                portal = Instantiate(Resources.Load<GameObject>("Prefab/Portal/Green_portal"));
+                break;
+            default:
+                break;
+        }
+        portal.transform.position = gameObject.transform.position + new Vector3(2.5f, 0, 0);
     }
 }
