@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField]
+    private float scale;
     public EnemyScriptableObject enemyData;
     protected Transform player;
     [HideInInspector]
@@ -17,6 +20,14 @@ public class EnemyMovement : MonoBehaviour
         if (!isNearPlayer)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);
+            if (player.position.x - transform.position.x > 0) 
+            {
+                transform.localScale = new Vector3(scale, scale, scale);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-scale, scale, scale);
+            }
         }
     }
 }

@@ -43,21 +43,16 @@ public class MapController : MonoBehaviour
         {
             if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right").position, checkerRadius, terrainMask))
             {
-                print("right - 1if");
                 noTerrainPosition = currentChunk.transform.Find("Right").position;
                 SpawnChunk();
             }
             if (!Physics2D.OverlapCircle(currentChunk.transform.Find("RUp").position, checkerRadius, terrainMask))
             {
-                print("right - 2if");
-                print(currentChunk.transform.Find("RUp").position);
                 noTerrainPosition = currentChunk.transform.Find("RUp").position;
                 SpawnChunk();
             }
             if (!Physics2D.OverlapCircle(currentChunk.transform.Find("RDown").position, checkerRadius, terrainMask))
             {
-                print("right - 3if");
-                print(currentChunk.transform.Find("RDown").position);
                 noTerrainPosition = currentChunk.transform.Find("RDown").position;
                 SpawnChunk();
             }

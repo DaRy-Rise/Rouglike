@@ -1755,12 +1755,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 1387601239, guid: 3e7c9fbe5544dac4982447784cf06452, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 773b494d75aa48647b7d59bcaa96e084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.48}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1776,7 +1776,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 188464512}
@@ -1859,8 +1859,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.14, y: 0.15}
-    newSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1984,8 +1984,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.14, y: 0.15}
-    newSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2271,7 +2271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.88847923, y: 0.51500005}
   m_AnchorMax: {x: 0.99427086, y: 0.8848519}
-  m_AnchoredPosition: {x: 2, y: 0.41000366}
+  m_AnchoredPosition: {x: 2, y: 0.41003418}
   m_SizeDelta: {x: -2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1280241138
@@ -2588,7 +2588,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
-    enemyGroup: []
+    enemyGroup:
+    - name: 
+      enemyCount: 3
+      spawnedCount: 1
+      enemyPrefab: {fileID: 6630242302773137395, guid: 3f00b1418f2bd8b4eab60d2fbc88dd51, type: 3}
+    - name: 
+      enemyCount: 3
+      spawnedCount: 1
+      enemyPrefab: {fileID: 2417474058044648731, guid: 331e18211f55dd143a1963b297f1fa70, type: 3}
     numberOfEnemiesToSpawn: 0
     spawnInterval: 1
     spawnedCount: 0
@@ -3350,6 +3358,46 @@ PrefabInstance:
     - target: {fileID: 3777317847142925792, guid: 9894a2250be539a4b96697955a749873, type: 3}
       propertyPath: m_Name
       value: TerrainChunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[5].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[14].m_Data
+      value: 
+      objectReference: {fileID: 679914247, guid: def0b5a57175e604ab83c889b6b108bc, type: 3}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_Data
+      value: 
+      objectReference: {fileID: 169537160, guid: def0b5a57175e604ab83c889b6b108bc, type: 3}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[5].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[14].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_Tiles.Array.data[12491].second.m_TileSpriteIndex
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561861629770686312, guid: 9894a2250be539a4b96697955a749873, type: 3}
+      propertyPath: m_Tiles.Array.data[17560].second.m_TileSpriteIndex
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8563694923390247117, guid: 9894a2250be539a4b96697955a749873, type: 3}
       propertyPath: m_LocalPosition.x

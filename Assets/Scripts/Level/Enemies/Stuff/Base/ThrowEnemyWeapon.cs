@@ -12,6 +12,18 @@ public class ThrowEnemyWeapon : MonoBehaviour
     {
         player = FindAnyObjectByType<PlayerMovement>().transform;
         direction = (player.position - transform.position).normalized;
+        if (player.position.x - transform.position.x < 0)
+        {
+            transform.localScale = new Vector3(2f, 2f, 2f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-2f, 2f, 2f);
+        }
+
+        var direc = player.transform.position - transform.position;
+        var rot = Quaternion.LookRotation(direc, transform.TransformDirection(Vector3.up));
+        transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
         Destroy(gameObject, 3);
 
     }
