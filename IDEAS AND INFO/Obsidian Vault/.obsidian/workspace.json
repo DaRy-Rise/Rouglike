@@ -33,11 +33,14 @@
             "id": "53f68176d49b391e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Фазан.md",
-                "mode": "source",
-                "source": false
+                "file": "Structure.canvas",
+                "viewState": {
+                  "x": -44.65817610062882,
+                  "y": 104.0910901467505,
+                  "zoom": -0.5468588768852327
+                }
               }
             }
           }
@@ -108,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Фазан.md",
+                "file": "Structure.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Фазан.md",
+                "file": "Structure.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Фазан.md"
+                "file": "Structure.canvas"
               }
             }
           }
@@ -171,8 +174,8 @@
   },
   "active": "53f68176d49b391e",
   "lastOpenFiles": [
-    "Працюемо.md",
     "Фазан.md",
+    "Працюемо.md",
     "Tree.canvas",
     "Player.md",
     "Сюжет.md",

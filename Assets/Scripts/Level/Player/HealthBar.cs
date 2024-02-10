@@ -20,4 +20,5 @@ public class HealthBar : MonoBehaviour
         healthBar.fillAmount = HP/maxHealth;
         HP = FindObjectOfType<PlayerStats>().currentHealth;
     }
+   
 }
