@@ -33,14 +33,11 @@
             "id": "53f68176d49b391e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Structure.canvas",
-                "viewState": {
-                  "x": -44.65817610062882,
-                  "y": 104.0910901467505,
-                  "zoom": -0.5468588768852327
-                }
+                "file": "Фазан.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -111,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structure.canvas",
+                "file": "Фазан.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structure.canvas",
+                "file": "Фазан.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Structure.canvas"
+                "file": "Фазан.md"
               }
             }
           }
@@ -174,6 +171,7 @@
   },
   "active": "53f68176d49b391e",
   "lastOpenFiles": [
+    "Structure.canvas",
     "Фазан.md",
     "Працюемо.md",
     "Tree.canvas",
@@ -188,7 +186,6 @@
     "Механики.md",
     "Оружие.md",
     "Артбук.md",
-    "Structure.canvas",
     "images/Pasted image 20231120012153.png",
     "images/Pasted image 20231120013418.png",
     "images/Pasted image 20231120013313.png",

@@ -22,22 +22,25 @@ public class SwordController : WeaponController
     {
         sword.transform.position = transform.position;
         sword.transform.parent = transform;
-        base.Update();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!PlayerStats.isKilled)
         {
-            if (PlayerMovement.isSwordAttack == false)
+            base.Update();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                ShowKatana();
-            }
-            else if(base.isAttackAlowed)
-            {
-                StartAttack();
+                if (PlayerMovement.isSwordAttack == false)
+                {
+                    ShowKatana();
+                }
+                else if (isAttackAlowed)
+                {
+                    StartAttack();
 
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            HideKatana();
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                HideKatana();
+            }
         }
     }
 

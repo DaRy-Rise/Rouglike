@@ -30,6 +30,10 @@ public class EnemyStats : MonoBehaviour
         {
             ReturnEnemy();
         }
+        if (PlayerStats.isKilled)
+        {
+            Destroy(gameObject);
+        }
     }
     public virtual void TakeDamage(float damage)
     {

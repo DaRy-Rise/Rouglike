@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Master : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class Master : MonoBehaviour
     private bool isMainMaster;
     public KindOfMasters kindOfMasters;
     private GameObject portal;
+    protected Transform player;
+    private string side;
 
     void Start()
     {
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
+        player = FindAnyObjectByType<PlayerMovement>().transform;
     }
 
     void Update()
@@ -35,7 +39,21 @@ public class Master : MonoBehaviour
         {
             tooltip = Instantiate(tooltipPrefab);
             tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f,0.9f,0);
-            isTooltipExist = true;          
+            isTooltipExist = true;
+            SetScale();
+        }
+    }
+    private void SetScale()
+    {
+        if (player.position.x - transform.position.x > 0)
+        {
+            transform.localScale = new Vector3(3, 3, 3);
+            side = "right";
+        }
+        else
+        {
+            transform.localScale = new Vector3(-3, 3, 3);
+            side = "left";
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -60,6 +78,16 @@ public class Master : MonoBehaviour
             default:
                 break;
         }
-        portal.transform.position = gameObject.transform.position + new Vector3(2.5f, 0, 0);
+        switch (side)
+        {
+            case "right":
+                portal.transform.position = gameObject.transform.position + new Vector3(2.5f, 0, 0);
+                break;
+            case "left":
+                portal.transform.position = gameObject.transform.position + new Vector3(-2.5f, 0, 0);
+                break;
+            default:
+                break;
+        }
     }
 }

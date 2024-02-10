@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     public float exp = 0, expCap = 10, expCapIncrease;
     public static int level = 1;
     public static System.Action onNextLevel;
+    private static PortalController portalController;
+    public static bool isKilled;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class PlayerStats : MonoBehaviour
         //currentMoveSpeed = characterData.MoveSpeed;
         currentMight = characterData.Might;
         currentThrowSpeed = characterData.ThrowSpeed;
+        portalController = FindAnyObjectByType<PortalController>();
     }
     private void Update()
     {
@@ -80,9 +83,12 @@ public class PlayerStats : MonoBehaviour
     }
     public void Kill()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        isKilled = true;
         print("GAME OVER");
-        LoadingCampScene.LoadCampScene();
+        portalController.OpenPortal();
+        //transform.position = FindAnyObjectByType<Portal>().transform.position;
+
     }
     private void ReturnDefaultColor()
     {

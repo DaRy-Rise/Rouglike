@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,11 +29,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        InputManagmnet();
+        InputManagment();
     }
     private void FixedUpdate()
     {
-       if (isSwordAttack)
+        if (PlayerStats.isKilled) 
+        {
+            moveSpeed = 0;
+        }
+        else if (isSwordAttack)
         {
             moveSpeed = characterData.MoveSpeed - characterData.MoveSpeed * 0.2f;
         }
@@ -64,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         }
         Move();
     }
-    private void InputManagmnet()
+    private void InputManagment()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
@@ -88,7 +91,10 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
-        SetScale();
+        if (!PlayerStats.isKilled)
+        {
+            SetScale();
+        }
     }
     private void SetScale()
     {
