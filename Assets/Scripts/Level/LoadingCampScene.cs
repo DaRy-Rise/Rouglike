@@ -8,5 +8,6 @@ public class LoadingCampScene : MonoBehaviour
         GlobalStat globalStat = FindObjectOfType<GlobalStat>();
         globalStat.SetInfo();
         SceneManager.LoadScene(1);
+        PlayerStats.isKilled = false;
     }
 }

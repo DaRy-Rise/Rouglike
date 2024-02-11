@@ -7,11 +7,15 @@ public class GlobalStat : MonoBehaviour
     public static int wool, hair, squama, spiderLeg, essence, flute, tail, soul, book, ash, flesh, scythe, bone, tentacle, emptyGlass, arrow, nitro;
     public static int swordMas, kataMas, potionMas;
     private ResCount resCount;
+    private MastersInfo mastersInfo;
+    public static string mainMaster;
     private string resCountPath = "Assets/Resources/Json/res.json";
+    private string mastersInfoPath = "Assets/Resources/Json/MastersInfo.json";
 
     private void Awake()
     {
         resCount = reader.GetInfo<ResCount>(resCountPath);
+        mastersInfo = reader.GetInfo<MastersInfo>(mastersInfoPath);
         GetInfo();
     }
     private void GetInfo()
@@ -33,6 +37,7 @@ public class GlobalStat : MonoBehaviour
         emptyGlass = resCount.emptyGlass;
         arrow = resCount.arrow;
         nitro = resCount.nitro;
+        mainMaster = mastersInfo.mainMaster;
     }
     public void SetInfo()
     {

@@ -15,11 +15,17 @@ public class Master : MonoBehaviour
     private GameObject portal;
     protected Transform player;
     private string side;
+    private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
+    private ParsingJson parser;
 
     void Start()
     {
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
         player = FindAnyObjectByType<PlayerMovement>().transform;
+        if (isMainMaster)
+        {
+            DELETEITLATER_SETMAINMASTER();
+        }
     }
 
     void Update()
@@ -32,7 +38,29 @@ public class Master : MonoBehaviour
             }
         }
     }
-
+    private void DELETEITLATER_SETMAINMASTER()
+    {
+        parser = FindAnyObjectByType<ParsingJson>();
+        MastersInfo mastersInfo = parser.GetInfo<MastersInfo>(pathToJson);
+        if (isMainMaster)
+        {
+            switch (kindOfMasters)
+            {
+                case KindOfMasters.Sword:
+                    mastersInfo.mainMaster = "sword";
+                    break;
+                case KindOfMasters.Magic:
+                    mastersInfo.mainMaster = "magic";
+                    break;
+                case KindOfMasters.Throwing:
+                    mastersInfo.mainMaster = "throw";
+                    break;
+                default:
+                    break;
+            }
+            parser.SetInfo(mastersInfo, pathToJson);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && !isTooltipExist && portal == null)

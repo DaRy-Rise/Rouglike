@@ -19,11 +19,11 @@ public class SwordController : WeaponController
         base.Start();
     }
     protected override void Update()
-    {
-        sword.transform.position = transform.position;
-        sword.transform.parent = transform;
+    { 
         if (!PlayerStats.isKilled)
         {
+            sword.transform.position = transform.position;
+            sword.transform.parent = transform;
             base.Update();
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -41,6 +41,10 @@ public class SwordController : WeaponController
             {
                 HideKatana();
             }
+        }
+        else
+        {
+            Destroy(sword);
         }
     }
 

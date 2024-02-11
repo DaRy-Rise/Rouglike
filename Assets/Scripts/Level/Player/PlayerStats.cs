@@ -60,7 +60,7 @@ public class PlayerStats : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke("ReturnDefaultColor", 0.25f);
             currentHealth -= damage;
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isKilled)
             {
                 Kill();
             }
@@ -69,13 +69,14 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (!isInvincible)
+
         {
             damageCoolDown = coolDownSec;
             isInvincible = true;
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke("ReturnDefaultColor", 0.25f);
             currentHealth -= damage;
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isKilled)
             {
                 Kill();
             }

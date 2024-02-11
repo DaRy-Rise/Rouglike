@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CharacterScriptableObject
   m_EditorClassIdentifier: 
   startingWeapon: {fileID: 0}
-  maxHealth: 1
+  maxHealth: 20
   recovery: 0
   moveSpeed: 50
   might: 0

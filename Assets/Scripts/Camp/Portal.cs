@@ -13,14 +13,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (SceneManager.GetActiveScene().buildIndex != 1)
-            {
-                SceneManager.LoadScene(2);
-            }
-            else
-            {
-                LoadingCampScene.LoadCampScene();
-            }
+            SceneManager.LoadScene(2);
         }
     }
     private void SetScale()
