@@ -14,4 +14,15 @@ public class ThrowController : WeaponController
         spawnedProjectile.transform.position = transform.position;
         spawnedProjectile.GetComponent<ThrowBehavior>().DirectionChecker(playerMovement.lastMovedVector);
     }
+    protected override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (!PlayerStats.isKilled && isAttackAlowed) //?
+            {
+                StartAttack();
+            }
+        }
+    }    
 }

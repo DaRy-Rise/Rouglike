@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!isNearPlayer)
+        if (!isNearPlayer && !PlayerStats.isKilled)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);
             if (player.position.x - transform.position.x > 0) 

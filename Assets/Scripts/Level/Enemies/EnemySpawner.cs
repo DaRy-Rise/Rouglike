@@ -51,7 +51,10 @@ public class EnemySpawner : MonoBehaviour
         if (spawnerTime >= waves[currentWaveCount].spawnInterval)
         {
             spawnerTime = 0f;
-            SpawnEnemies();
+            if (!PlayerStats.isKilled)
+            {
+                SpawnEnemies();
+            }
         }
     }
 

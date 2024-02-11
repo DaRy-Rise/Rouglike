@@ -16,7 +16,6 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Update()
     {
-
         if (currentCoolDown <= 0f)
         {
             isAttackAlowed = true;
@@ -30,5 +29,4 @@ public class WeaponController : MonoBehaviour
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
     }
-
 }
