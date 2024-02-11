@@ -33,6 +33,10 @@ public class ThrowEnemyWeapon : MonoBehaviour
     }
     protected void FixedUpdate()
     {
+        if (PlayerStats.isKilled)
+        {
+            Destroy(gameObject);
+        }
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
 

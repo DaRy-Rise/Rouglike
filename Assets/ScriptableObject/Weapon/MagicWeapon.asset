@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 10
   speed: 0
   coolDownDur: 3
-  prefab: {fileID: 8437013005728341089, guid: 8a1af888c54ab5e4a86abe3bb1074a56, type: 3}
+  prefab: {fileID: 7449028293328995286, guid: 70c34ae0fbb9a824287c2c54c5e53988, type: 3}

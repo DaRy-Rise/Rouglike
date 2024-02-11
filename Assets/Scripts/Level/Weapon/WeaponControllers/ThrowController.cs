@@ -19,7 +19,7 @@ public class ThrowController : WeaponController
         base.Update();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!PlayerStats.isKilled && isAttackAlowed) //?
+            if (!PlayerStats.isKilled && isAttackAlowed)
             {
                 StartAttack();
             }

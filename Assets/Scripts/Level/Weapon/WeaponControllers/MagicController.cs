@@ -10,8 +10,17 @@ public class MagicController : WeaponController
     protected override void StartAttack()
     {
         base.StartAttack();
-        GameObject spawnedAmulet = Instantiate(weaponData.Prefab);
-        spawnedAmulet.transform.position = transform.position;
-        spawnedAmulet.transform.parent = transform;
+        Instantiate(weaponData.Prefab);
+    }
+    protected override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (!PlayerStats.isKilled && isAttackAlowed)
+            {
+                StartAttack();
+            }
+        }
     }
 }
