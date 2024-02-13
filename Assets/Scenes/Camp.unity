@@ -2379,6 +2379,9 @@ MonoBehaviour:
   masterFace: {fileID: 21300000, guid: 1c9b49df10243b745b51330fc4a2a1ef, type: 3}
   isMainMaster: 0
   kindOfMasters: 2
+  path: {fileID: 0}
+  speed: 1
+  maxDis: 0.1
 --- !u!212 &657601243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11389,7 +11392,6 @@ GameObject:
   - component: {fileID: 1093143827}
   - component: {fileID: 1093143828}
   - component: {fileID: 1093143829}
-  - component: {fileID: 1093143830}
   - component: {fileID: 1093143831}
   m_Layer: 0
   m_Name: SwordMaster
@@ -11480,6 +11482,9 @@ MonoBehaviour:
   masterFace: {fileID: 21300000, guid: 2d38e2351d5fc7b4cb1bff07be377263, type: 3}
   isMainMaster: 1
   kindOfMasters: 0
+  path: {fileID: 1018227725}
+  speed: 1
+  maxDis: 0.1
 --- !u!61 &1093143828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11546,21 +11551,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1093143830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093143821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1b18825cfac684d83673a49349681f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: {fileID: 1018227725}
-  speed: 1
-  maxDis: 0.1
 --- !u!60 &1093143831
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15052,6 +15042,9 @@ MonoBehaviour:
   masterFace: {fileID: 21300000, guid: 101eca76c44dce7438e2b4c0e640fa18, type: 3}
   isMainMaster: 0
   kindOfMasters: 1
+  path: {fileID: 0}
+  speed: 1
+  maxDis: 0.1
 --- !u!61 &1774911093
 BoxCollider2D:
   m_ObjectHideFlags: 0

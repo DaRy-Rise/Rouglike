@@ -36,7 +36,7 @@ public class FollowPath : MonoBehaviour
         {
             return;
         }
-        if (isGoing && path.isEndPoint && !isGoingBack) 
+        if (isGoing && path.isEndPoint && !isGoingBack)
         {
             animator.SetBool("isReadyToGo", false);
             startCoolDown = 10;
@@ -69,6 +69,7 @@ public class FollowPath : MonoBehaviour
         {
             startCoolDown -= Time.deltaTime;
         }
+
 
         if (isGoing || isGoingBack)
         { 
