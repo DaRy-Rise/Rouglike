@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class FollowPath : MonoBehaviour
 {
-    public SwordMovingPath path;
+    public Path path;
     public float speed = 1, maxDis = .1f;
     private IEnumerator<Transform> pointInPath;
     private float startCoolDown = 10;

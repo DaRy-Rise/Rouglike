@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -19,12 +20,13 @@ public class Master : MonoBehaviour
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
 
-    public SwordMovingPath path;
+    public Path[] paths;
+    public Path currentPath;
     public float speed = 1, maxDis = .1f;
     private IEnumerator<Transform> pointInPath;
-    private float startCoolDown = 10;
-    private float goBackCoolDown = 10;
-    private bool isGoing, isStop, isGoingBack;
+    [SerializeField]
+    private float pathCoolDown = 5, choosePathCoolDown = 20;
+    private bool isGoing, isStop, isBack;
     private Animator animator;
 
     void Start()
@@ -37,12 +39,13 @@ public class Master : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-        if (path == null)
+        ChoosePath();
+        if (currentPath == null)
         {
             return;
         }
 
-        pointInPath = path.GetNextPathPoitn();
+        pointInPath = currentPath.GetNextPathPoitn();
         pointInPath.MoveNext();
 
         if (pointInPath.Current == null)
@@ -52,7 +55,18 @@ public class Master : MonoBehaviour
 
         transform.position = pointInPath.Current.position;
     }
-
+    private void FixedUpdate()
+    {
+        if (choosePathCoolDown <= 0f)
+        {
+            int i = UnityEngine.Random.Range(0, paths.Length);
+            currentPath = paths[i]; 
+        }
+        else
+        {
+            choosePathCoolDown -= Time.deltaTime;
+        }
+    }
     void Update()
     {
        if (isTooltipExist)
@@ -67,43 +81,25 @@ public class Master : MonoBehaviour
         {
             return;
         }
-        if (isGoing && path.isEndPoint && !isGoingBack)
-        {
-            animator.SetBool("isReadyToGo", false);
-            startCoolDown = 10;
-            goBackCoolDown = 10;
-            isGoing = false;
-            isStop = true;
-        }
-
-        if (goBackCoolDown <= 0f && isStop && !isGoing)
-        {
-            isStop = false;
-            isGoingBack = true;
-            animator.SetBool("isReadyToGo", true);
-            SetScale();
-        }
-        else
-        {
-            goBackCoolDown -= Time.deltaTime;
-        }
-
-
-        if (startCoolDown <= 0f && !isGoing && !isGoingBack)
+        if (pathCoolDown <= 0f && !isGoing && !isStop)
         {
             isGoing = true;
-            isGoingBack = false;
             animator.SetBool("isReadyToGo", true);
-            SetScale();
         }
         else
         {
-            startCoolDown -= Time.deltaTime;
+            pathCoolDown -= Time.deltaTime;
         }
-
-
-        if ((isGoing || isGoingBack) && !isStop)
+        if (isGoing && currentPath.isEndPoint && !isBack)
         {
+            isGoing = false;
+            animator.SetBool("isReadyToGo", false);
+            pathCoolDown = 10;
+            isBack = true;
+        }
+        if (isGoing)
+        {
+            SetScale();
             transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
         }
         var distanceSquare = (transform.position - pointInPath.Current.position).sqrMagnitude;
@@ -134,19 +130,23 @@ public class Master : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "Master")
         {
-            if (!isTooltipExist && portal == null)
+            SetScaleByGameObject(collision.transform);
+            if (collision.tag == "Player")
             {
-                tooltip = Instantiate(tooltipPrefab);
-                tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
-                isTooltipExist = true;
-                SetScaleToPlayer();
-            }
-            if (isGoing || isGoingBack)
-            {
-                isStop = true;
-                animator.SetBool("isReadyToGo", false);
+                if (!isTooltipExist && portal == null)
+                {
+                    tooltip = Instantiate(tooltipPrefab);
+                    tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
+                    isTooltipExist = true;
+                }
+                if (isGoing)
+                {
+                    isStop = true;
+                    isGoing = false;
+                    animator.SetBool("isReadyToGo", false);
+                }
             }
         }
     }
@@ -161,9 +161,9 @@ public class Master : MonoBehaviour
             transform.localScale = new Vector3(-3, 3, 3);
         }
     }
-    private void SetScaleToPlayer()
+    private void SetScaleByGameObject(Transform gameObject)
     {
-        if (player.position.x - transform.position.x > 0)
+        if (gameObject.position.x - transform.position.x > 0)
         {
             transform.localScale = new Vector3(3, 3, 3);
             side = "right";
@@ -182,6 +182,7 @@ public class Master : MonoBehaviour
         {
             isStop = false;
             SetScale();
+            isGoing = true;
             animator.SetBool("isReadyToGo", true);
         }
     }
@@ -213,5 +214,11 @@ public class Master : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void ChoosePath()
+    {
+        int i = UnityEngine.Random.Range(0, paths.Length);
+        currentPath = paths[i];
     }
 }

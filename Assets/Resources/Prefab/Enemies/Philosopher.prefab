@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 7378166f24ada554f8f4697a1b59cc12, type: 2}
   deSpawnDistance: 20
-  res: {fileID: -2849023528102537917, guid: 5eb59273a7bca2945a44a50dd1e6db61, type: 3}
+  res: {fileID: -8115970748775973079, guid: 1f9aff0e1bbb6244e842561715b83bb4, type: 3}
 --- !u!114 &-5304218048306807010
 MonoBehaviour:
   m_ObjectHideFlags: 0

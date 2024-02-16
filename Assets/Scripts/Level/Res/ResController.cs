@@ -6,14 +6,14 @@ public class ResController : MonoBehaviour
     {
         switch (res)
         {
-            case KindOfRes.Wool:
-                GlobalStat.wool++;
+            case KindOfRes.Hanky:
+                GlobalStat.hanky++;
                 break;
-            case KindOfRes.Hair:
-                GlobalStat.hair++;
+            case KindOfRes.Scroll:
+                GlobalStat.scroll++;
                 break;
-            case KindOfRes.Squama:
-                GlobalStat.squama++;
+            case KindOfRes.Boot:
+                GlobalStat.boot++;
                 break;
             default:
                 break;

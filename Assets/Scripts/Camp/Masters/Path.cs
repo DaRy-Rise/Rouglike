@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordMovingPath : MonoBehaviour
+public class Path : MonoBehaviour
 {
     public int movmentDir = 1, moveTo = 0;
     public Transform[] PathElements;

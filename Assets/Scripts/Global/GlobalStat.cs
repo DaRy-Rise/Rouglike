@@ -4,7 +4,7 @@ public class GlobalStat : MonoBehaviour
 {
     [SerializeField]
     private ParsingJson reader;
-    public static int wool, hair, squama, spiderLeg, essence, flute, tail, soul, book, ash, flesh, scythe, bone, tentacle, emptyGlass, arrow, nitro;
+    public static int hanky, scroll, boot, spiderLeg, essence, flute, tail, soul, book, ash, flesh, scythe, bone, tentacle, emptyGlass, arrow, nitro;
     public static int swordMas, kataMas, potionMas;
     private ResCount resCount;
     private MastersInfo mastersInfo;
@@ -20,9 +20,9 @@ public class GlobalStat : MonoBehaviour
     }
     private void GetInfo()
     {
-        wool = resCount.wool;
-        hair = resCount.hair;
-        squama = resCount.squama;
+        hanky = resCount.wool;
+        scroll = resCount.hair;
+        boot = resCount.squama;
         essence = resCount.squama; 
         spiderLeg = resCount.spiderLeg;
         flute = resCount.flute;
@@ -41,9 +41,9 @@ public class GlobalStat : MonoBehaviour
     }
     public void SetInfo()
     {
-        resCount.wool = wool;
-        resCount.hair = hair;
-        resCount.squama = squama;
+        resCount.wool = hanky;
+        resCount.hair = scroll;
+        resCount.squama = boot;
         resCount.spiderLeg = spiderLeg;
         resCount.essence = essence;
         resCount.flute = flute;

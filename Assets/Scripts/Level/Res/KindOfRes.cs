@@ -1,8 +1,8 @@
 ﻿public enum KindOfRes
 {
-    Wool,
-    Hair,
-    Squama,
+    Hanky,
+    Scroll,
+    Boot,
     SpiderLeg,
     Essence,
     Flute,
