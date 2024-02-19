@@ -6,6 +6,7 @@ public class Path : MonoBehaviour
     public int movmentDir = 1, moveTo = 0;
     public Transform[] PathElements;
     public bool isEndPoint;
+    public bool isGuestPath;
 
     public void OnDrawGizmos()
     {
