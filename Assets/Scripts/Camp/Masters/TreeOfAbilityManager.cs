@@ -5,14 +5,12 @@ public class TreeOfAbilityManager : MonoBehaviour
     [SerializeField]
     private GameObject treeOfAbility, dialogBox;
     public static bool isTreeOpen;
-    [SerializeField]
-    private ParsingJson reader;
 
     void Start()
     {
         treeOfAbility.SetActive(false);
     }
-    public void OpenTreeOfAbility()
+    public void OpenTreeOfAbility(KindOfMasters kindOfMasters)
     {
         isTreeOpen = true;
         DialogSystem.isBoxOpen = false;
@@ -24,7 +22,7 @@ public class TreeOfAbilityManager : MonoBehaviour
         isTreeOpen = false;
         treeOfAbility.SetActive(false);
     }
-    private void SetAbility()
+    private void DrawAbility()
     {
 
     }

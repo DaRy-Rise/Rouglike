@@ -19,14 +19,14 @@ public class Master : MonoBehaviour
     private string side;
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
-
-    public Path[] paths;
-    public Path currentPath;
+    [SerializeField]
+    private Path[] paths;
+    private Path currentPath;
     public float speed = 1, maxDis = .1f;
     private IEnumerator<Transform> pointInPath;
     [SerializeField]
     private float pathCoolDown = 5, choosePathCoolDown = 20;
-    private bool isGoing, isStop, isBack;
+    private bool isGoing, isStop, isBack, isPause;
     private Animator animator;
 
     void Start()
@@ -60,7 +60,8 @@ public class Master : MonoBehaviour
         if (choosePathCoolDown <= 0f)
         {
             int i = UnityEngine.Random.Range(0, paths.Length);
-            currentPath = paths[i]; 
+            currentPath = paths[i];
+            isPause = false;
         }
         else
         {
@@ -81,9 +82,10 @@ public class Master : MonoBehaviour
         {
             return;
         }
-        if (pathCoolDown <= 0f && !isGoing && !isStop)
+        if (pathCoolDown <= 0f && !isGoing && !isStop && !isPause)
         {
             isGoing = true;
+            isPause = false;
             animator.SetBool("isReadyToGo", true);
         }
         else
@@ -130,23 +132,20 @@ public class Master : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" || collision.tag == "Master")
+        if (collision.tag == "Player")
         {
             SetScaleByGameObject(collision.transform);
-            if (collision.tag == "Player")
+            if (!isTooltipExist && portal == null)
             {
-                if (!isTooltipExist && portal == null)
-                {
-                    tooltip = Instantiate(tooltipPrefab);
-                    tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
-                    isTooltipExist = true;
-                }
-                if (isGoing)
-                {
-                    isStop = true;
-                    isGoing = false;
-                    animator.SetBool("isReadyToGo", false);
-                }
+                tooltip = Instantiate(tooltipPrefab);
+                tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
+                isTooltipExist = true;
+            }
+            if (isGoing)
+            {
+                isStop = true;
+                isGoing = false;
+                animator.SetBool("isReadyToGo", false);
             }
         }
     }

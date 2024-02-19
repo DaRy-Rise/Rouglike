@@ -138,7 +138,7 @@ public class DialogSystem : MonoBehaviour
         switch (numberOfChoosenPhrase)
         {
             case 1:
-                treeOfAbilityManager.OpenTreeOfAbility();
+                treeOfAbilityManager.OpenTreeOfAbility(kindOfMasters);
                 break;
             case 2:
                 if (isMainMaster)
