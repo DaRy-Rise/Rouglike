@@ -33,11 +33,14 @@
             "id": "53f68176d49b391e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Фазан.md",
-                "mode": "source",
-                "source": false
+                "file": "Tree.canvas",
+                "viewState": {
+                  "x": -1400.0798975485927,
+                  "y": -1433.0489579491561,
+                  "zoom": 0.3333333333333334
+                }
               }
             }
           }
@@ -108,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Фазан.md",
+                "file": "Tree.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Фазан.md",
+                "file": "Tree.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Фазан.md"
+                "file": "Tree.canvas"
               }
             }
           }
@@ -172,20 +175,20 @@
   "active": "53f68176d49b391e",
   "lastOpenFiles": [
     "Structure.canvas",
-    "Фазан.md",
-    "Працюемо.md",
-    "Tree.canvas",
-    "Player.md",
-    "Сюжет.md",
-    "Current goals.md",
     "Enemies.md",
+    "Current goals.md",
+    "Артбук.md",
+    "Механики.md",
+    "Оружие.md",
+    "Працюемо.md",
+    "Сюжет.md",
+    "Tree.canvas",
+    "Фазан.md",
+    "Player.md",
     "Global level.md",
     "Ideas.md",
     "Level progress.md",
     "Masters.md",
-    "Механики.md",
-    "Оружие.md",
-    "Артбук.md",
     "images/Pasted image 20231120012153.png",
     "images/Pasted image 20231120013418.png",
     "images/Pasted image 20231120013313.png",
