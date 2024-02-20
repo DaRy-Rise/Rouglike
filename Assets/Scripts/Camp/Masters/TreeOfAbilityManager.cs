@@ -5,6 +5,12 @@ public class TreeOfAbilityManager : MonoBehaviour
     [SerializeField]
     private GameObject treeOfAbility, dialogBox;
     public static bool isTreeOpen;
+    //string pulsePath = "Prefab/Camp/Ability/Sword/pulse.prefab";
+    //string destroyedPath = "Prefab/Camp/Ability/Sword/destroyed.prefab";
+    [SerializeField]
+    Animator anim;
+    [SerializeField]
+    GameObject[] points;
 
     void Start()
     {
@@ -24,6 +30,6 @@ public class TreeOfAbilityManager : MonoBehaviour
     }
     private void DrawAbility()
     {
-
+ 
     }
 }

@@ -33,11 +33,14 @@
             "id": "53f68176d49b391e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Фазан.md",
-                "mode": "source",
-                "source": false
+                "file": "Tree.canvas",
+                "viewState": {
+                  "x": 423,
+                  "y": -719.5,
+                  "zoom": -1.3519139110407448
+                }
               }
             }
           }
@@ -108,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Фазан.md",
+                "file": "Tree.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Фазан.md",
+                "file": "Tree.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Фазан.md"
+                "file": "Tree.canvas"
               }
             }
           }
@@ -172,9 +175,9 @@
   "active": "53f68176d49b391e",
   "lastOpenFiles": [
     "Structure.canvas",
+    "Фазан.md",
     "Tree.canvas",
     "Player.md",
-    "Фазан.md",
     "Працюемо.md",
     "Сюжет.md",
     "Current goals.md",
