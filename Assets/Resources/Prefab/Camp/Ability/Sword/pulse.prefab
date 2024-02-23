@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6197892233806160838}
   - component: {fileID: 5784163785541584523}
   m_Layer: 0
-  m_Name: pulse
+  m_Name: Pulse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
