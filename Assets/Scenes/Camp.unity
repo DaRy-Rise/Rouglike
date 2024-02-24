@@ -16841,7 +16841,7 @@ MonoBehaviour:
   magicDestroyedPrefab: {fileID: 0}
   archerStaticPulsePrefab: {fileID: 3878484497425701276, guid: 6d2eb15c9c0501941acb163fb1fdb7ef, type: 3}
   archerPulsePrefab: {fileID: 5432329665533165993, guid: aeaa1782ae478c04b95f75c4d3b12084, type: 3}
-  archerDestroyedPrefab: {fileID: 0}
+  archerDestroyedPrefab: {fileID: 6414283036156301082, guid: 166d3534b8953764f9b831089d3288c0, type: 3}
 --- !u!1 &1879754571
 GameObject:
   m_ObjectHideFlags: 0
