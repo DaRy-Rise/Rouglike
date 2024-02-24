@@ -3993,11 +3993,11 @@ Transform:
   m_GameObject: {fileID: 885910252}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9, y: -0.13, z: 0.10528649}
+  m_LocalPosition: {x: -22.628, y: 0.223, z: 0.10528649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1341465412}
+  m_Father: {fileID: 1707789544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &885910254
 SpriteRenderer:
@@ -14006,6 +14006,7 @@ GameObject:
   - component: {fileID: 1341465412}
   - component: {fileID: 1341465414}
   - component: {fileID: 1341465415}
+  - component: {fileID: 1341465416}
   m_Layer: 0
   m_Name: SwordWS
   m_TagString: Untagged
@@ -14022,11 +14023,10 @@ Transform:
   m_GameObject: {fileID: 1341465411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.95, y: 0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -26.79, y: -0.02, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 885910253}
+  m_Children: []
   m_Father: {fileID: 1707789544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1341465414
@@ -14070,7 +14070,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 22f5209cf95f3ed44a1f1206b4c75aeb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcd85db43a6665643a81a46a4a9ec3b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14117,7 +14117,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
+    oldSize: {x: 2.8, y: 2.4}
     newSize: {x: 8, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14139,6 +14139,27 @@ PolygonCollider2D:
       - {x: -1.54, y: -2.34}
       - {x: 2.12, y: -2.34}
   m_UseDelaunayMesh: 0
+--- !u!95 &1341465416
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341465411}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 464a42257184ae045a2445b07088968d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1341736922
 GameObject:
   m_ObjectHideFlags: 0
@@ -16251,6 +16272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 885910253}
   - {fileID: 1341465412}
   - {fileID: 844478194}
   - {fileID: 1261138476}
@@ -16838,7 +16860,7 @@ MonoBehaviour:
   swordDestroyedPrefab: {fileID: 6414283036156301082, guid: 7ecc62cb04dc3c14ba14a338b11053a9, type: 3}
   magicStaticPulsePrefab: {fileID: 3878484497425701276, guid: 40aa855ce63d78f4ca7a043e3f5138e8, type: 3}
   magicPulsePrefab: {fileID: 5432329665533165993, guid: 7d2d7584b464556488a703d7df0bc5d5, type: 3}
-  magicDestroyedPrefab: {fileID: 0}
+  magicDestroyedPrefab: {fileID: 6414283036156301082, guid: 0f5c232152d8c2545a3b18aa6f397739, type: 3}
   archerStaticPulsePrefab: {fileID: 3878484497425701276, guid: 6d2eb15c9c0501941acb163fb1fdb7ef, type: 3}
   archerPulsePrefab: {fileID: 5432329665533165993, guid: aeaa1782ae478c04b95f75c4d3b12084, type: 3}
   archerDestroyedPrefab: {fileID: 6414283036156301082, guid: 166d3534b8953764f9b831089d3288c0, type: 3}
