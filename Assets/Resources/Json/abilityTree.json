@@ -1,8 +1,8 @@
 {
   "swordMaster": {
-    "dash": 0,
-    "kick": 0,
-    "area":  0
+    "dash": 4,
+    "kick": 3,
+    "area":  5
   },
 
   "magicMaster": {
