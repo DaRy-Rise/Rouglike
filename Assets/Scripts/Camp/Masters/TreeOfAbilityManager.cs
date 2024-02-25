@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeOfAbilityManager : MonoBehaviour
@@ -13,6 +12,7 @@ public class TreeOfAbilityManager : MonoBehaviour
     private GameObject magicStaticPulsePrefab, magicPulsePrefab, magicDestroyedPrefab;
     [SerializeField]
     private GameObject archerStaticPulsePrefab, archerPulsePrefab, archerDestroyedPrefab;
+    public KindOfMasters kindOfMaster;
 
     private Point[,] points = 
     { 
@@ -45,31 +45,36 @@ public class TreeOfAbilityManager : MonoBehaviour
     }
     public void OpenTreeOfAbility(KindOfMasters kindOfMasters)
     {
+        kindOfMaster = kindOfMasters;
         isTreeOpen = true;
         DialogSystem.isBoxOpen = false;
         treeOfAbility.SetActive(true);
-        switch (kindOfMasters)
+        switch (kindOfMaster)
         {
             case KindOfMasters.Sword:
                 DrawAbility(0, GlobalStat.swordKick, swordStaticPulsePrefab, swordPulsePrefab, swordDestroyedPrefab);
                 DrawAbility(1, GlobalStat.swordDash, swordStaticPulsePrefab, swordPulsePrefab, swordDestroyedPrefab);
                 DrawAbility(2, GlobalStat.swordArea, swordStaticPulsePrefab, swordPulsePrefab, swordDestroyedPrefab);
+                FindAnyObjectByType<AbilityInfoManager>().ParseSwordInfo();
                 break;
             case KindOfMasters.Magic:
                 DrawAbility(0, GlobalStat.magicChain, magicStaticPulsePrefab, magicPulsePrefab, magicDestroyedPrefab);
                 DrawAbility(1, GlobalStat.magicShield, magicStaticPulsePrefab, magicPulsePrefab, magicDestroyedPrefab);
                 DrawAbility(2, GlobalStat.magicArea, magicStaticPulsePrefab, magicPulsePrefab, magicDestroyedPrefab);
+                FindAnyObjectByType<AbilityInfoManager>().ParseMagicInfo();
                 break;
             case KindOfMasters.Throwing:
                 DrawAbility(0, GlobalStat.archerPoison, archerStaticPulsePrefab, archerPulsePrefab, archerDestroyedPrefab);
                 DrawAbility(1, GlobalStat.archerShurikens, archerStaticPulsePrefab, archerPulsePrefab, archerDestroyedPrefab);
                 DrawAbility(2, GlobalStat.archerRain, archerStaticPulsePrefab, archerPulsePrefab, archerDestroyedPrefab);
+                FindAnyObjectByType<AbilityInfoManager>().ParseArcherInfo();
                 break;
             default:
                 break;
         }
 
         GetComponentInChildren<AbilityBtnManager>().SetButtonState();
+        
     }
     public void CloseTree()
     {
