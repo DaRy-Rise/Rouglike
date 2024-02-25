@@ -15,16 +15,9 @@ public class AbilityBtnManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            switch (selectedIndexLine)
+            if (selectedIndexLine == maxLine && selectedIndexLine != 5)
             {
-                case 0:
-
-                    break;
-                case 1:
-
-                    break;
-                default:
-                    break;
+                abilityManager.Upgrade(selectedIndexColumn, selectedIndexLine);
             }
         }
 

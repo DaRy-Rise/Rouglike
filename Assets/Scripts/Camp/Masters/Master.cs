@@ -151,14 +151,22 @@ public class Master : MonoBehaviour
     }
     private void SetScale()
     {
-        if (transform.position.x - pointInPath.Current.position.x < 0)
+        try
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            if (transform.position.x - pointInPath.Current.position.x < 0)
+            {
+                transform.localScale = new Vector3(3, 3, 3);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-3, 3, 3);
+            }
         }
-        else
+        catch (Exception)
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            print("its ok");
         }
+
     }
     private void SetScaleByGameObject(Transform gameObject)
     {

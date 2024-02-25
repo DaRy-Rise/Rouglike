@@ -49,6 +49,12 @@ public class TreeOfAbilityManager : MonoBehaviour
         isTreeOpen = true;
         DialogSystem.isBoxOpen = false;
         treeOfAbility.SetActive(true);
+        SetParamsAndDraw();
+        GetComponentInChildren<AbilityBtnManager>().SetButtonState();
+        
+    }
+    public void SetParamsAndDraw()
+    {
         switch (kindOfMaster)
         {
             case KindOfMasters.Sword:
@@ -72,9 +78,6 @@ public class TreeOfAbilityManager : MonoBehaviour
             default:
                 break;
         }
-
-        GetComponentInChildren<AbilityBtnManager>().SetButtonState();
-        
     }
     public void CloseTree()
     {
@@ -112,5 +115,34 @@ public class TreeOfAbilityManager : MonoBehaviour
         {
             Destroy(item);
         }
+    }
+    public void Upgrade(int c, int l)
+    {
+        if (l < 4)
+        {
+            abilitiesPref[c, l + 1].GetComponent<Animator>().SetBool("upgrade", true);
+        }
+        if (kindOfMaster == KindOfMasters.Sword)
+        {
+            switch (c)
+            {
+                case 0:
+                    GlobalStat.swordKick++;
+                    break;
+                case 1:
+                    GlobalStat.swordDash++;
+                    break;
+                case 2:
+                    GlobalStat.swordArea++;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    public void SetStaticPulse()
+    {
+        DestroyAbility();
+        SetParamsAndDraw();
     }
 }
