@@ -1,0 +1,19 @@
+{
+  "swordMaster": {
+    "dash": 1,
+    "kick": 2,
+    "area":  3
+  },
+
+  "magicMaster": {
+    "chain": 0,
+    "shield": 0,
+    "area": 0
+  },
+
+  "archerMaster": {
+    "poison": 0,
+    "shurikens": 0,
+    "rain": 0
+  }
+}

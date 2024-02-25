@@ -30,6 +30,15 @@ public class EnemyStats : MonoBehaviour
         {
             ReturnEnemy();
         }
+        if (PlayerStats.isKilled)
+        {
+            GetComponent<Animator>().SetBool("toDestroy", true);
+            PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
+            foreach (var item in colliders)
+            {
+                item.enabled = false;
+            }
+        }
     }
     public virtual void TakeDamage(float damage)
     {
@@ -92,5 +101,9 @@ public class EnemyStats : MonoBehaviour
     private void ReturnDefaultColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    public void JustDestroy()
+    {
+        Destroy(gameObject);
     }
 }

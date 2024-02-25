@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseBtnCamp : MonoBehaviour
 {
@@ -11,26 +12,79 @@ public class PauseBtnCamp : MonoBehaviour
     DialogSystem dialogSystem;
     [SerializeField]
     TreeOfAbilityManager treeOfAbilityManager;
+    [SerializeField]
+    private Button back, menu;
+    [SerializeField]
+    private Sprite backImage, choosedBackImage, menuImage, choosedMenuImage;
+    private int selectedIndex = 0;
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pauseMenu.activeSelf)
         {
-            if (DialogSystem.isBoxOpen)
+            ChooseButton();
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                dialogSystem.StopDialog();
+                if (DialogSystem.isBoxOpen)
+                {
+                    dialogSystem.StopDialog();
+                }
+                else if (TreeOfAbilityManager.isTreeOpen)
+                {
+                    treeOfAbilityManager.CloseTree();
+                }
+                else
+                {
+                    TogglePause();
+                }
             }
-            else if (TreeOfAbilityManager.isTreeOpen)
+            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                treeOfAbilityManager.CloseTree();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        ResumeToGame();
+                        break;
+                    case 1:
+                        LoadMainMenuScene();
+                        break;
+                    default:
+                        break;
+                }
             }
-            else
-            {
-                TogglePause();
-            }
+        }    
+    }
+    private void ChooseButton()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            selectedIndex--;
+            if (selectedIndex < 0)
+                selectedIndex = 0;
+            SetButtonState();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            selectedIndex++;
+            if (selectedIndex > 1)
+                selectedIndex = 1;
+            SetButtonState();
         }
     }
 
+    private void SetButtonState()
+    {
+        if (selectedIndex == 0)
+        {
+            back.image.sprite = choosedBackImage;
+            menu.image.sprite = menuImage;
+        }
+        else
+        {
+            back.image.sprite = backImage;
+            menu.image.sprite = choosedMenuImage;
+        }
+    }
     public void LoadMainMenuScene()
     {
         Time.timeScale = 1f;
@@ -58,6 +112,7 @@ public class PauseBtnCamp : MonoBehaviour
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        SetButtonState();
         PauseGame = true;
     }
 }

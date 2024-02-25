@@ -3,9 +3,9 @@ using System;
 [Serializable]
 public class ResCount
 {
-    public int wool;
-    public int hair;
-    public int squama;
+    public int hanky;
+    public int scroll;
+    public int boot;
     public int spiderLeg;
     public int essence;
     public int flute;

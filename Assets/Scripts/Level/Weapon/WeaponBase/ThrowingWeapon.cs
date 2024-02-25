@@ -55,31 +55,31 @@ public class ThrowingWeapon : MonoBehaviour
         }
         else if (dirX == 0 && dirY < 0) //down
         {
-            scale.y *= -1;
+            rotation.z = -90f;
         }
         else if (dirX == 0 && dirY > 0) //up
         {
-            scale.x *= -1;
+            rotation.z = 90f;
         }
         else if (dirX > 0 && dirY > 0) //RUp
         {
-            rotation.z = 0f;
+            rotation.z = 45f;
         }
         else if (dirX > 0 && dirY < 0) //RDown
         {
-            rotation.z = -90f;
+            rotation.z = -45f;
         }
         else if (dirX < 0 && dirY > 0) //LUp
         {
             scale.x *= -1;
             scale.y *= -1;
-            rotation.z = -90f;
+            rotation.z = -45f;
         }
         else if (dirX < 0 && dirY < 0) //LDown
         {
             scale.x *= -1;
             scale.y *= -1;
-            rotation.z = 0f;
+            rotation.z = 45f;
         }
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
