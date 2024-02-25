@@ -15,16 +15,9 @@ public class AbilityBtnManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            switch (selectedIndexLine)
+            if (selectedIndexLine == maxLine && selectedIndexLine != 5)
             {
-                case 0:
-
-                    break;
-                case 1:
-
-                    break;
-                default:
-                    break;
+                abilityManager.Upgrade(selectedIndexColumn, selectedIndexLine);
             }
         }
 
@@ -54,20 +47,7 @@ public class AbilityBtnManager : MonoBehaviour
             SetButtonState();
         }
 
-        switch (selectedIndexColumn)
-        {
-            case 0:
-                maxLine = GlobalStat.swordKick;
-                break;
-            case 1:
-                maxLine = GlobalStat.swordDash;
-                break;
-            case 2:
-                maxLine = GlobalStat.swordArea;
-                break;
-            default:
-                break;
-        }
+        SetMaxLineValue();
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
@@ -88,7 +68,60 @@ public class AbilityBtnManager : MonoBehaviour
             SetButtonState();
         }
     }
-
+    private void SetMaxLineValue()
+    {
+        if (abilityManager.kindOfMaster == KindOfMasters.Sword)
+        {
+            switch (selectedIndexColumn)
+            {
+                case 0:
+                    maxLine = GlobalStat.swordKick;
+                    break;
+                case 1:
+                    maxLine = GlobalStat.swordDash;
+                    break;
+                case 2:
+                    maxLine = GlobalStat.swordArea;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (abilityManager.kindOfMaster == KindOfMasters.Magic)
+        {
+            switch (selectedIndexColumn)
+            {
+                case 0:
+                    maxLine = GlobalStat.magicChain;
+                    break;
+                case 1:
+                    maxLine = GlobalStat.magicShield;
+                    break;
+                case 2:
+                    maxLine = GlobalStat.magicArea;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (selectedIndexColumn)
+            {
+                case 0:
+                    maxLine = GlobalStat.archerPoison;
+                    break;
+                case 1:
+                    maxLine = GlobalStat.archerShurikens;
+                    break;
+                case 2:
+                    maxLine = GlobalStat.archerRain;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     public void SetButtonState()
     {
         foreach (var item in abilityManager.abilitiesPref)
@@ -97,5 +130,10 @@ public class AbilityBtnManager : MonoBehaviour
                 item.GetComponent<SpriteRenderer>().color = Color.white;
         }
         abilityManager.abilitiesPref[selectedIndexColumn, selectedIndexLine].GetComponent<SpriteRenderer>().color = Color.red;
+        SetInfo();
+    }
+    private void SetInfo()
+    {
+        FindAnyObjectByType<AbilityInfoManager>().ShowInfo(selectedIndexColumn, selectedIndexLine);
     }
 }

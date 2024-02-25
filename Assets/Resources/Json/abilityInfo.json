@@ -1,0 +1,71 @@
+{
+  "swordAbilityInfo": {
+    "dash": {
+      "_1": "Mega info",
+      "_2": "Super mega info",
+      "_3": "Super puper mega info",
+      "_4": "OMG what is info",
+      "_5": "SHEESH"
+    },
+    "kick": {
+      "_1": "Kick Mega info",
+      "_2": "Kick Super mega info",
+      "_3": "Kick Super puper mega info",
+      "_4": "Kick OMG what is info",
+      "_5": "Kick SHEESH"
+    },
+    "area": {
+      "_1": "Area Mega info",
+      "_2": "Area Super mega info",
+      "_3": "Area Super puper mega info",
+      "_4": "Area OMG what is info",
+      "_5": "Area SHEESH"
+    }
+  },
+  "magicAbilityInfo": {
+    "chain": {
+      "_1": "Mega info",
+      "_2": "Super mega info",
+      "_3": "Super puper mega info",
+      "_4": "OMG what is info",
+      "_5": "SHEESH"
+    },
+    "shield": {
+      "_1": "Kick Mega info",
+      "_2": "Kick Super mega info",
+      "_3": "Kick Super puper mega info",
+      "_4": "Kick OMG what is info",
+      "_5": "Kick SHEESH"
+    },
+    "area": {
+      "_1": "Area Mega info",
+      "_2": "Area Super mega info",
+      "_3": "Area Super puper mega info",
+      "_4": "Area OMG what is info",
+      "_5": "Area SHEESH"
+    }
+  },
+  "archerAbilityInfo": {
+    "poison": {
+      "_1": "poison Mega info",
+      "_2": "poison Super mega info",
+      "_3": "poison Super puper mega info",
+      "_4": "poison OMG what is info",
+      "_5": "poison SHEESH"
+    },
+    "shurikens": {
+      "_1": "shurikens Mega info",
+      "_2": "shurikens Super mega info",
+      "_3": "shurikens Super puper mega info",
+      "_4": "shurikens OMG what is info",
+      "_5": "shurikens SHEESH"
+    },
+    "rain": {
+      "_1": "rain Mega info",
+      "_2": "rain Super mega info",
+      "_3": "rain Super puper mega info",
+      "_4": "rain OMG what is info",
+      "_5": "rain SHEESH"
+    }
+  }
+}
