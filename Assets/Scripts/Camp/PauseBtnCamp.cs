@@ -16,40 +16,43 @@ public class PauseBtnCamp : MonoBehaviour
     private Button back, menu;
     [SerializeField]
     private Sprite backImage, choosedBackImage, menuImage, choosedMenuImage;
-
     private int selectedIndex = 0;
+
     public void Update()
     {
-        ChooseButton();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pauseMenu.activeSelf)
         {
-            if (DialogSystem.isBoxOpen)
+            ChooseButton();
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                dialogSystem.StopDialog();
+                if (DialogSystem.isBoxOpen)
+                {
+                    dialogSystem.StopDialog();
+                }
+                else if (TreeOfAbilityManager.isTreeOpen)
+                {
+                    treeOfAbilityManager.CloseTree();
+                }
+                else
+                {
+                    TogglePause();
+                }
             }
-            else if (TreeOfAbilityManager.isTreeOpen)
+            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                treeOfAbilityManager.CloseTree();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        ResumeToGame();
+                        break;
+                    case 1:
+                        LoadMainMenuScene();
+                        break;
+                    default:
+                        break;
+                }
             }
-            else
-            {
-                TogglePause();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            switch (selectedIndex)
-            {
-                case 0:
-                    ResumeToGame();
-                    break;
-                case 1:
-                    LoadMainMenuScene();
-                    break;
-                default:
-                    break;
-            }
-        }
+        }    
     }
     private void ChooseButton()
     {

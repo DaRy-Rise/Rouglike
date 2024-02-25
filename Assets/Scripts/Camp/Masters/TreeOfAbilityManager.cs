@@ -6,7 +6,7 @@ public class TreeOfAbilityManager : MonoBehaviour
     [SerializeField]
     private GameObject treeOfAbility, dialogBox;
     public static bool isTreeOpen;
-    private List<GameObject> abilitiesPrefabs = new List<GameObject>();
+    public GameObject[,] abilitiesPref = new GameObject[3,5]; 
     [SerializeField]
     private GameObject swordStaticPulsePrefab, swordPulsePrefab, swordDestroyedPrefab;
     [SerializeField]
@@ -48,7 +48,6 @@ public class TreeOfAbilityManager : MonoBehaviour
         isTreeOpen = true;
         DialogSystem.isBoxOpen = false;
         treeOfAbility.SetActive(true);
-
         switch (kindOfMasters)
         {
             case KindOfMasters.Sword:
@@ -69,6 +68,8 @@ public class TreeOfAbilityManager : MonoBehaviour
             default:
                 break;
         }
+
+        GetComponentInChildren<AbilityBtnManager>().SetButtonState();
     }
     public void CloseTree()
     {
@@ -81,28 +82,28 @@ public class TreeOfAbilityManager : MonoBehaviour
     { 
         if (abilityValue == 0)
         {
-            abilitiesPrefabs.Add(Instantiate(pulse, treeOfAbility.transform.position + new Vector3(points[n, 0].X, points[n, 0].Y), Quaternion.identity, treeOfAbility.transform));
-            abilitiesPrefabs.Add(Instantiate(destroyed, treeOfAbility.transform.position + new Vector3(points[n, 1].X, points[n, 1].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
+            abilitiesPref[n, 0] = Instantiate(pulse, treeOfAbility.transform.position + new Vector3(points[n, 0].X, points[n, 0].Y), Quaternion.identity, treeOfAbility.transform);
+            abilitiesPref[n, 1] = Instantiate(destroyed, treeOfAbility.transform.position + new Vector3(points[n, 1].X, points[n, 1].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform);
         }
         else
         {
             for (int i = 0; i < abilityValue; i++)
             {
-                abilitiesPrefabs.Add(Instantiate(staticPulse, treeOfAbility.transform.position + new Vector3(points[n, i].X, points[n, abilityValue - 1].Y) + transform.forward, Quaternion.identity, treeOfAbility.transform));
+                abilitiesPref[n, i] = (Instantiate(staticPulse, treeOfAbility.transform.position + new Vector3(points[n, i].X, points[n, abilityValue - 1].Y) + transform.forward, Quaternion.identity, treeOfAbility.transform));
             }
             if (abilityValue != 5)
             {
-                abilitiesPrefabs.Add(Instantiate(pulse, treeOfAbility.transform.position + new Vector3(points[n, abilityValue].X, points[n, abilityValue].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
+                abilitiesPref[n, abilityValue] = (Instantiate(pulse, treeOfAbility.transform.position + new Vector3(points[n, abilityValue].X, points[n, abilityValue].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
             }
             if (abilityValue < 4)
             {
-                abilitiesPrefabs.Add(Instantiate(destroyed, treeOfAbility.transform.position + new Vector3(points[0, abilityValue + 1].X, points[n, abilityValue + 1].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
+                abilitiesPref[n, abilityValue + 1] = (Instantiate(destroyed, treeOfAbility.transform.position + new Vector3(points[0, abilityValue + 1].X, points[n, abilityValue + 1].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
             }
         }
     }
     private void DestroyAbility()
     {
-        foreach (var item in abilitiesPrefabs)
+        foreach (var item in abilitiesPref)
         {
             Destroy(item);
         }
