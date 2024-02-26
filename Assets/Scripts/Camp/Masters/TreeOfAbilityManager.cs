@@ -12,6 +12,7 @@ public class TreeOfAbilityManager : MonoBehaviour
     private GameObject magicStaticPulsePrefab, magicPulsePrefab, magicDestroyedPrefab;
     [SerializeField]
     private GameObject archerStaticPulsePrefab, archerPulsePrefab, archerDestroyedPrefab;
+    [HideInInspector]
     public KindOfMasters kindOfMaster;
 
     private Point[,] points = 
@@ -139,10 +140,45 @@ public class TreeOfAbilityManager : MonoBehaviour
                     break;
             }
         }
+        else if (kindOfMaster == KindOfMasters.Magic)
+        {
+            switch (c)
+            {
+                case 0:
+                    GlobalStat.magicChain++;
+                    break;
+                case 1:
+                    GlobalStat.magicShield++;
+                    break;
+                case 2:
+                    GlobalStat.magicArea++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (c)
+            {
+                case 0:
+                    GlobalStat.archerPoison++;
+                    break;
+                case 1:
+                    GlobalStat.archerShurikens++;
+                    break;
+                case 2:
+                    GlobalStat.archerRain++;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     public void SetStaticPulse()
     {
         DestroyAbility();
         SetParamsAndDraw();
+        GetComponentInChildren<AbilityBtnManager>().SetButtonState();
     }
 }
