@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Оружие.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Оружие.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Оружие.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Сюжет.md"
+                "file": "Оружие.md"
               }
             }
           }
@@ -149,6 +149,7 @@
   },
   "active": "b9259d786079f79d",
   "lastOpenFiles": [
+    "Сюжет.md",
     "Enemies.md",
     "Masters.md",
     "Global level.md",
