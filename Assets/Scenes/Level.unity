@@ -2916,7 +2916,7 @@ MonoBehaviour:
       spawnedCount: 5
       enemyPrefab: {fileID: 6630242302773137395, guid: 3f00b1418f2bd8b4eab60d2fbc88dd51, type: 3}
     - name: 
-      enemyCount: 1
+      enemyCount: 10
       spawnedCount: 5
       enemyPrefab: {fileID: 2417474058044648731, guid: 331e18211f55dd143a1963b297f1fa70, type: 3}
     - name: 

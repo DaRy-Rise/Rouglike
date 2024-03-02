@@ -16,5 +16,6 @@
     Bone,
     EmptyGlass,
     Arrow,
-    Nitro
+    Nitro,
+    Shoe
 }

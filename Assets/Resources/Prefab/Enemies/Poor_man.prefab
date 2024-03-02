@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: c094e1444a668084da27488edef857f1, type: 2}
   deSpawnDistance: 20
-  res: {fileID: 3842639328243512664, guid: 0f3ce88802217b34a9224b9f7aaae9a0, type: 3}
+  res: {fileID: 3842639328243512664, guid: 23bf41be40c7edb4b872c1b523657297, type: 3}
 --- !u!50 &-2652352306858381228
 Rigidbody2D:
   serializedVersion: 4

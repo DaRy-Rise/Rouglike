@@ -11,14 +11,11 @@
             "id": "b9259d786079f79d",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Tree.canvas",
-                "viewState": {
-                  "x": 336.29639918584655,
-                  "y": -738.7431618844587,
-                  "zoom": -1.1797381539725567
-                }
+                "file": "Сюжет.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tree.canvas",
+                "file": "Сюжет.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tree.canvas",
+                "file": "Сюжет.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tree.canvas"
+                "file": "Сюжет.md"
               }
             }
           }
@@ -151,5 +148,13 @@
     }
   },
   "active": "b9259d786079f79d",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Enemies.md",
+    "Masters.md",
+    "Global level.md",
+    "Current goals.md",
+    "Оружие.md",
+    "Працюемо.md",
+    "Tree.canvas"
+  ]
 }
