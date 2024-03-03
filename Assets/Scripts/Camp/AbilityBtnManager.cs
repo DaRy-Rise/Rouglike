@@ -136,4 +136,9 @@ public class AbilityBtnManager : MonoBehaviour
     {
         FindAnyObjectByType<AbilityInfoManager>().ShowInfo(selectedIndexColumn, selectedIndexLine);
     }
+    public void ResetValues()
+    {
+        selectedIndexColumn=0; 
+        selectedIndexLine=0;
+    }
 }

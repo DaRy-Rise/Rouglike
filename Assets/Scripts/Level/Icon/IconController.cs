@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class IconController : MonoBehaviour
 {
     [SerializeField]
-    private Debuff poisonIcon, stoneIcon, slowIcon, bloodIcon;
+    private Debuff poisonIcon, stoneIcon, slowIcon, bloodIcon, fireIcon;
     [SerializeField]
     private GameObject[] cells;
     private static List<Debuff> effects = new List<Debuff>();
@@ -34,6 +34,9 @@ public class IconController : MonoBehaviour
                 break;
             case KindOfIcons.Slow:
                 Spawn(slowIcon, dur, KindOfIcons.Slow);
+                break;
+            case KindOfIcons.Fire:
+                Spawn(fireIcon, dur, KindOfIcons.Fire);
                 break;
             default:
                 break;

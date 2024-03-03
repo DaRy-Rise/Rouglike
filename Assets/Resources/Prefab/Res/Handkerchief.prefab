@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4082408579617603678}
   - component: {fileID: 1196400258221212291}
   - component: {fileID: 3842639328243512664}
-  - component: {fileID: -8593225877879352275}
+  - component: {fileID: 8674609613219752623}
   m_Layer: 0
   m_Name: Handkerchief
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kindOf: 0
---- !u!60 &-8593225877879352275
+--- !u!60 &8674609613219752623
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,11 +143,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.01, y: 0.089999996}
-      - {x: -0.089999996, y: 0.089999996}
-      - {x: -0.089999996, y: -0.089999996}
-      - {x: 0.04, y: -0.089999996}
-      - {x: 0.089999996, y: -0.049999997}
-      - {x: 0.089999996, y: 0.03}
-      - {x: 0.049999997, y: 0.08}
+    - - {x: 0.02, y: 0.16}
+      - {x: -0.049999997, y: 0.16}
+      - {x: -0.12, y: 0.11}
+      - {x: -0.12, y: -0.08}
+      - {x: -0.08, y: -0.16}
+      - {x: 0.049999997, y: -0.16}
+      - {x: 0.13, y: -0.06}
+      - {x: 0.13, y: 0.01}
+      - {x: 0.11, y: 0.08}
   m_UseDelaunayMesh: 0

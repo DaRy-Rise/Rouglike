@@ -4,5 +4,6 @@ public enum KindOfIcons
     Bloodly,
     Stone,
     Slow,
-    HalfHealth
+    HalfHealth,
+    Fire
 }
