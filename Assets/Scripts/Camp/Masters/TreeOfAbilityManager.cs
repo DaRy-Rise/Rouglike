@@ -51,6 +51,7 @@ public class TreeOfAbilityManager : MonoBehaviour
         DialogSystem.isBoxOpen = false;
         treeOfAbility.SetActive(true);
         SetParamsAndDraw();
+        GetComponentInChildren<AbilityBtnManager>().ResetValues();
         GetComponentInChildren<AbilityBtnManager>().SetButtonState();
         
     }
