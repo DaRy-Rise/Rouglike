@@ -483,6 +483,7 @@ MonoBehaviour:
   - {fileID: 32070138}
   - {fileID: 1720020201}
   - {fileID: 1694538095}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &117211507
@@ -2558,6 +2559,7 @@ MonoBehaviour:
   - {fileID: 480467840}
   - {fileID: 314922135}
   - {fileID: 1325181597}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &557513434
@@ -2672,6 +2674,7 @@ MonoBehaviour:
   - {fileID: 2014966301}
   - {fileID: 2024235670}
   - {fileID: 1538845508}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &583994168
@@ -2947,8 +2950,8 @@ MonoBehaviour:
   - {fileID: 557513433}
   speed: 1
   maxDis: 0.1
-  pathCoolDown: 20
-  choosePathCoolDown: 86.4
+  pathCoolDownValue: 10
+  choosePathCoolDownValue: 60
 --- !u!212 &657601243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3287,6 +3290,7 @@ MonoBehaviour:
   - {fileID: 752435884}
   - {fileID: 1962962834}
   - {fileID: 1128601917}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &685640268
@@ -11843,6 +11847,7 @@ MonoBehaviour:
   - {fileID: 1314896968}
   - {fileID: 1216035337}
   - {fileID: 1737025803}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &1018227726
@@ -12182,6 +12187,7 @@ MonoBehaviour:
   - {fileID: 1178118090}
   - {fileID: 1256533848}
   - {fileID: 2103163891}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &1051444602
@@ -12311,8 +12317,8 @@ MonoBehaviour:
   - {fileID: 1505737457}
   speed: 1
   maxDis: 0.1
-  pathCoolDown: 10
-  choosePathCoolDown: 60
+  pathCoolDownValue: 10
+  choosePathCoolDownValue: 60
 --- !u!61 &1093143828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12476,6 +12482,7 @@ MonoBehaviour:
   - {fileID: 1509046274}
   - {fileID: 2132617262}
   - {fileID: 2036591838}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &1094349194
@@ -14434,6 +14441,7 @@ MonoBehaviour:
   - {fileID: 880368132}
   - {fileID: 47415077}
   - {fileID: 68483406}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &1341736924
@@ -15405,6 +15413,7 @@ MonoBehaviour:
   - {fileID: 191273646}
   - {fileID: 1184360729}
   - {fileID: 1469784998}
+  isStartPoint: 0
   isEndPoint: 0
   isGuestPath: 0
 --- !u!4 &1505737458
@@ -16665,8 +16674,8 @@ MonoBehaviour:
   - {fileID: 1094349193}
   speed: 1
   maxDis: 0.1
-  pathCoolDown: 12
-  choosePathCoolDown: 131
+  pathCoolDownValue: 3
+  choosePathCoolDownValue: 50
 --- !u!61 &1774911093
 BoxCollider2D:
   m_ObjectHideFlags: 0

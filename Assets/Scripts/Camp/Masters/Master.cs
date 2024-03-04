@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Master : MonoBehaviour
 {
@@ -25,12 +23,15 @@ public class Master : MonoBehaviour
     public float speed = 1, maxDis = .1f;
     private IEnumerator<Transform> pointInPath;
     [SerializeField]
-    private float pathCoolDown = 5, choosePathCoolDown = 20;
+    private float pathCoolDownValue, choosePathCoolDownValue;
+    private float pathCoolDown, choosePathCoolDown;
     private bool isGoing, isStop, isBack, isPause;
     private Animator animator;
 
     void Start()
     {
+        pathCoolDown = pathCoolDownValue;
+        choosePathCoolDown = choosePathCoolDownValue;
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         if (isMainMaster)
@@ -57,11 +58,14 @@ public class Master : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (choosePathCoolDown <= 0f)
+        if (choosePathCoolDown <= 0f && !isGoing && !isBack)
         {
             int i = UnityEngine.Random.Range(0, paths.Length);
             currentPath = paths[i];
             isPause = false;
+
+            isGoing = true;
+            animator.SetBool("isReadyToGo", true);
         }
         else
         {
@@ -82,7 +86,13 @@ public class Master : MonoBehaviour
         {
             return;
         }
-        if (pathCoolDown <= 0f && !isGoing && !isStop && !isPause)
+        if (isBack && currentPath.isStartPoint)
+        {
+            isBack = false;
+            isGoing = false;
+            choosePathCoolDown = choosePathCoolDownValue;
+        }
+        if (pathCoolDown <= 0f && isBack && !isGoing && !isStop && !isPause)
         {
             isGoing = true;
             isPause = false;
@@ -96,7 +106,7 @@ public class Master : MonoBehaviour
         {
             isGoing = false;
             animator.SetBool("isReadyToGo", false);
-            pathCoolDown = 10;
+            pathCoolDown = pathCoolDownValue;
             isBack = true;
         }
         if (isGoing)
