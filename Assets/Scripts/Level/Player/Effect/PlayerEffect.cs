@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerEffect : MonoBehaviour
 {
-    protected IconController iconController;
+    protected DebuffIconController iconController;
     protected float durProcess;
     protected bool isInvincibleForEffect;
     protected float valueOfGettingDamage;
@@ -16,7 +16,7 @@ public class PlayerEffect : MonoBehaviour
 
     protected void Start()
     {
-        iconController = FindAnyObjectByType<IconController>();
+        iconController = FindAnyObjectByType<DebuffIconController>();
     }
     protected virtual void FixedUpdate()
     {

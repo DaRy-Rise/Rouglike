@@ -7,6 +7,7 @@ public class WeaponController : MonoBehaviour
     protected float currentCoolDown;
     protected bool isAttackAlowed = true;
     protected PlayerMovement playerMovement;
+    public static System.Action onRMBClick;
 
     protected virtual void Start()
     {
@@ -28,5 +29,6 @@ public class WeaponController : MonoBehaviour
     {
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
+        onRMBClick?.Invoke();
     }
 }

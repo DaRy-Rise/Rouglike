@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Debuff : MonoBehaviour
+public class ActionIcon : MonoBehaviour
 {
     [HideInInspector]
     public float durDefault;
@@ -9,23 +9,31 @@ public class Debuff : MonoBehaviour
     [HideInInspector]
     public int indexOfCell;
     [SerializeField]
-    private IconBar iconBar;
+    public ActionIconBar iconBar;
     [HideInInspector]
     public KindOfIcons kindOfIcons;
+    [HideInInspector]
+    public bool isAttack;
 
-    void Start()
+    protected virtual void Start()
     {
         iconBar.max = durDefault;
         dur = durDefault;
     }
 
-    void Update()
+    protected virtual void Update()
     {
-        dur -= Time.deltaTime;
-        if (dur <= 0)
+        if (isAttack)
         {
-            FindAnyObjectByType<DebuffIconController>().RemoveEffect(indexOfCell);
-            Destroy(gameObject);
+            dur -= Time.deltaTime;
+            if (dur <= 0)
+            {
+                isAttack = false;
+                iconBar.isAttack = false;
+                dur = durDefault;
+                iconBar.dur = 0;
+                iconBar.SetDefaultAmount();
+            }
         }
     }
 

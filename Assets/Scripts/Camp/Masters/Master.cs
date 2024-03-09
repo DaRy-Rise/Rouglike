@@ -132,7 +132,7 @@ public class Master : MonoBehaviour
                     mastersInfo.mainMaster = "magic";
                     break;
                 case KindOfMasters.Throwing:
-                    mastersInfo.mainMaster = "throw";
+                    mastersInfo.mainMaster = "archer";
                     break;
                 default:
                     break;

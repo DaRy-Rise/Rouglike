@@ -1,8 +1,7 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 
-public class IconController : MonoBehaviour
+public class DebuffIconController : MonoBehaviour
 {
     [SerializeField]
     private Debuff poisonIcon, stoneIcon, slowIcon, bloodIcon, fireIcon;

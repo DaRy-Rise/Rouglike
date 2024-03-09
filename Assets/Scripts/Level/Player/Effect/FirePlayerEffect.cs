@@ -22,7 +22,7 @@ public class FirePlayerEffect : PlayerEffect
         {
             isFireEffect = 1;
             durProcess = duration;
-            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Fire);
+            FindAnyObjectByType<DebuffIconController>().ResetBarDuration(KindOfIcons.Fire);
         }
     }
 

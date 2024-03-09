@@ -48,7 +48,7 @@ public class StonePlayerEffect : PlayerEffect
 
             isStoneEffect = 1;
             durProcess = duration;
-            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Stone);
+            FindAnyObjectByType<DebuffIconController>().ResetBarDuration(KindOfIcons.Stone);
         }
     }
     public void ReturnAsWas()
