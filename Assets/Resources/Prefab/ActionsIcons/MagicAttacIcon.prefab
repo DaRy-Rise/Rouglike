@@ -101,8 +101,9 @@ MonoBehaviour:
   durDefault: 0
   dur: 0
   indexOfCell: 0
-  iconBar: {fileID: 7634866500267958541}
+  iconBar: {fileID: 2165365075105478674}
   kindOfIcons: 0
+  isAttack: 0
 --- !u!1 &8695429882902866074
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ GameObject:
   - component: {fileID: 1693890162616222417}
   - component: {fileID: 5702523403437919220}
   - component: {fileID: 2247737836947668501}
-  - component: {fileID: 7634866500267958541}
+  - component: {fileID: 2165365075105478674}
   m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7634866500267958541
+--- !u!114 &2165365075105478674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,8 +189,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8695429882902866074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c2afc2851f8c5469f06dd610c4db27, type: 3}
+  m_Script: {fileID: 11500000, guid: 34b4eabcda5d33c43b3359fcab5bdf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   max: 0
   dur: 0
+  isAttack: 0
