@@ -14,9 +14,13 @@ public class ActionIcon : MonoBehaviour
     public KindOfIcons kindOfIcons;
     [HideInInspector]
     public bool isAttack;
+    private WeaponController weaponController;
+
 
     protected virtual void Start()
     {
+        weaponController = FindAnyObjectByType<WeaponController>();
+        durDefault = weaponController.weaponData.CoolDownDur;
         iconBar.max = durDefault;
         dur = durDefault;
     }

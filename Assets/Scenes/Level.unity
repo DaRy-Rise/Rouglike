@@ -375,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.02247917, y: 0.043}
   m_AnchorMax: {x: 0.41000003, y: 0.142}
-  m_AnchoredPosition: {x: 0.5999756, y: -0.4000244}
+  m_AnchoredPosition: {x: 0.60009766, y: -0.39990234}
   m_SizeDelta: {x: -1.0001831, y: -1.0049973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158107349
@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &188464512
 Transform:
   m_ObjectHideFlags: 0
@@ -2084,6 +2084,7 @@ GameObject:
   - component: {fileID: 849565321}
   - component: {fileID: 849565325}
   - component: {fileID: 849565327}
+  - component: {fileID: 849565338}
   - component: {fileID: 849565333}
   - component: {fileID: 849565332}
   - component: {fileID: 849565331}
@@ -2435,6 +2436,21 @@ PolygonCollider2D:
       - {x: 0.34375, y: -0.6875}
       - {x: 0.375, y: -0.375}
   m_UseDelaunayMesh: 0
+--- !u!114 &849565338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849565320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5665bff3afc63fe4da6c6f66883914a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 530301081}
+  magic: {fileID: 743279941}
+  archer: {fileID: 188464511}
 --- !u!1 &858113170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,7 +4141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordIcon: {fileID: 5293988289535187619, guid: 22009702f139b5349b1b71d800633e0b, type: 3}
   magicIcon: {fileID: 5293988289535187619, guid: 161ddf73c6461a5419373a9f61d2ba20, type: 3}
-  archerIcon: {fileID: -6300942012500134326, guid: 842267971d6f3254a82b9a9102275292, type: 3}
+  archerIcon: {fileID: 7710557344964540200, guid: 842267971d6f3254a82b9a9102275292, type: 3}
   cells:
   - {fileID: 1064092863}
   - {fileID: 509370615}

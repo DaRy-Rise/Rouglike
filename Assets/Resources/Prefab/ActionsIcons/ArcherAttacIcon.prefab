@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5018843239256412708}
   - component: {fileID: 1363371603717081240}
-  - component: {fileID: -6300942012500134326}
+  - component: {fileID: 7710557344964540200}
   m_Layer: 0
   m_Name: ArcherAttacIcon
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6300942012500134326
+--- !u!114 &7710557344964540200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3286108344946600090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4259a045219539648a3ab61291768e52, type: 3}
+  m_Script: {fileID: 11500000, guid: 4099d729dc6783a4aa9c93af18568b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   durDefault: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   indexOfCell: 0
   iconBar: {fileID: 5303552504726776560}
   kindOfIcons: 0
+  isAttack: 0
 --- !u!1 &8695429882902866074
 GameObject:
   m_ObjectHideFlags: 0
