@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144bf6a5c356a84d91b8dda14113f0e, type: 3}
   m_Name: MagicWeapon
   m_EditorClassIdentifier: 
-  pierce: 0
+  pierce: 1
   damage: 10
   speed: 0
   coolDownDur: 3
-  prefab: {fileID: 7449028293328995286, guid: 70c34ae0fbb9a824287c2c54c5e53988, type: 3}
+  prefab: {fileID: 3482306235760610666, guid: b92f1cd718308834284e751c49f794e9, type: 3}

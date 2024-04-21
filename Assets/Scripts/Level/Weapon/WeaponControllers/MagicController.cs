@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MagicController : WeaponController
@@ -10,7 +11,9 @@ public class MagicController : WeaponController
     protected override void StartAttack()
     {
         base.StartAttack();
-        Instantiate(weaponData.Prefab);
+        GameObject spawnedProjectile = Instantiate(weaponData.Prefab);
+        spawnedProjectile.transform.position = transform.position;
+        spawnedProjectile.GetComponent<MagicBehaviour>().DirectionChecker(playerMovement.lastMovedVector);
     }
     protected override void Update()
     {
