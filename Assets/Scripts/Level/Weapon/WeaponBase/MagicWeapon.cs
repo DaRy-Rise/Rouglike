@@ -38,6 +38,7 @@ public class MagicWeapon : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
+            print("TRIGGERED");
             controller.initChainLightning(collision.gameObject);
             enemy.TakeDamage(currentDamage);
             ReducePierce();

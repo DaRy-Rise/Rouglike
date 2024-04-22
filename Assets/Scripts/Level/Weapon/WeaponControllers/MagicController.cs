@@ -6,7 +6,7 @@ using UnityEngine;
 public class MagicController : WeaponController
 {
     public float chainRadius = 2f;
-    public int maxChainCount = 5;
+    public int maxChainCount = 20;
     public LayerMask enemyLayers;
     public GameObject chainLightningEffect;
     public int currentDamage = 1;
@@ -38,18 +38,18 @@ public class MagicController : WeaponController
     {
         Vector3 pos = enemy.transform.position;
         affectedId.Add(enemy.GetInstanceID());
-        if (enemy == null)
-        {
-            StartCoroutine(CreateChainLightning(pos));
-        }
-        else
-        {
+        //if (enemy == null)
+       // {
+          //  StartCoroutine(CreateChainLightning(pos));
+        //}
+       // else
+        //{
             StartCoroutine(CreateChainLightning(enemy.transform.position));
-        }
+       // }
     }
     private IEnumerator CreateChainLightning(Vector3 startPos)
     {
-        print("FUCK");
+        print("FUCK " + maxChainCount);
         for (int i = 0; i < maxChainCount; i++)
         {
             Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
@@ -61,16 +61,18 @@ public class MagicController : WeaponController
                     {
                         Vector3 endPos = enemy.transform.position;
                         GameObject lightning = Instantiate(chainLightningEffect, startPos, Quaternion.identity);
-                        lightning.transform.position = startPos;
+                        lightning.transform.position = (startPos + endPos)/2;
                         Vector3 direction = endPos - startPos;
                         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                        lightning.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                        lightning.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
                         lightning.transform.localScale = new Vector3(1f, direction.magnitude, 1f);
                         EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
                         affectedId.Add(enemy.gameObject.GetInstanceID());
+                        startPos = endPos;
                         enemyStats.TakeDamage(currentDamage);
                         //Invoke("DelayedChainLightning", 1f);
-                        yield return new WaitForSeconds(0.4f);
+                        yield return new WaitForSeconds(0.2f);
+                        break;
                     }
                 }
             }

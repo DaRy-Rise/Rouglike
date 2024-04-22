@@ -179,9 +179,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 35db8c750a457f3459a7bd92849f1811, type: 2}
   destroyAfterSeconds: 3
-  chainRadius: 2
-  maxChainCount: 5
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  chainLightningEffect: {fileID: 7449028293328995286, guid: 70c34ae0fbb9a824287c2c54c5e53988, type: 3}
+  controller: {fileID: 0}
