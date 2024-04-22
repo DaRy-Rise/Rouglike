@@ -12,4 +12,8 @@ public class MagicBehaviour : MagicWeapon
     {
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
+    private void OnDestroy()
+    {
+        print("I'm destroyed");
+    }
 }

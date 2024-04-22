@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +7,13 @@ public class MagicWeapon : MonoBehaviour
     public WeaponScriptableObject weaponData;
     protected Vector3 direction;
     public float destroyAfterSeconds;
-    public float chainRadius = 2f;
-    public int maxChainCount = 5;
-    public LayerMask enemyLayers;
-    public GameObject chainLightningEffect;
+    public MagicController controller;
     public static float currentDamage, currentSpeed, currentCooldownDuration;
     protected int currentPierce;
 
     private void Awake()
     {
+        controller = FindAnyObjectByType<MagicController>();
         currentDamage = weaponData.Damage;
         currentSpeed = weaponData.Speed;
         currentCooldownDuration = weaponData.CoolDownDur;
@@ -25,8 +22,7 @@ public class MagicWeapon : MonoBehaviour
 
     protected virtual void Start()
     {
-       // Destroy(gameObject, destroyAfterSeconds);
-        print("FUCKKK ");
+        Destroy(gameObject, destroyAfterSeconds);
     }
 
     private void ReducePierce()
@@ -34,55 +30,19 @@ public class MagicWeapon : MonoBehaviour
         currentPierce--;
         if (currentPierce <= 0)
         {
-           // Destroy(gameObject);
-            print("FUCKK ");
+            Destroy(gameObject);
         }
     }
-    public bool test = false;
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && !test)
+        if (collision.CompareTag("Enemy"))
         {
-            
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
-           // enemy.TakeDamage(currentDamage);
+            controller.initChainLightning(collision.gameObject);
+            enemy.TakeDamage(currentDamage);
             ReducePierce();
-            test = true;
-            StartCoroutine(CreateChainLightning(collision.transform.position, maxChainCount));
-            print("FUCK2 " + collision.name + collision.GetInstanceID());
         }
  
-    }
-    private IEnumerator CreateChainLightning(Vector3 startPos, int remainingChainCount)
-    {
-
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
-        foreach (Collider2D enemy in enemiesInRange)
-        {
-            if (enemy.CompareTag("Enemy"))
-            {
-                print("FUCK " + enemiesInRange.Length);
-                Vector3 endPos = enemy.transform.position;
-                GameObject lightning = Instantiate(chainLightningEffect, startPos, Quaternion.identity);
-                lightning.transform.position = startPos;
-                Vector3 direction = endPos - startPos;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                lightning.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                lightning.transform.localScale = new Vector3(direction.magnitude, 1f, 1f);
-                remainingChainCount--;
-                EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
-                //enemyStats.TakeDamage(currentDamage);
-                if (remainingChainCount <= 0)
-                {
-                    
-                    yield break;
-                }
-                //Invoke("DelayedChainLightning", 1f);
-                yield return new WaitForSeconds(0.4f);
-                print("FUCK3");
-            }
-        }
-        //yield break;
     }
 
     private void DelayedChainLightning()
