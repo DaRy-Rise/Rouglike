@@ -11,6 +11,9 @@ public class MagicController : WeaponController
     public GameObject chainLightningEffect;
     public int currentDamage = 1;
     protected List<int> affectedId = new List<int>();
+
+    Collider2D[] enemiesInRange;
+
     protected override void Start()
     {
         base.Start();
@@ -52,7 +55,10 @@ public class MagicController : WeaponController
         print("FUCK " + maxChainCount);
         for (int i = 0; i < maxChainCount; i++)
         {
-            Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
+            enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
+
+
+            FindClosestEnemies(startPos);
             foreach (Collider2D enemy in enemiesInRange)
             {
                 if (enemy != null && enemy.CompareTag("Enemy"))
@@ -79,5 +85,11 @@ public class MagicController : WeaponController
         }
         affectedId.Clear();
         yield break;
+    }
+
+    private Collider2D[] FindClosestEnemies(Vector3 position)
+    {
+        Array.Sort(enemiesInRange, (a, b) => Vector3.Distance(position, a.transform.position).CompareTo(Vector3.Distance(position, b.transform.position)));
+        return enemiesInRange;
     }
 }

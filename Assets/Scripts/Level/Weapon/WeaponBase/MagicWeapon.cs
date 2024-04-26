@@ -35,7 +35,7 @@ public class MagicWeapon : MonoBehaviour
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && collision.isTrigger)
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             print("TRIGGERED");
