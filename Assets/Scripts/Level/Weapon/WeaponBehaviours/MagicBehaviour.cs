@@ -14,6 +14,7 @@ public class MagicBehaviour : ThrowingWeapon
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D (collision);
         if (collision.CompareTag("Enemy") && collision.isTrigger)
         {
             controller.InitChainLightning(collision.gameObject);

@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDir, lastMovedVector;
     public static bool isSwordAttack, isWeb, isSlowEffect, isStoneEffect, isSpeedPotion;
     public float moveSpeed;
+    [SerializeField]
+    private float scale;
 
     void Start()
     {
@@ -100,11 +102,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (lastMovedVector.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-scale, scale, scale);
         }
         else if (lastMovedVector.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 
