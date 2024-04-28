@@ -41,18 +41,10 @@ public class MagicController : WeaponController
     {
         Vector3 pos = enemy.transform.position;
         affectedId.Add(enemy.GetInstanceID());
-        //if (enemy == null)
-       // {
-          //  StartCoroutine(CreateChainLightning(pos));
-        //}
-       // else
-        //{
-            StartCoroutine(CreateChainLightning(enemy.transform.position));
-       // }
+        StartCoroutine(CreateChainLightning(enemy.transform.position));
     }
     private IEnumerator CreateChainLightning(Vector3 startPos)
     {
-        print("FUCK " + maxChainCount);
         for (int i = 0; i < maxChainCount; i++)
         {
             enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
@@ -76,7 +68,6 @@ public class MagicController : WeaponController
                         affectedId.Add(enemy.gameObject.GetInstanceID());
                         startPos = endPos;
                         enemyStats.TakeDamage(currentDamage);
-                        //Invoke("DelayedChainLightning", 1f);
                         yield return new WaitForSeconds(0.2f);
                         break;
                     }

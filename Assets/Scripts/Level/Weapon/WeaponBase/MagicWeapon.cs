@@ -38,26 +38,11 @@ public class MagicWeapon : MonoBehaviour
         if (collision.CompareTag("Enemy") && collision.isTrigger)
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
-            print("TRIGGERED");
             controller.initChainLightning(collision.gameObject);
             enemy.TakeDamage(currentDamage);
             ReducePierce();
         }
  
-    }
-
-    private void DelayedChainLightning()
-    {
-        print("Delayed");
-       // Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, chainRadius, enemyLayers);
-       // foreach (Collider2D enemy in enemiesInRange)
-       // {
-       //     if (enemy.CompareTag("Enemy"))
-       //     {
-       //         CreateChainLightning(enemy.transform.position, maxChainCount - 1);
-       //         break;
-       //     }
-       // }
     }
     public void DirectionChecker(Vector3 dir)
     {
