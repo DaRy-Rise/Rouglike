@@ -37,7 +37,7 @@ public class MagicController : WeaponController
             }
         }
     }
-    public void initChainLightning(GameObject enemy)
+    public void InitChainLightning(GameObject enemy)
     {
         Vector3 pos = enemy.transform.position;
         affectedId.Add(enemy.GetInstanceID());

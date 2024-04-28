@@ -1,19 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicBehaviour : MagicWeapon
+public class MagicBehaviour : ThrowingWeapon
 {
+    public MagicController controller;
     protected override void Start()
     {
         base.Start();
+        controller = FindAnyObjectByType<MagicController>();
     }
     void Update()
     {
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
-    private void OnDestroy()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        print("I'm destroyed");
+        if (collision.CompareTag("Enemy") && collision.isTrigger)
+        {
+            controller.InitChainLightning(collision.gameObject);
+        }
     }
 }

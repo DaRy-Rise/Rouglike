@@ -35,11 +35,14 @@
             "id": "5d1431ea0c5f1679",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Сюжет.md",
-                "mode": "preview",
-                "source": false
+                "file": "Structure.canvas",
+                "viewState": {
+                  "x": 1323.016750363647,
+                  "y": -394.1564553923873,
+                  "zoom": -0.21352554355189962
+                }
               }
             }
           }
@@ -110,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Structure.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Сюжет.md",
+                "file": "Structure.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Сюжет.md"
+                "file": "Structure.canvas"
               }
             }
           }
@@ -174,6 +177,7 @@
   },
   "active": "5d1431ea0c5f1679",
   "lastOpenFiles": [
+    "Сюжет.md",
     "Фазан.md",
     "Tree.canvas",
     "Structure.canvas",
@@ -186,7 +190,6 @@
     "Оружие.md",
     "Артбук.md",
     "Механики.md",
-    "Сюжет.md",
     "Enemies.md",
     "Masters.md"
   ]
