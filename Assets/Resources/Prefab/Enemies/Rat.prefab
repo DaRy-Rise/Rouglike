@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2731266840912409856}
   - component: {fileID: 8708415468622617868}
   - component: {fileID: 6735290903652821758}
-  - component: {fileID: 1805807879817363447}
   - component: {fileID: 7600097910147498876}
   - component: {fileID: -6463758998255526732}
-  - component: {fileID: 5286425505562222556}
   - component: {fileID: 5946547992852214649}
+  - component: {fileID: 5802546424834629652}
+  - component: {fileID: -5172699634754213986}
   m_Layer: 7
   m_Name: Rat
   m_TagString: Enemy
@@ -105,7 +105,70 @@ MonoBehaviour:
   scale: 1.7
   enemyData: {fileID: 11400000, guid: a36fc71d6473f924fb1096c252740f23, type: 2}
   isNearPlayer: 0
---- !u!60 &1805807879817363447
+--- !u!50 &7600097910147498876
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464980973820149387}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 15
+  m_AngularDrag: 15
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &-6463758998255526732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464980973820149387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0794767f521d242a7b84782aa3d270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: a36fc71d6473f924fb1096c252740f23, type: 2}
+  deSpawnDistance: 20
+  res: {fileID: 3641163047234897657, guid: 95ec76e1df846eb44801e8493ae78306, type: 3}
+--- !u!95 &5946547992852214649
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464980973820149387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cbed3e954574384da65467f3e6e63ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &5802546424834629652
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,58 +212,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.085, y: 0.089999996}
-      - {x: -0.114999995, y: 0.08}
-      - {x: -0.145, y: 0.02}
-      - {x: -0.145, y: -0.07}
-      - {x: -0.105, y: -0.089999996}
-      - {x: 0.13499999, y: -0.089999996}
-      - {x: 0.145, y: -0.08}
-      - {x: 0.145, y: 0.089999996}
+    - - {x: -0.12, y: 0.01}
+      - {x: -0.07, y: -0.049999997}
+      - {x: 0.06, y: -0.049999997}
+      - {x: 0.08, y: -0.04}
+      - {x: 0.08, y: -0.01}
+      - {x: 0.049999997, y: 0.04}
+      - {x: -0.11, y: 0.04}
+      - {x: -0.12, y: 0.03}
   m_UseDelaunayMesh: 0
---- !u!50 &7600097910147498876
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464980973820149387}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 15
-  m_AngularDrag: 15
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &-6463758998255526732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464980973820149387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0794767f521d242a7b84782aa3d270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: a36fc71d6473f924fb1096c252740f23, type: 2}
-  deSpawnDistance: 20
-  res: {fileID: 3641163047234897657, guid: 95ec76e1df846eb44801e8493ae78306, type: 3}
---- !u!60 &5286425505562222556
+--- !u!60 &-5172699634754213986
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,33 +265,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.085, y: 0.089999996}
-      - {x: -0.114999995, y: 0.08}
-      - {x: -0.145, y: 0.02}
-      - {x: -0.145, y: -0.07}
-      - {x: -0.105, y: -0.089999996}
-      - {x: 0.13499999, y: -0.089999996}
-      - {x: 0.145, y: -0.08}
-      - {x: 0.145, y: 0.089999996}
+    - - {x: -0.12, y: 0.01}
+      - {x: -0.07, y: -0.049999997}
+      - {x: 0.06, y: -0.049999997}
+      - {x: 0.08, y: -0.04}
+      - {x: 0.08, y: -0.01}
+      - {x: 0.049999997, y: 0.04}
+      - {x: -0.11, y: 0.04}
+      - {x: -0.12, y: 0.03}
   m_UseDelaunayMesh: 0
---- !u!95 &5946547992852214649
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464980973820149387}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4cbed3e954574384da65467f3e6e63ac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
