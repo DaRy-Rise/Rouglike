@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483462b2328b7b5489771689b97f481f, type: 3}
   m_Name: PhilosopherEnemy
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 1.5
   maxHealth: 10
   damage: 10
   chanceOfRes: 90
