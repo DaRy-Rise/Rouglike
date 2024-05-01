@@ -6,10 +6,9 @@ using UnityEngine;
 public class MagicController : WeaponController
 {
     public float chainRadius = 2f;
-    public int maxChainCount = 20;
+    public int maxChainCount = 5;
     public LayerMask enemyLayers;
     public GameObject chainLightningEffect;
-    public int currentDamage = 1;
     protected List<int> affectedId = new List<int>();
 
     Collider2D[] enemiesInRange;
@@ -41,33 +40,42 @@ public class MagicController : WeaponController
     {
         Vector3 pos = enemy.transform.position;
         affectedId.Add(enemy.GetInstanceID());
-        StartCoroutine(CreateChainLightning(enemy.transform.position));
+        StartCoroutine(CreateChainLightning(enemy, enemy.transform.position));
     }
-    private IEnumerator CreateChainLightning(Vector3 startPos)
+    private IEnumerator CreateChainLightning(GameObject startEnemy, Vector3 startPos)
     {
+        affectedId.Add(startEnemy.gameObject.GetInstanceID());
+        GameObject enemy1 = startEnemy;
         for (int i = 0; i < maxChainCount; i++)
         {
             enemiesInRange = Physics2D.OverlapCircleAll(startPos, chainRadius, enemyLayers);
-
-
             FindClosestEnemies(startPos);
             foreach (Collider2D enemy in enemiesInRange)
             {
                 if (enemy != null && enemy.CompareTag("Enemy"))
                 {
+
                     if (!affectedId.Contains(enemy.gameObject.GetInstanceID()))
                     {
                         Vector3 endPos = enemy.transform.position;
-                        GameObject lightning = Instantiate(chainLightningEffect, startPos, Quaternion.identity);
-                        lightning.transform.position = (startPos + endPos)/2;
+                        GameObject lightning;
+                        if (enemy1.gameObject != null)
+                        {
+                            lightning = Instantiate(chainLightningEffect, enemy1.transform.position, Quaternion.identity);
+                            startPos = enemy1.transform.position;
+                        } else
+                        {
+                            lightning = Instantiate(chainLightningEffect, startPos, Quaternion.identity);
+                        }
+                        lightning.GetComponent<ChainLightning>().theStart(enemy1, enemy.gameObject, startPos, endPos);
+                        lightning.transform.position = (startPos + endPos) / 2;
                         Vector3 direction = endPos - startPos;
-                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                         lightning.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-                        lightning.transform.localScale = new Vector3(1f, direction.magnitude, 1f);
+                        lightning.GetComponent<SpriteRenderer>().size = new Vector2(0.08f, direction.magnitude);
                         EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
                         affectedId.Add(enemy.gameObject.GetInstanceID());
                         startPos = endPos;
-                        enemyStats.TakeDamage(currentDamage);
+                        enemy1 = enemy.gameObject;
                         yield return new WaitForSeconds(0.2f);
                         break;
                     }

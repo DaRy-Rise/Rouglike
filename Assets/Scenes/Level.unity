@@ -1901,7 +1901,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   chainLightningEffect: {fileID: 7449028293328995286, guid: 70c34ae0fbb9a824287c2c54c5e53988, type: 3}
-  currentDamage: 1
 --- !u!1 &759908034
 GameObject:
   m_ObjectHideFlags: 0
