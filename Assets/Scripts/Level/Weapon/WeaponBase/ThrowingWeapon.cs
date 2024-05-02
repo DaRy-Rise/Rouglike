@@ -51,7 +51,7 @@ public class ThrowingWeapon : MonoBehaviour
         if (dirX < 0 && dirY == 0) //left
         {
             scale.x *= -1;
-            scale.y *= -1;
+            scale.y *= 1;
         }
         else if (dirX == 0 && dirY < 0) //down
         {

@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,10 +14,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     [SerializeField]
     private float scale;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         lastMovedVector = new Vector2(1, 0f);
     }
     private void OnEnable()
@@ -76,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         moveDir = new Vector2(moveX, moveY).normalized;
         if (moveDir != Vector2.zero)
         {
+            anim.SetBool("toRun", true);
             if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
             {
                 lastMovedVector = new Vector2(moveDir.x, 0f);
@@ -88,6 +92,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastMovedVector = moveDir;
             }
+        }
+        else
+        {
+            anim.SetBool("toRun", false);
         }
     }
     private void Move()
@@ -118,5 +126,11 @@ public class PlayerMovement : MonoBehaviour
     private void RemoveDefaultStone()
     {
         isStoneEffect = false;
+    }
+
+    public void StopAttack()
+    {
+        anim.SetBool("runAttack", false);
+        anim.SetBool("staticAttack", false);
     }
 }

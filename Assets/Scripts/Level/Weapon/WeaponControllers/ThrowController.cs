@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ThrowController : WeaponController
 {
+
     protected override void Start()
     {
         base.Start();
@@ -22,6 +23,7 @@ public class ThrowController : WeaponController
             if (!PlayerStats.isKilled && isAttackAlowed)
             {
                 StartAttack();
+
             }
         }
     }    

@@ -2944,7 +2944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 1c9b49df10243b745b51330fc4a2a1ef, type: 3}
-  isMainMaster: 0
+  isMainMaster: 1
   kindOfMasters: 2
   paths:
   - {fileID: 557513433}
@@ -16690,7 +16690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 101eca76c44dce7438e2b4c0e640fa18, type: 3}
-  isMainMaster: 1
+  isMainMaster: 0
   kindOfMasters: 1
   paths:
   - {fileID: 1094349193}

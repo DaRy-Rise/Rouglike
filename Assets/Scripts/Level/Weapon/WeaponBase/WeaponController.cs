@@ -8,11 +8,13 @@ public class WeaponController : MonoBehaviour
     protected bool isAttackAlowed = true;
     protected PlayerMovement playerMovement;
     public static System.Action onRMBClick;
+    private Animator anim;
 
     protected virtual void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         currentCoolDown = weaponData.CoolDownDur;
+        anim = playerMovement.GetComponent<Animator>();
     }
 
     protected virtual void Update()
@@ -27,8 +29,18 @@ public class WeaponController : MonoBehaviour
     }
     protected virtual void StartAttack()
     {
+        print("startAtack");
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
         onRMBClick?.Invoke();
+        if (anim.GetBool("toRun"))
+        {
+            anim.SetBool("runAttack", false);
+            anim.SetBool("runAttack", true);
+        }
+        else
+        {
+            anim.SetBool("staticAttack", true);
+        }
     }
 }
