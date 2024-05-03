@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8708415468622617868}
   - component: {fileID: 6735290903652821758}
   - component: {fileID: 7600097910147498876}
-  - component: {fileID: -6463758998255526732}
   - component: {fileID: -7621477530191614939}
   - component: {fileID: 1517733720434608674}
   - component: {fileID: 7239024374291026884}
+  - component: {fileID: 4232277501991440883}
   m_Layer: 7
   m_Name: Dog
   m_TagString: Enemy
@@ -132,21 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6463758998255526732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464980973820149387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0794767f521d242a7b84782aa3d270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2d2266e4abeaaef47858f03cb94db625, type: 2}
-  deSpawnDistance: 20
-  res: {fileID: 3641163047234897657, guid: 95ec76e1df846eb44801e8493ae78306, type: 3}
 --- !u!60 &-7621477530191614939
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -274,3 +259,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4232277501991440883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464980973820149387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f002e72e8fe58a340b883951c8f1cb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 2d2266e4abeaaef47858f03cb94db625, type: 2}
+  deSpawnDistance: 20
+  res: {fileID: 2149092658900391664, guid: 4677b7242a2f0e04da7264648f9060fe, type: 3}

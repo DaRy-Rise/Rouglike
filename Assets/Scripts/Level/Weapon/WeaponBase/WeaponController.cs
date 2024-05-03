@@ -29,7 +29,6 @@ public class WeaponController : MonoBehaviour
     }
     protected virtual void StartAttack()
     {
-        print("startAtack");
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
         onRMBClick?.Invoke();

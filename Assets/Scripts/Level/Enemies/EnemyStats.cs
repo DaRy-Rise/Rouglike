@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField]
     public Res res;
     protected EnemyMovement movement;
+    private Animator anim;
 
     protected virtual void Awake()
     {
@@ -23,6 +24,7 @@ public class EnemyStats : MonoBehaviour
         player = FindAnyObjectByType<PlayerMovement>().transform;
         playerStats = FindAnyObjectByType<PlayerStats>();
         movement = gameObject.GetComponent<EnemyMovement>();
+        anim = gameObject.GetComponent<Animator>();
     }
     protected void Update()
     {
@@ -32,7 +34,7 @@ public class EnemyStats : MonoBehaviour
         }
         if (PlayerStats.isKilled)
         {
-            GetComponent<Animator>().SetBool("toDestroy", true);
+            anim.SetBool("toDestroy", true);
             PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
             foreach (var item in colliders)
             {
@@ -52,7 +54,8 @@ public class EnemyStats : MonoBehaviour
     }
     public virtual void Kill()
     {
-        Destroy(gameObject);
+        anim.SetBool("toDie", true);
+        movement.isDying = true;
         playerStats.IncreaseExperience();
         CheckResDropChance();
     }
