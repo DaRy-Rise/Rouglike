@@ -129,8 +129,11 @@ public class PlayerMovement : MonoBehaviour
             case "sword":
                 pathToController = "Animator/GG_sword";
                 break;
-                case "archer":
+            case "archer":
                 pathToController = "Animator/GG_archer";
+                break;
+            case "magic":
+                pathToController = "Animator/GG_magic";
                 break;
             default:
                 break;

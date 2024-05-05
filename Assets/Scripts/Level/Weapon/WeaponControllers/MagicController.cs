@@ -10,7 +10,7 @@ public class MagicController : WeaponController
     public LayerMask enemyLayers;
     public GameObject chainLightningEffect;
     protected List<int> affectedId = new List<int>();
-
+    private GameObject spawnedProjectile;
     Collider2D[] enemiesInRange;
 
     protected override void Start()
@@ -21,9 +21,7 @@ public class MagicController : WeaponController
     protected override void StartAttack()
     {
         base.StartAttack();
-        GameObject spawnedProjectile = Instantiate(weaponData.Prefab);
-        spawnedProjectile.transform.position = transform.position;
-        spawnedProjectile.GetComponent<MagicBehaviour>().DirectionChecker(playerMovement.lastMovedVector);
+        Invoke("SpawnLightBall", 0.25f);
     }
     protected override void Update()
     {
@@ -35,6 +33,12 @@ public class MagicController : WeaponController
                 StartAttack();
             }
         }
+    }
+    private void SpawnLightBall()
+    {
+        spawnedProjectile = Instantiate(weaponData.Prefab);
+        spawnedProjectile.transform.position = transform.position;
+        spawnedProjectile.GetComponent<MagicBehaviour>().DirectionChecker(playerMovement.lastMovedVector);
     }
     public void InitChainLightning(GameObject enemy)
     {

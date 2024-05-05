@@ -5,7 +5,7 @@ public class MeleeWeapon : MonoBehaviour
     public WeaponScriptableObject weaponData;
     public float destroyAfterSeconds;
     protected Vector3 direction;
-    private float currentDamage, currentSpeed, currentCooldownDuration;
+    public float currentDamage, currentSpeed, currentCooldownDuration;
     protected int currentPierce;
     public LayerMask enemyLayers;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ThrowController : WeaponController
 {
-
+    private GameObject spawnedProjectile;
     protected override void Start()
     {
         base.Start();
@@ -11,9 +11,7 @@ public class ThrowController : WeaponController
     protected override void StartAttack()
     {
         base.StartAttack();
-        GameObject spawnedProjectile = Instantiate(weaponData.Prefab);
-        spawnedProjectile.transform.position = transform.position;
-        spawnedProjectile.GetComponent<ThrowBehavior>().DirectionChecker(playerMovement.lastMovedVector);
+        Invoke("SpawnArrow", 0.25f);
     }
     protected override void Update()
     {
@@ -23,8 +21,13 @@ public class ThrowController : WeaponController
             if (!PlayerStats.isKilled && isAttackAlowed)
             {
                 StartAttack();
-
             }
         }
-    }    
+    }
+    private void SpawnArrow()
+    {
+        spawnedProjectile = Instantiate(weaponData.Prefab);
+        spawnedProjectile.transform.position = transform.position;
+        spawnedProjectile.GetComponent<ThrowBehavior>().DirectionChecker(playerMovement.lastMovedVector);
+    }
 }
