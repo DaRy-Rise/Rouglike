@@ -5,7 +5,7 @@ public class MeleeWeapon : MonoBehaviour
     public WeaponScriptableObject weaponData;
     public float destroyAfterSeconds;
     protected Vector3 direction;
-    public float currentDamage, currentSpeed, currentCooldownDuration;
+    private float currentDamage, currentSpeed, currentCooldownDuration;
     protected int currentPierce;
     public LayerMask enemyLayers;
 
@@ -18,7 +18,7 @@ public class MeleeWeapon : MonoBehaviour
     }
     protected virtual void Start()
     {
-        Destroy(gameObject, destroyAfterSeconds);
+        //Destroy(gameObject, destroyAfterSeconds);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

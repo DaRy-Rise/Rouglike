@@ -76,28 +76,31 @@ public class PlayerMovement : MonoBehaviour
     }
     private void InputManagment()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-        moveDir = new Vector2(moveX, moveY).normalized;
-        if (moveDir != Vector2.zero)
+        if (!PlayerStats.isKilled)
         {
-            anim.SetBool("toRun", true);
-            if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+            moveDir = new Vector2(moveX, moveY).normalized;
+            if (moveDir != Vector2.zero)
             {
-                lastMovedVector = new Vector2(moveDir.x, 0f);
-            }
-            else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
-            {
-                lastMovedVector = new Vector2(0f, moveDir.y);
+                anim.SetBool("toRun", true);
+                if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+                {
+                    lastMovedVector = new Vector2(moveDir.x, 0f);
+                }
+                else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
+                {
+                    lastMovedVector = new Vector2(0f, moveDir.y);
+                }
+                else
+                {
+                    lastMovedVector = moveDir;
+                }
             }
             else
             {
-                lastMovedVector = moveDir;
+                anim.SetBool("toRun", false);
             }
-        }
-        else
-        {
-            anim.SetBool("toRun", false);
         }
     }
     private void Move()
