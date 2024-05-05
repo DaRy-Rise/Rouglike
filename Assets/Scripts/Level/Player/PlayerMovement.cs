@@ -15,11 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float scale;
     private Animator anim;
+    private string pathToController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        SetAnimatorController();
         lastMovedVector = new Vector2(1, 0f);
     }
     private void OnEnable()
@@ -117,7 +119,22 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(scale, scale, scale);
         }
     }
-
+    private void SetAnimatorController()
+    {
+        switch (GlobalStat.mainMaster)
+        {
+            case "sword":
+                pathToController = "Animator/GG_sword";
+                break;
+                case "archer":
+                pathToController = "Animator/GG_archer";
+                break;
+            default:
+                break;
+        }
+        print(pathToController);
+        anim.runtimeAnimatorController = Resources.Load(pathToController) as RuntimeAnimatorController;
+    }
     private void RemoveDefaultSlow()
     {
         isSlowEffect = false;
