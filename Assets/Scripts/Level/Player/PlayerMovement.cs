@@ -152,7 +152,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopAttack()
     {
-        anim.SetBool("runAttack", false);
-        anim.SetBool("staticAttack", false);
+        anim.SetBool("toAttack", false);
     }
 }

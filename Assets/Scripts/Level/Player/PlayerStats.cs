@@ -21,9 +21,10 @@ public class PlayerStats : MonoBehaviour
         currentRecovery = characterData.Recovery;
         //currentMoveSpeed = characterData.MoveSpeed;
         currentMight = characterData.Might;
-        currentThrowSpeed = characterData.ThrowSpeed;
+        currentThrowSpeed = characterData.ThrowSpeed;     
         portalController = FindAnyObjectByType<PortalController>();
     }
+
     private void Update()
     {
         if (damageCoolDown > 0)
@@ -68,7 +69,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if (!isInvincible)
+        if (!isInvincible && !isKilled)
 
         {
             damageCoolDown = coolDownSec;
@@ -85,11 +86,19 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
         //Time.timeScale = 0f;
+        SetAnimatorParams();
         isKilled = true;
         print("GAME OVER");
         portalController.OpenPortal();
         //transform.position = FindAnyObjectByType<Portal>().transform.position;
 
+    }
+    private void SetAnimatorParams()
+    {
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("toRun", false);
+        anim.SetBool("toAttack", false);
+        anim.SetBool("toDie", true);
     }
     private void ReturnDefaultColor()
     {

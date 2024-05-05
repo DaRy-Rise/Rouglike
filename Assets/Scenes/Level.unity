@@ -2484,7 +2484,7 @@ Animator:
   m_GameObject: {fileID: 849565320}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e48915dce69247418beda5e369233df, type: 2}
+  m_Controller: {fileID: 9100000, guid: 53a46563bd7c1aa47bc07d9d96276f64, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3169,9 +3169,21 @@ MonoBehaviour:
   - waveName: Rats
     enemyGroup:
     - name: 
-      enemyCount: 1
+      enemyCount: 5
       spawnedCount: 0
       enemyPrefab: {fileID: 5464980973820149387, guid: 36e40f35fe161eb4c8e13407f90cff54, type: 3}
+    - name: 
+      enemyCount: 5
+      spawnedCount: 0
+      enemyPrefab: {fileID: 5464980973820149387, guid: cd92bb21798050b49b596bd89e3554e4, type: 3}
+    - name: 
+      enemyCount: 5
+      spawnedCount: 0
+      enemyPrefab: {fileID: 2417474058044648731, guid: 331e18211f55dd143a1963b297f1fa70, type: 3}
+    - name: 
+      enemyCount: 5
+      spawnedCount: 0
+      enemyPrefab: {fileID: 6630242302773137395, guid: 3f00b1418f2bd8b4eab60d2fbc88dd51, type: 3}
     numberOfEnemiesToSpawn: 0
     spawnInterval: 0
     spawnedCount: 0
