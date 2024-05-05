@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8325577971743540881}
   - component: {fileID: -2800028151279280212}
   - component: {fileID: -3566000388287073826}
-  - component: {fileID: -2256590347116394093}
   - component: {fileID: 2234581749449144662}
+  - component: {fileID: 7585013355595586580}
   m_Layer: 0
   m_Name: LightBall
   m_TagString: Untagged
@@ -114,7 +114,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &-2256590347116394093
+--- !u!114 &2234581749449144662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482306235760610666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0b8c8d59800c5448d76da25f62eff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: b040f3538e10bb242917a4cb4bf447e5, type: 2}
+  destroyAfterSeconds: 3
+  controller: {fileID: 0}
+--- !u!60 &7585013355595586580
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,25 +173,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.005442776, y: 0.018745564}
-      - {x: -0.015732214, y: 0.009775683}
-      - {x: -0.022618815, y: 0.00062047504}
-      - {x: -0.01487492, y: -0.009721585}
-      - {x: 0.016395934, y: 0.0029836}
-      - {x: 0.009203725, y: 0.02533193}
+    - - {x: 0.07, y: 0.08}
+      - {x: -0.099999994, y: 0.08}
+      - {x: -0.099999994, y: -0.049999997}
+      - {x: -0.07, y: -0.07}
+      - {x: 0.03, y: -0.07}
+      - {x: 0.08, y: -0.03}
+      - {x: 0.08, y: 0.06}
   m_UseDelaunayMesh: 0
---- !u!114 &2234581749449144662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3482306235760610666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0b8c8d59800c5448d76da25f62eff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: b040f3538e10bb242917a4cb4bf447e5, type: 2}
-  destroyAfterSeconds: 3
-  controller: {fileID: 0}

@@ -138,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
             default:
                 break;
         }
-        print(pathToController);
         anim.runtimeAnimatorController = Resources.Load(pathToController) as RuntimeAnimatorController;
     }
     private void RemoveDefaultSlow()

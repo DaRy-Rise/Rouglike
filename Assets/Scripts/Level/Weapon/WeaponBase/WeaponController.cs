@@ -22,9 +22,22 @@ public class WeaponController : MonoBehaviour
         if (currentCoolDown <= 0f)
         {
             isAttackAlowed = true;
-        } else
+        } 
+        else
         {
             currentCoolDown -= Time.deltaTime;
+        }
+        if (anim.GetBool("staticAttack") && anim.GetBool("toRun"))
+        {
+            print("static to run");
+            anim.SetBool("staticAttack", false);
+            anim.SetBool("runAttack", true);
+        }
+        if (anim.GetBool("runAttack") && !anim.GetBool("toRun"))
+        {
+            print("RUN TO STATIC");
+            anim.SetBool("runAttack", false);
+            anim.SetBool("staticAttack", true);
         }
     }
     protected virtual void StartAttack()
@@ -34,7 +47,6 @@ public class WeaponController : MonoBehaviour
         onRMBClick?.Invoke();
         if (anim.GetBool("toRun"))
         {
-            anim.SetBool("runAttack", false);
             anim.SetBool("runAttack", true);
         }
         else

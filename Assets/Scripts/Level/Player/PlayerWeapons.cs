@@ -13,7 +13,7 @@ public class PlayerWeapons : MonoBehaviour
 
     private void ChooseWeaponController()
     {
-        print(GlobalStat.mainMaster);
+        print("main master is " + GlobalStat.mainMaster);
         switch (GlobalStat.mainMaster)
         {
             case "sword":

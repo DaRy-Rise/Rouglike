@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AmuletBehaviour : MeleeWeapon
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //}
 }

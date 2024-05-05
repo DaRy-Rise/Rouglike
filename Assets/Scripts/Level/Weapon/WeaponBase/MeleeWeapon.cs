@@ -16,20 +16,20 @@ public class MeleeWeapon : MonoBehaviour
         currentCooldownDuration = weaponData.CoolDownDur;
         currentPierce = weaponData.Pierce;
     }
-    protected virtual void Start()
-    {
-        //Destroy(gameObject, destroyAfterSeconds);
-    }
+    //protected virtual void Start()
+    //{
+    //    //Destroy(gameObject, destroyAfterSeconds);
+    //}
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.CompareTag("Enemy"))
-        //{
-        //    EnemyStats enemy = collision.GetComponent<EnemyStats>();
-        //    enemy.TakeDamage(currentDamage);
-        //    //ReducePierce();
-        //}
-    }
+    //protected virtual void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //if (collision.CompareTag("Enemy"))
+    //    //{
+    //    //    EnemyStats enemy = collision.GetComponent<EnemyStats>();
+    //    //    enemy.TakeDamage(currentDamage);
+    //    //    //ReducePierce();
+    //    //}
+    //}
     public void Attack(Transform attackPoint, float attackRange)
     {
         Collider2D[] enemiesInCircle = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
