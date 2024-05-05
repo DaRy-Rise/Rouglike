@@ -34,7 +34,8 @@ public class EnemyStats : MonoBehaviour
         }
         if (PlayerStats.isKilled)
         {
-            anim.SetBool("toDestroy", true);
+            //anim.SetBool("toDestroy", true);
+            anim.SetBool("toDie", true);
             PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
             foreach (var item in colliders)
             {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Widow
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  maxHealth: 5
+  maxHealth: 1
   damage: 5
   chanceOfRes: 80
