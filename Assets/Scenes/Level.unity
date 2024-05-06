@@ -4214,6 +4214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239df38c0a03cbb4ab6d6952dfbd3078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ravenPrefab: {fileID: 5464980973820149387, guid: f97d9ce91dc8d5e4dad0355e9e0f2108, type: 3}
 --- !u!1 &2042954998
 GameObject:
   m_ObjectHideFlags: 0
