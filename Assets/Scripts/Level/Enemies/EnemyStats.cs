@@ -9,7 +9,8 @@ public class EnemyStats : MonoBehaviour
     Transform player;
     protected PlayerStats playerStats;
     [SerializeField]
-    public Res res;
+    private Res res;
+    private Res coin;
     protected EnemyMovement movement;
     private Animator anim;
 
@@ -21,6 +22,7 @@ public class EnemyStats : MonoBehaviour
     }
     protected void Start()
     {
+        coin = Resources.Load<Res>("Prefab/Res/Coin");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         playerStats = FindAnyObjectByType<PlayerStats>();
         movement = gameObject.GetComponent<EnemyMovement>();
@@ -59,6 +61,7 @@ public class EnemyStats : MonoBehaviour
         movement.isDying = true;
         playerStats.IncreaseExperience();
         CheckResDropChance();
+        CheckCoinDropChance();
     }
     protected virtual void OnDestroy()
     {
@@ -78,16 +81,26 @@ public class EnemyStats : MonoBehaviour
             DropRes();
         }
     }
-
+    protected void CheckCoinDropChance()
+    {
+        int i = UnityEngine.Random.Range(0, 100);
+        if (i <= enemyData.ChanceOfCoin)
+        {
+            DropCoin();
+        }
+    }
     protected virtual void DropRes()
     {
         Instantiate(res, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
     }
-
+    protected virtual void DropCoin()
+    {
+        Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y), Quaternion.identity);
+    }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         gameObject.GetComponent<Rigidbody2D>().WakeUp();
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && collision.isTrigger)
         {
             movement.isNearPlayer = true;
             PlayerStats player = collision.GetComponent<PlayerStats>();
@@ -96,7 +109,7 @@ public class EnemyStats : MonoBehaviour
     }
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && collision.isTrigger)
         {
             movement.isNearPlayer = false;
         }

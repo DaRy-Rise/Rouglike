@@ -4,10 +4,11 @@ using UnityEngine;
 public class EnemyScriptableObject : ScriptableObject
 {
     [SerializeField]
-    private float moveSpeed, maxHealth, damage, chanceOfRes;
+    private float moveSpeed, maxHealth, damage, chanceOfRes, chanceOfCoin;
 
     public float MoveSpeed { get => moveSpeed; private set => moveSpeed = value; }
     public float MaxHealth { get => maxHealth; private set => maxHealth = value; }
     public float Damage { get => damage; private set => damage = value; }
     public float ChanceOfRes { get => chanceOfRes; private set => chanceOfRes = value; }
+    public float ChanceOfCoin { get => chanceOfCoin; private set => chanceOfCoin = value; }
 }

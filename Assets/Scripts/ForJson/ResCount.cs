@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public class ResCount
 {
+    public int coin;
     public int hanky;
     public int scroll;
     public int boot;

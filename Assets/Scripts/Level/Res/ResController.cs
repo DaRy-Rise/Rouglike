@@ -15,6 +15,11 @@ public class ResController : MonoBehaviour
             case KindOfRes.Boot:
                 GlobalStat.boot++;
                 break;
+            case KindOfRes.Coin:
+                print("Before: " + GlobalStat.coin);
+                   GlobalStat.coin++;
+                print("After: " + GlobalStat.coin);
+                break;
             default:
                 break;
         }
