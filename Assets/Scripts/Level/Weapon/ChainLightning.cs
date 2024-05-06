@@ -10,7 +10,7 @@ public class ChainLightning : MonoBehaviour
     private GameObject secondEnemy;
     private Vector3 firstEnemyPos;
     private Vector3 secondEnemyPos;
-    public void theStart(GameObject firstEnemy, GameObject secondEnemy, Vector3 startPos, Vector3 endPos)
+    public void TheStart(GameObject firstEnemy, GameObject secondEnemy, Vector3 startPos, Vector3 endPos)
     {
         this.firstEnemy = firstEnemy;
         this.firstEnemyPos = startPos;

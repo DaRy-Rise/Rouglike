@@ -6,9 +6,10 @@ public class PropRandomizes : MonoBehaviour
     [SerializeField]
     private List<GameObject> propSpawnPoints;
     private GameObject[] propPrefabs;
+
     void Start()
     {
-        propPrefabs = Resources.LoadAll<GameObject>("Prefab/Props");
+        propPrefabs = Resources.LoadAll<GameObject>("Prefab/Props/Level1/Props");
         SpawnProps();
     }
 

@@ -71,7 +71,7 @@ public class MagicController : WeaponController
                         {
                             lightning = Instantiate(chainLightningEffect, startPos, Quaternion.identity);
                         }
-                        lightning.GetComponent<ChainLightning>().theStart(enemy1, enemy.gameObject, startPos, endPos);
+                        lightning.GetComponent<ChainLightning>().TheStart(enemy1, enemy.gameObject, startPos, endPos);
                         lightning.transform.position = (startPos + endPos) / 2;
                         Vector3 direction = endPos - startPos;
                         lightning.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);

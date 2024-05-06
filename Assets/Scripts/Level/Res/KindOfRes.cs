@@ -1,5 +1,6 @@
 ﻿public enum KindOfRes
 {
+    Coin,
     Hanky,
     Scroll,
     Boot,
