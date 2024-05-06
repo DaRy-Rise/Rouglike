@@ -16,3 +16,4 @@ MonoBehaviour:
   maxHealth: 1
   damage: 1
   chanceOfRes: 10
+  chanceOfCoin: 100

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Master : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Master : MonoBehaviour
     private GameObject portal;
     protected Transform player;
     private string side;
+    [SerializeField]
+    private float scale;
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
     [SerializeField]
@@ -142,7 +145,7 @@ public class Master : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && collision.isTrigger)
         {
             SetScaleByGameObject(collision.transform);
             if (!isTooltipExist && portal == null)
@@ -165,11 +168,11 @@ public class Master : MonoBehaviour
         {
             if (transform.position.x - pointInPath.Current.position.x < 0)
             {
-                transform.localScale = new Vector3(3, 3, 3);
+                transform.localScale = new Vector3(scale, scale, scale);
             }
             else
             {
-                transform.localScale = new Vector3(-3, 3, 3);
+                transform.localScale = new Vector3(-scale, scale, scale);
             }
         }
         catch (Exception)
@@ -182,12 +185,12 @@ public class Master : MonoBehaviour
     {
         if (gameObject.position.x - transform.position.x > 0)
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            transform.localScale = new Vector3(scale, scale, scale);
             side = "right";
         }
         else
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            transform.localScale = new Vector3(-scale, scale, scale);
             side = "left";
         }
     }
