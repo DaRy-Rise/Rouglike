@@ -14,20 +14,26 @@ public class TreeWithWorons : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) {
+        if (collision.CompareTag("Player") && collision.isTrigger) {
             GetComponent<Animator>().SetBool("Start", true);
         }
     }
     public void onAnimationEnds()
     {
         GetComponent<Animator>().SetBool("Start", false);
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject raven = Instantiate(ravenPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(0, 2f), transform.position.y + UnityEngine.Random.Range(0, 2f)), Quaternion.identity);
-            raven.transform.parent = transform;
-        }
+        StartCoroutine(spawnRavens());
     }
     // Update is called once per frame
+    private IEnumerator spawnRavens()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject raven = Instantiate(ravenPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(0, 1f), transform.position.y + UnityEngine.Random.Range(0, 1f)), Quaternion.identity);
+            raven.transform.parent = transform;
+            yield return new WaitForSeconds(0.25f);
+        }
+        yield break;
+    }
     void Update()
     {
         
