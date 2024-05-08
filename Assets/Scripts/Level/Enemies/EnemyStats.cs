@@ -6,13 +6,13 @@ public class EnemyStats : MonoBehaviour
     public EnemyScriptableObject enemyData;
     protected float currentMoveSpeed, currentHealth, currentDamage;
     public float deSpawnDistance = 20f;
-    Transform player;
+    protected Transform player;
     protected PlayerStats playerStats;
     [SerializeField]
     private Res res;
-    private Res coin;
+    protected Res coin;
     protected EnemyMovement movement;
-    private Animator anim;
+    protected Animator anim;
 
     protected virtual void Awake()
     {
@@ -20,7 +20,7 @@ public class EnemyStats : MonoBehaviour
         currentHealth = enemyData.MaxHealth;
         currentDamage = enemyData.Damage;
     }
-    protected void Start()
+    protected virtual void Start()
     {
         coin = Resources.Load<Res>("Prefab/Res/Coin");
         player = FindAnyObjectByType<PlayerMovement>().transform;
@@ -28,7 +28,7 @@ public class EnemyStats : MonoBehaviour
         movement = gameObject.GetComponent<EnemyMovement>();
         anim = gameObject.GetComponent<Animator>();
     }
-    protected void Update()
+    protected virtual void Update()
     {
         if (Vector2.Distance(transform.position, player.position) >= deSpawnDistance)
         {
@@ -58,6 +58,7 @@ public class EnemyStats : MonoBehaviour
     public virtual void Kill()
     {
         anim.SetBool("toDie", true);
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         movement.isDying = true;
         playerStats.IncreaseExperience();
         CheckResDropChance();
@@ -95,7 +96,7 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void DropCoin()
     {
-        Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y), Quaternion.identity);
+        Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
