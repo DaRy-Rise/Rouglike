@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         SetAnimatorController();
         lastMovedVector = new Vector2(1, 0f);
+        UnityEditor.Animations.AnimatorController animatorController = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+        AnimationClip[] animationClips = animatorController.animationClips;
+
+        // Выводим имена анимаций
+        foreach (AnimationClip clip in animationClips)
+        {
+            Debug.Log("Animation name: " + clip.name);
+        }
     }
     private void OnEnable()
     {
@@ -36,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        InputManagment();
+       InputManagment();
     }
     private void FixedUpdate()
     {
@@ -83,7 +92,17 @@ public class PlayerMovement : MonoBehaviour
             moveDir = new Vector2(moveX, moveY).normalized;
             if (moveDir != Vector2.zero)
             {
-                anim.SetBool("toRun", true);
+                if (!anim.GetBool("toRun"))
+                {
+                    anim.SetBool("toRun", true);
+                    if (anim.GetBool("toAttack"))
+                    {
+                        float previousNormalizedTime;
+                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                        anim.Play("run_attack", 0, previousNormalizedTime);
+                    }
+                }
+
                 if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
                 {
                     lastMovedVector = new Vector2(moveDir.x, 0f);
@@ -99,8 +118,19 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                anim.SetBool("toRun", false);
+                if (anim.GetBool("toRun"))
+                {
+                    anim.SetBool("toRun", false);
+                    if (anim.GetBool("toAttack"))
+                    {
+                        float previousNormalizedTime;
+                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                        anim.Play("static_attack", 0, previousNormalizedTime);
+                    }
+                }
             }
+
+           
         }
     }
     private void Move()
