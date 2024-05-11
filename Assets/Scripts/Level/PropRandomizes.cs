@@ -9,7 +9,7 @@ public class PropRandomizes : MonoBehaviour
 
     void Start()
     {
-        propPrefabs = Resources.LoadAll<GameObject>("Prefab/Props/Level1/Props");
+        propPrefabs = Resources.LoadAll<GameObject>("Prefab/Props/Level1/RandomProps");
         SpawnProps();
     }
 
