@@ -188,6 +188,7 @@ public class MapController : MonoBehaviour
 
     private void SpawnChunk()
     {
+        print("spawn chunk");
         List<GameObject> chunksToSpawn = ChooseChunkToSpawn();  
         int rand = Random.Range(0, chunksToSpawn.Count);
         latestChunk = Instantiate(chunksToSpawn[rand], noTerrainPosition, Quaternion.identity);

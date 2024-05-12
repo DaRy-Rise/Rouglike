@@ -26,12 +26,6 @@ public class PlayerMovement : MonoBehaviour
         lastMovedVector = new Vector2(1, 0f);
         UnityEditor.Animations.AnimatorController animatorController = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
         AnimationClip[] animationClips = animatorController.animationClips;
-
-        // Выводим имена анимаций
-        foreach (AnimationClip clip in animationClips)
-        {
-            Debug.Log("Animation name: " + clip.name);
-        }
     }
     private void OnEnable()
     {
