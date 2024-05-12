@@ -1006,6 +1006,7 @@ MonoBehaviour:
   - {fileID: 1515246806367242001}
   - {fileID: 4382879214215871976}
   - {fileID: 3289052222875291443}
+  propTreeSpawnPoints: []
 --- !u!61 &8806054372148551624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47896,8 +47897,8 @@ Tilemap:
   - first: {x: 9, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 22
-      m_TileSpriteIndex: 22
+      m_TileIndex: 59
+      m_TileSpriteIndex: 59
       m_TileMatrixIndex: 0
       m_TileColorIndex: 3
       m_TileObjectToInstantiateIndex: 65535
@@ -101349,7 +101350,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 10000
+  - m_RefCount: 9999
     m_Data: {fileID: 11400000, guid: 5a763fe2f1c84cd44a9d30b2075e1678, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -101423,8 +101424,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 0d5de0bd761fc3b46bf2ccc4a74a2b5b, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -101470,7 +101471,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 10000
+  - m_RefCount: 9999
     m_Data: {fileID: 641366569, guid: def0b5a57175e604ab83c889b6b108bc, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -101544,8 +101545,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1660441518, guid: def0b5a57175e604ab83c889b6b108bc, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 10000
     m_Data:
