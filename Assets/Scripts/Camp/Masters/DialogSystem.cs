@@ -50,6 +50,10 @@ public class DialogSystem : MonoBehaviour
             {
                 ChoosePhrase();
             }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                StopDialog();
+            }
         }
     }
     public void StartDialog(Sprite masterFace, KindOfMasters kindOfMasters, bool isMain)

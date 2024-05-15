@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,6 +16,8 @@ public class Master : MonoBehaviour
     private GameObject portal;
     protected Transform player;
     private string side;
+    [SerializeField]
+    private float scale;
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
     [SerializeField]
@@ -25,12 +26,15 @@ public class Master : MonoBehaviour
     public float speed = 1, maxDis = .1f;
     private IEnumerator<Transform> pointInPath;
     [SerializeField]
-    private float pathCoolDown = 5, choosePathCoolDown = 20;
+    private float pathCoolDownValue, choosePathCoolDownValue;
+    private float pathCoolDown, choosePathCoolDown;
     private bool isGoing, isStop, isBack, isPause;
     private Animator animator;
 
     void Start()
     {
+        pathCoolDown = pathCoolDownValue;
+        choosePathCoolDown = choosePathCoolDownValue;
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         if (isMainMaster)
@@ -57,11 +61,14 @@ public class Master : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (choosePathCoolDown <= 0f)
+        if (choosePathCoolDown <= 0f && !isGoing && !isBack)
         {
             int i = UnityEngine.Random.Range(0, paths.Length);
             currentPath = paths[i];
             isPause = false;
+
+            isGoing = true;
+            animator.SetBool("isReadyToGo", true);
         }
         else
         {
@@ -82,7 +89,13 @@ public class Master : MonoBehaviour
         {
             return;
         }
-        if (pathCoolDown <= 0f && !isGoing && !isStop && !isPause)
+        if (isBack && currentPath.isStartPoint)
+        {
+            isBack = false;
+            isGoing = false;
+            choosePathCoolDown = choosePathCoolDownValue;
+        }
+        if (pathCoolDown <= 0f && isBack && !isGoing && !isStop && !isPause)
         {
             isGoing = true;
             isPause = false;
@@ -96,7 +109,7 @@ public class Master : MonoBehaviour
         {
             isGoing = false;
             animator.SetBool("isReadyToGo", false);
-            pathCoolDown = 10;
+            pathCoolDown = pathCoolDownValue;
             isBack = true;
         }
         if (isGoing)
@@ -122,7 +135,7 @@ public class Master : MonoBehaviour
                     mastersInfo.mainMaster = "magic";
                     break;
                 case KindOfMasters.Throwing:
-                    mastersInfo.mainMaster = "throw";
+                    mastersInfo.mainMaster = "archer";
                     break;
                 default:
                     break;
@@ -132,7 +145,7 @@ public class Master : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && collision.isTrigger)
         {
             SetScaleByGameObject(collision.transform);
             if (!isTooltipExist && portal == null)
@@ -151,25 +164,33 @@ public class Master : MonoBehaviour
     }
     private void SetScale()
     {
-        if (transform.position.x - pointInPath.Current.position.x < 0)
+        try
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            if (transform.position.x - pointInPath.Current.position.x < 0)
+            {
+                transform.localScale = new Vector3(scale, scale, scale);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-scale, scale, scale);
+            }
         }
-        else
+        catch (Exception)
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            print("its ok");
         }
+
     }
     private void SetScaleByGameObject(Transform gameObject)
     {
         if (gameObject.position.x - transform.position.x > 0)
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            transform.localScale = new Vector3(scale, scale, scale);
             side = "right";
         }
         else
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            transform.localScale = new Vector3(-scale, scale, scale);
             side = "left";
         }
     }

@@ -5,7 +5,7 @@ public class Path : MonoBehaviour
 {
     public int movmentDir = 1, moveTo = 0;
     public Transform[] PathElements;
-    public bool isEndPoint;
+    public bool isStartPoint, isEndPoint;
     public bool isGuestPath;
 
     public void OnDrawGizmos()
@@ -37,11 +37,13 @@ public class Path : MonoBehaviour
             if (moveTo <= 0)
             {
                 movmentDir = 1;
+                isStartPoint = true;
                 isEndPoint = false;
             }
             else if (moveTo >= PathElements.Length - 1)
             {
                 movmentDir = -1;
+                isStartPoint = false;
                 isEndPoint = true;
             }
             moveTo = moveTo + movmentDir;

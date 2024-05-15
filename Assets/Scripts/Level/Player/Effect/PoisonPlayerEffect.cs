@@ -22,7 +22,7 @@ public class PoisonPlayerEffect : PlayerEffect
         {
             isPoisonEffect = 1;
             durProcess = duration;
-            FindAnyObjectByType<IconController>().ResetBarDuration(KindOfIcons.Poison);
+            FindAnyObjectByType<DebuffIconController>().ResetBarDuration(KindOfIcons.Poison);
         }
     }
 

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class SwordBehaviour : MeleeWeapon
 {
-    protected override void Start() { }
+
 
 }

@@ -24,7 +24,7 @@ public class Debuff : MonoBehaviour
         dur -= Time.deltaTime;
         if (dur <= 0)
         {
-            FindAnyObjectByType<IconController>().RemoveEffect(indexOfCell);
+            FindAnyObjectByType<DebuffIconController>().RemoveEffect(indexOfCell);
             Destroy(gameObject);
         }
     }

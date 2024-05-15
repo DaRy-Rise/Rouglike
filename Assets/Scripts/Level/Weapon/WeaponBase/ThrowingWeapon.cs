@@ -30,9 +30,9 @@ public class ThrowingWeapon : MonoBehaviour
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && collision.isTrigger)
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
@@ -51,7 +51,7 @@ public class ThrowingWeapon : MonoBehaviour
         if (dirX < 0 && dirY == 0) //left
         {
             scale.x *= -1;
-            scale.y *= -1;
+            scale.y *= 1;
         }
         else if (dirX == 0 && dirY < 0) //down
         {

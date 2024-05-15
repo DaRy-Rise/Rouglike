@@ -7,11 +7,14 @@ public class WeaponController : MonoBehaviour
     protected float currentCoolDown;
     protected bool isAttackAlowed = true;
     protected PlayerMovement playerMovement;
+    public static System.Action onRMBClick;
+    private Animator anim;
 
     protected virtual void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         currentCoolDown = weaponData.CoolDownDur;
+        anim = playerMovement.GetComponent<Animator>();
     }
 
     protected virtual void Update()
@@ -19,7 +22,8 @@ public class WeaponController : MonoBehaviour
         if (currentCoolDown <= 0f)
         {
             isAttackAlowed = true;
-        } else
+        } 
+        else
         {
             currentCoolDown -= Time.deltaTime;
         }
@@ -28,5 +32,7 @@ public class WeaponController : MonoBehaviour
     {
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
+        onRMBClick?.Invoke();
+        anim.SetBool("toAttack", true);
     }
 }

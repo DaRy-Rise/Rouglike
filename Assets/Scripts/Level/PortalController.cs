@@ -20,7 +20,7 @@ public class PortalController : MonoBehaviour
                 return "Red_level_portal";
             case "magic":
                 return "Blue_level_portal";
-            case "throw":
+            case "archer":
                 return "Green_level_portal";
             default:
                 return "";

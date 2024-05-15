@@ -6,14 +6,14 @@
   },
 
   "magicMaster": {
-    "chain": 0,
-    "shield": 0,
-    "area": 0
+    "chain": 1,
+    "shield": 2,
+    "area": 3
   },
 
   "archerMaster": {
-    "poison": 0,
-    "shurikens": 0,
-    "rain": 0
+    "poison": 1,
+    "shurikens": 2,
+    "rain": 3
   }
 }

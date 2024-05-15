@@ -1,52 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class ChainLightning : MonoBehaviour
 {
-    private CircleCollider2D coll;
-    public float damage;
-    public GameObject chainLightningEffect;
-    //public GameObject beenStruck;
-    public int amountToChain;
-    public GameObject startObject, endObject;
-    private Animator animator;
-    public ParticleSystem parti;
-    private int singleSpawns;
-
-    void Start()
+    public float destroyAfterSeconds = 0.5f;
+    public int currentDamage = 1;
+    private GameObject firstEnemy;
+    private GameObject secondEnemy;
+    private Vector3 firstEnemyPos;
+    private Vector3 secondEnemyPos;
+    public void TheStart(GameObject firstEnemy, GameObject secondEnemy, Vector3 startPos, Vector3 endPos)
     {
-        if (amountToChain == 0) Destroy(gameObject);
-        coll = GetComponent<CircleCollider2D>();
-        animator = GetComponent<Animator>();
-        parti = GetComponent<ParticleSystem>();
-        singleSpawns = 1;
-        startObject = gameObject;
+        this.firstEnemy = firstEnemy;
+        this.firstEnemyPos = startPos;
+        this.secondEnemy = secondEnemy;
+        this.secondEnemyPos = endPos;
+        //print(firstEnemyPos + secondEnemyPos);
+        Destroy(gameObject, destroyAfterSeconds);
+    }
+    private void OnDestroy()
+    {
+        EnemyStats enemyStats = secondEnemy.GetComponent<EnemyStats>();
+        enemyStats.TakeDamage(currentDamage);
+    }
+    public void Update()
+    {
+        Vector3 startPos;
+        Vector3 endPos;
+         if (firstEnemy != null)
+        {
+            startPos = firstEnemy.transform.position;
+            firstEnemyPos = startPos;
+        } else
+        {
+            startPos = firstEnemyPos;
+        }
+         if (secondEnemy != null)
+        {
+            endPos = secondEnemy.transform.position;
+            secondEnemyPos = endPos;
+        } else
+        {
+            endPos = secondEnemyPos;
+        }
+        StickLightningToObjects(startPos, endPos);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void StickLightningToObjects(Vector3 startPos, Vector3 endPos)
     {
-        if (collision.tag == "Enemy") 
-        {
-            if (singleSpawns != 0)
-            {
-                endObject = collision.gameObject;
-                amountToChain -= 1;
-                Instantiate(chainLightningEffect, collision.gameObject.transform.position, Quaternion.identity);
-                //Instantiate(beenStruck, collision.gameObject.transform);
-                collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
-                animator.StopPlayback();
-                coll.enabled = false;
-                singleSpawns--;
-                parti.Play();
-                var emitParams = new ParticleSystem.EmitParams();
-                emitParams.position = startObject.transform.position;
-                parti.Emit(emitParams, 1);
-                emitParams.position = endObject.transform.position;
-                parti.Emit(emitParams, 1);
-                Destroy(gameObject, 1f);
-            }
-        
-        }
+        transform.position = (startPos + endPos) / 2;
+        Vector3 direction = endPos - startPos;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        GetComponent<SpriteRenderer>().size = new Vector2(0.08f, direction.magnitude);
     }
 }

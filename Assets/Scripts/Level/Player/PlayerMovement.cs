@@ -1,3 +1,5 @@
+using UnityEditor.Animations;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +13,19 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDir, lastMovedVector;
     public static bool isSwordAttack, isWeb, isSlowEffect, isStoneEffect, isSpeedPotion;
     public float moveSpeed;
+    [SerializeField]
+    private float scale;
+    private Animator anim;
+    private string pathToController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        SetAnimatorController();
         lastMovedVector = new Vector2(1, 0f);
+        UnityEditor.Animations.AnimatorController animatorController = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+        AnimationClip[] animationClips = animatorController.animationClips;
     }
     private void OnEnable()
     {
@@ -29,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        InputManagment();
+       InputManagment();
     }
     private void FixedUpdate()
     {
@@ -69,23 +79,52 @@ public class PlayerMovement : MonoBehaviour
     }
     private void InputManagment()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-        moveDir = new Vector2(moveX, moveY).normalized;
-        if (moveDir != Vector2.zero)
+        if (!PlayerStats.isKilled)
         {
-            if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+            moveDir = new Vector2(moveX, moveY).normalized;
+            if (moveDir != Vector2.zero)
             {
-                lastMovedVector = new Vector2(moveDir.x, 0f);
-            }
-            else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
-            {
-                lastMovedVector = new Vector2(0f, moveDir.y);
+                if (!anim.GetBool("toRun"))
+                {
+                    anim.SetBool("toRun", true);
+                    if (anim.GetBool("toAttack"))
+                    {
+                        float previousNormalizedTime;
+                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                        anim.Play("run_attack", 0, previousNormalizedTime);
+                    }
+                }
+
+                if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+                {
+                    lastMovedVector = new Vector2(moveDir.x, 0f);
+                }
+                else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
+                {
+                    lastMovedVector = new Vector2(0f, moveDir.y);
+                }
+                else
+                {
+                    lastMovedVector = moveDir;
+                }
             }
             else
             {
-                lastMovedVector = moveDir;
+                if (anim.GetBool("toRun"))
+                {
+                    anim.SetBool("toRun", false);
+                    if (anim.GetBool("toAttack"))
+                    {
+                        float previousNormalizedTime;
+                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                        anim.Play("static_attack", 0, previousNormalizedTime);
+                    }
+                }
             }
+
+           
         }
     }
     private void Move()
@@ -100,14 +139,31 @@ public class PlayerMovement : MonoBehaviour
     {
         if (lastMovedVector.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-scale, scale, scale);
         }
         else if (lastMovedVector.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(scale, scale, scale);
         }
     }
-
+    private void SetAnimatorController()
+    {
+        switch (GlobalStat.mainMaster)
+        {
+            case "sword":
+                pathToController = "Animator/GG_sword";
+                break;
+            case "archer":
+                pathToController = "Animator/GG_archer";
+                break;
+            case "magic":
+                pathToController = "Animator/GG_magic";
+                break;
+            default:
+                break;
+        }
+        anim.runtimeAnimatorController = Resources.Load(pathToController) as RuntimeAnimatorController;
+    }
     private void RemoveDefaultSlow()
     {
         isSlowEffect = false;
@@ -116,5 +172,10 @@ public class PlayerMovement : MonoBehaviour
     private void RemoveDefaultStone()
     {
         isStoneEffect = false;
+    }
+
+    public void StopAttack()
+    {
+        anim.SetBool("toAttack", false);
     }
 }

@@ -1,5 +1,6 @@
 ﻿public enum KindOfRes
 {
+    Coin,
     Hanky,
     Scroll,
     Boot,
@@ -16,5 +17,6 @@
     Bone,
     EmptyGlass,
     Arrow,
-    Nitro
+    Nitro,
+    Shoe
 }
