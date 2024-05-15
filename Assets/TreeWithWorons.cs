@@ -7,6 +7,7 @@ public class TreeWithWorons : MonoBehaviour
 {
 
     public GameObject ravenPrefab;
+    private bool isTriggered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +15,9 @@ public class TreeWithWorons : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger) {
+        if (collision.CompareTag("Player") && collision.isTrigger && !isTriggered) {
             GetComponent<Animator>().SetBool("Start", true);
+            isTriggered = true;
         }
     }
     public void onAnimationEnds()
