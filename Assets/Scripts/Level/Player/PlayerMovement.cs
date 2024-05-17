@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float scale;
     private Animator anim;
     private string pathToController;
+    public bool blockMove;
 
     void Start()
     {
@@ -75,7 +76,10 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = characterData.MoveSpeed;
         }
-        Move();
+        if (!blockMove)
+        {
+            Move();
+        }
     }
     private void InputManagment()
     {
