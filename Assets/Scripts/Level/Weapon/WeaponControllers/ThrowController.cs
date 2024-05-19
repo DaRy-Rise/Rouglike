@@ -6,23 +6,20 @@ public class ThrowController : WeaponController
     protected override void Start()
     {
         base.Start();
+        InputReader.Instance.AttackEvent += StartAttack;
     }
 
     protected override void StartAttack()
     {
-        base.StartAttack();
-        Invoke("SpawnArrow", 0.25f);
+        if (!PlayerStats.isKilled && isAttackAlowed)
+        {
+            base.StartAttack();
+            Invoke("SpawnArrow", 0.25f);
+        }
     }
     protected override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (!PlayerStats.isKilled && isAttackAlowed)
-            {
-                StartAttack();
-            }
-        }
     }
     private void SpawnArrow()
     {

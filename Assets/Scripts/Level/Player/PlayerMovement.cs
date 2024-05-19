@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        controls = new Controllers();
+        controls = InputReader.Instance.controls;
     }
     void Start()
     {

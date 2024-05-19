@@ -12,21 +12,26 @@ public class SwordController : WeaponController
     {
         movement = FindAnyObjectByType<PlayerMovement>();
         behaviour = FindAnyObjectByType<SwordBehaviour>();
+        InputReader.Instance.AttackEvent += Attack;
         base.Start();
+    }
+    private void OnEnable()
+    {
+        
+    }
+    private void Attack()
+    {
+        if (!PlayerStats.isKilled)
+        {
+            if (isAttackAlowed)
+            {
+                StartAttack();
+            }
+        }
     }
     protected override void Update()
     { 
-        if (!PlayerStats.isKilled) 
-        {
             base.Update();
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (isAttackAlowed)
-                {
-                    StartAttack();
-                }
-            }
-        }
         //if (!PlayerStats.isKilled)
         //{
         //    base.Update();
