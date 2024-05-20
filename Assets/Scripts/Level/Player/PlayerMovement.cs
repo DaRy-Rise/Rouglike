@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private float scale;
     private Animator anim;
     private string pathToController;
+    private InputReader inputReader;
 
     private void Awake()
     {
-        controls = InputReader.Instance.controls;
+        inputReader = FindAnyObjectByType<InputReader>();
+        controls = inputReader.controls;
     }
     void Start()
     {

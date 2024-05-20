@@ -1,26 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour
 {
-    private static InputReader instance;
+    [SerializeField]
     public Controllers controls;
     public event UnityAction AttackEvent = delegate { };
-    public event UnityAction AttackCanceledEvent = delegate { }; 
-    public static InputReader Instance
+    public event UnityAction AttackCanceledEvent = delegate { };
+    private void Awake()
     {
-        get
-        {
-            if (!instance)
-            {
-                instance = new GameObject("InputReader Singleton", typeof(InputReader)).GetComponent<InputReader>();
-                instance.controls = new Controllers();
-            }
-            return instance;
-        }
+        controls = new Controllers();
     }
     private void OnEnable()
     {

@@ -12,7 +12,6 @@ public class SwordController : WeaponController
     {
         movement = FindAnyObjectByType<PlayerMovement>();
         behaviour = FindAnyObjectByType<SwordBehaviour>();
-        InputReader.Instance.AttackEvent += Attack;
         base.Start();
     }
     private void OnEnable()

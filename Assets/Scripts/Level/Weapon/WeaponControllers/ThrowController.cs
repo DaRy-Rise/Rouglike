@@ -6,7 +6,6 @@ public class ThrowController : WeaponController
     protected override void Start()
     {
         base.Start();
-        InputReader.Instance.AttackEvent += StartAttack;
     }
 
     protected override void StartAttack()
