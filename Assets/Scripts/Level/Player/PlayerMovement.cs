@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private string pathToController;
     private InputReader inputReader;
+    public bool blockMove;
 
     private void Awake()
     {
@@ -85,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = characterData.MoveSpeed;
         }
-        Move();
+        if (!blockMove)
+        {
+            Move();
+        }
     }
     private void InputManagment()
     {
