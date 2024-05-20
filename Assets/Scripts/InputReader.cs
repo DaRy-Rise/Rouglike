@@ -22,9 +22,15 @@ public class InputReader : MonoBehaviour
             return instance;
         }
     }
-    void Start()
+    private void OnEnable()
     {
+        controls.Enable();
         controls.Basic.Attack.performed += OnAttack;
+    }
+    private void OnDisable()
+    {
+        controls.Basic.Attack.performed -= OnAttack;
+        controls.Disable();
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
