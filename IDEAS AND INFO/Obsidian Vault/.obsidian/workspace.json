@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Логика Абилок.md",
+                "file": "Абилки.md",
                 "mode": "source",
                 "source": false
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Логика Абилок.md",
+                "file": "Абилки.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +154,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Логика Абилок.md",
+                "file": "Абилки.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -177,7 +177,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Логика Абилок.md"
+                "file": "Абилки.md"
               }
             }
           }
@@ -201,8 +201,8 @@
   },
   "active": "5d1431ea0c5f1679",
   "lastOpenFiles": [
-    "Абилки.md",
     "Логика Абилок.md",
+    "Абилки.md",
     "Tree.canvas",
     "Pasted image 20240516225337.png",
     "Фазан.md",

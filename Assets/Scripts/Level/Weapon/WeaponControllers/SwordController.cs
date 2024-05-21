@@ -14,19 +14,23 @@ public class SwordController : WeaponController
         behaviour = FindAnyObjectByType<SwordBehaviour>();
         base.Start();
     }
-    protected override void Update()
-    { 
-        if (!PlayerStats.isKilled) 
+    private void OnEnable()
+    {
+        
+    }
+    private void Attack()
+    {
+        if (!PlayerStats.isKilled)
         {
-            base.Update();
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (isAttackAlowed)
             {
-                if (isAttackAlowed)
-                {
-                    StartAttack();
-                }
+                StartAttack();
             }
         }
+    }
+    protected override void Update()
+    { 
+            base.Update();
         //if (!PlayerStats.isKilled)
         //{
         //    base.Update();

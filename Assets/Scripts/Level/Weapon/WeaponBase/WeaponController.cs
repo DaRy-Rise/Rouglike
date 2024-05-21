@@ -9,12 +9,15 @@ public class WeaponController : MonoBehaviour
     protected PlayerMovement playerMovement;
     public static System.Action onRMBClick;
     private Animator anim;
+    protected InputReader inputReader;
 
     protected virtual void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         currentCoolDown = weaponData.CoolDownDur;
         anim = playerMovement.GetComponent<Animator>();
+        inputReader = FindAnyObjectByType<InputReader>();
+        inputReader.AttackEvent += StartAttack;
     }
 
     protected virtual void Update()
