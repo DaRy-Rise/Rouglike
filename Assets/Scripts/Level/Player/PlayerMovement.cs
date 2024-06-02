@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public CharacterScriptableObject characterData;
-    private Controllers controls;
     [HideInInspector]
     public float lastHorizontalVector, lastVerticalVector;
     [HideInInspector]
@@ -25,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         inputReader = FindAnyObjectByType<InputReader>();
-        controls = inputReader.controls;
     }
     void Start()
     {
@@ -40,13 +38,11 @@ public class PlayerMovement : MonoBehaviour
     {
         SlowPlayerEffect.onReturn += RemoveDefaultSlow;
         StonePlayerEffect.onReturn += RemoveDefaultStone;
-        controls.Enable();
     }
     private void OnDisable()
     {
         SlowPlayerEffect.onReturn -= RemoveDefaultSlow;
         StonePlayerEffect.onReturn -= RemoveDefaultStone;
-        controls.Disable();
     }
     void Update()
     {
@@ -95,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!PlayerStats.isKilled)
         {
-            moveDir = controls.Basic.Move.ReadValue<Vector2>();
+            moveDir = inputReader.controls.Basic.Move.ReadValue<Vector2>();
             if (moveDir != Vector2.zero)
             {
                 if (!anim.GetBool("toRun"))
