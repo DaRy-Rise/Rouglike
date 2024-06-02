@@ -13,6 +13,7 @@ public class EnemyStats : MonoBehaviour
     protected Res coin;
     protected EnemyMovement movement;
     protected Animator anim;
+    private ObjectPoolManager objectPoolManager;
 
     protected virtual void Awake()
     {
@@ -27,6 +28,7 @@ public class EnemyStats : MonoBehaviour
         playerStats = FindAnyObjectByType<PlayerStats>();
         movement = gameObject.GetComponent<EnemyMovement>();
         anim = gameObject.GetComponent<Animator>();
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
     }
     protected virtual void Update()
     {
@@ -96,7 +98,9 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void DropCoin()
     {
-        Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
+        //Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
+        print("start attack");
+        objectPoolManager.GetObject(coin, "COIN");
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {

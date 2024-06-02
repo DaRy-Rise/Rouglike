@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownDur: 3.1
-  weaponPrefab: {fileID: 9051852861971262565, guid: 2b688fde5f478bb41b76b5719114e58e, type: 3}
+  weaponPrefab: {fileID: 118324382321936806, guid: 2b688fde5f478bb41b76b5719114e58e, type: 3}
+  objectPoolManager: {fileID: 0}
 --- !u!50 &5897480963116658111
 Rigidbody2D:
   serializedVersion: 4

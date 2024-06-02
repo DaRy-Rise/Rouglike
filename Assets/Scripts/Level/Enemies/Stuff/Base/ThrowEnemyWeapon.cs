@@ -7,9 +7,11 @@ public class ThrowEnemyWeapon : MonoBehaviour
     protected float currentSpeed, currentDamage;
     protected Transform player;
     protected Vector3 direction;
+    public ObjectPoolManager objectPoolManager;
 
     protected virtual void Start()
     {
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
         player = FindAnyObjectByType<PlayerMovement>().transform;
         direction = (player.position - transform.position).normalized;
         if (player.position.x - transform.position.x < 0)
@@ -24,18 +26,25 @@ public class ThrowEnemyWeapon : MonoBehaviour
         var direc = player.transform.position - transform.position;
         var rot = Quaternion.LookRotation(direc, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
-        Destroy(gameObject, 3);
+        //Destroy(gameObject, 3);
+        Invoke("Release", 3);
 
+    }
+    protected void Release()
+    {
+        objectPoolManager.ReturnObject(gameObject.GetComponent<ThrowEnemyWeapon>());
     }
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        Release();
     }
     protected void FixedUpdate()
     {
         if (PlayerStats.isKilled)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Release();
         }
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
@@ -45,7 +54,8 @@ public class ThrowEnemyWeapon : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerStats player = collision.GetComponent<PlayerStats>();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Release();
             player.TakeDamage(currentDamage);
         }
     }

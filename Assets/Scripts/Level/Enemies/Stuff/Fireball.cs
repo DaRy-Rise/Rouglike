@@ -16,7 +16,8 @@ public class Fireball : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Release();
         }
     }
 
