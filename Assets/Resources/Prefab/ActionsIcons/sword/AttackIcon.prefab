@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1363371603717081240}
   - component: {fileID: 5293988289535187619}
   m_Layer: 0
-  m_Name: SwordAttacIcon
+  m_Name: AttackIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,9 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4099d729dc6783a4aa9c93af18568b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 0}
   durDefault: 0
   dur: 0
   indexOfCell: 0
   iconBar: {fileID: 6297828377828357803}
-  kindOfIcons: 0
+  isAttackIcon: 1
   isAttack: 0

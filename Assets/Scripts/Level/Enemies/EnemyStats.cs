@@ -10,7 +10,7 @@ public class EnemyStats : MonoBehaviour
     protected PlayerStats playerStats;
     [SerializeField]
     private Res res;
-    protected Res coin;
+    protected Coin coin;
     protected EnemyMovement movement;
     protected Animator anim;
     private ObjectPoolManager objectPoolManager;
@@ -23,7 +23,7 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void Start()
     {
-        coin = Resources.Load<Res>("Prefab/Res/Coin");
+        coin = Resources.Load<Coin>("Prefab/Res/Coin");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         playerStats = FindAnyObjectByType<PlayerStats>();
         movement = gameObject.GetComponent<EnemyMovement>();
@@ -94,13 +94,14 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void DropRes()
     {
-        Instantiate(res, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        //drop res
+        objectPoolManager.GetObject(res, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
     }
     protected virtual void DropCoin()
     {
+        //drop coin
         //Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
-        print("start attack");
-        objectPoolManager.GetObject(coin, "COIN");
+        objectPoolManager.GetObject(coin, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y + 0.3f));
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {

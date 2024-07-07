@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2837842781164421627}
   - component: {fileID: 742617836055051147}
   - component: {fileID: 8569457893432420914}
-  - component: {fileID: 8031465794317005712}
   - component: {fileID: -3642015325993001729}
+  - component: {fileID: -1933392311404102436}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -108,19 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8031465794317005712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4990987112981858225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f8b845b06817748b3fec80403525c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kindOf: 0
 --- !u!60 &-3642015325993001729
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +160,15 @@ PolygonCollider2D:
       - {x: 0.06, y: 0.02}
       - {x: 0.02, y: 0.06}
   m_UseDelaunayMesh: 0
+--- !u!114 &-1933392311404102436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4990987112981858225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d60d82885202243bb8452001d9bf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

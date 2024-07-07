@@ -7,12 +7,20 @@ public class ThrowEnemyWeapon : MonoBehaviour
     protected float currentSpeed, currentDamage;
     protected Transform player;
     protected Vector3 direction;
-    public ObjectPoolManager objectPoolManager;
+    protected ObjectPoolManager objectPoolManager;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
         player = FindAnyObjectByType<PlayerMovement>().transform;
+    }
+    protected virtual void OnEnable()
+    {
+        SetDirectOptions();
+        Invoke("ReturnToPool", 3);
+    }
+    public void SetDirectOptions()
+    {
         direction = (player.position - transform.position).normalized;
         if (player.position.x - transform.position.x < 0)
         {
@@ -26,25 +34,24 @@ public class ThrowEnemyWeapon : MonoBehaviour
         var direc = player.transform.position - transform.position;
         var rot = Quaternion.LookRotation(direc, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
-        //Destroy(gameObject, 3);
-        Invoke("Release", 3);
-
     }
-    protected void Release()
+    protected void ReturnToPool()
     {
-        objectPoolManager.ReturnObject(gameObject.GetComponent<ThrowEnemyWeapon>());
+        if (gameObject.activeSelf)
+        {
+            objectPoolManager.ReturnObject(gameObject.GetComponent<ThrowEnemyWeapon>());
+        }
+
     }
     private void OnBecameInvisible()
     {
-        //Destroy(gameObject);
-        Release();
+        ReturnToPool();
     }
     protected void FixedUpdate()
     {
         if (PlayerStats.isKilled)
         {
-            //Destroy(gameObject);
-            Release();
+            ReturnToPool();
         }
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
@@ -54,8 +61,7 @@ public class ThrowEnemyWeapon : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerStats player = collision.GetComponent<PlayerStats>();
-            //Destroy(gameObject);
-            Release();
+            ReturnToPool();
             player.TakeDamage(currentDamage);
         }
     }

@@ -25,29 +25,54 @@ public class ObjectPool<T> where T : MonoBehaviour
     private T CreateNewObject()
     {
         T newObject = UnityEngine.Object.Instantiate(prefab);
-        //newObject.gameObject.SetActive(false);
+        newObject.gameObject.SetActive(false);
         return newObject;
     }
-
+    private T CreateNewObject(Vector2 position)
+    {
+        T newObject = UnityEngine.Object.Instantiate(prefab, position, Quaternion.identity);
+        newObject.gameObject.SetActive(false);
+        return newObject;
+    }
     public T Get()
     {
         T obj;
         if (pool.Count > 0)
         {
+            Debug.LogWarning("GET: Length before taking " + pool.Count);
             obj = pool.Dequeue();
         }
         else
         {
             obj = CreateNewObject();
         }
-        obj.gameObject.SetActive(true);
         obj.transform.SetParent(parent.transform);
+        obj.gameObject.SetActive(true);
         return obj;
     }
+    public T Get(Vector2 position)
+    {
 
+        T obj;
+        if (pool.Count > 0)
+        {
+            obj = pool.Dequeue();
+            obj.transform.position = position;
+        }
+        else
+        {
+            obj = CreateNewObject(position);
+        }
+        obj.transform.SetParent(parent.transform);
+        obj.gameObject.SetActive(true);  
+        return obj;
+    }
     public void ReturnToPool(T obj)
     {
-        obj.gameObject.SetActive(false);
-        pool.Enqueue(obj);
+        if (!pool.Contains(obj))
+        {
+            obj.gameObject.SetActive(false);
+            pool.Enqueue(obj);
+        }
     }
 }

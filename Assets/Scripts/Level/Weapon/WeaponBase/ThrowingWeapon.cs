@@ -3,33 +3,44 @@ using UnityEngine;
 public class ThrowingWeapon : MonoBehaviour
 {
     public WeaponScriptableObject weaponData;
-    protected Vector3 direction;
+    protected Vector3 direction, localScale;
     public float destroyAfterSeconds;
     public static float currentDamage, currentSpeed, currentCooldownDuration;
     protected int currentPierce;
+    private ObjectPoolManager objectPoolManager;
 
     private void Awake()
+    {
+        localScale = transform.localScale;
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
+    }
+
+    protected virtual void OnEnable()
+    {
+        Invoke("ReturnToPool", destroyAfterSeconds);
+    }
+    private void OnDisable()
     {
         currentDamage = weaponData.Damage;
         currentSpeed = weaponData.Speed;
         currentCooldownDuration = weaponData.CoolDownDur;
         currentPierce = weaponData.Pierce;
     }
-
-    protected virtual void Start()
-    {
-        Destroy(gameObject, destroyAfterSeconds);
-    }
-
     private void ReducePierce()
     {
         currentPierce--;
         if (currentPierce <= 0)
         {
-            Destroy(gameObject);
+            ReturnToPool();
         }
     }
-
+    private void ReturnToPool()
+    {
+        if (objectPoolManager.enabled == true)
+        {
+            objectPoolManager.ReturnObject(gameObject.GetComponent<Projectile>());
+        }
+    }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") && collision.isTrigger)
@@ -44,10 +55,8 @@ public class ThrowingWeapon : MonoBehaviour
         direction = dir;
         float dirX = direction.x;
         float dirY = direction.y;
-
-        Vector3 scale = transform.localScale;
-        Vector3 rotation = transform.rotation.eulerAngles;
-
+        Vector3 scale = localScale;
+        Vector3 rotation = new Vector3(0,0,0);
         if (dirX < 0 && dirY == 0) //left
         {
             scale.x *= -1;

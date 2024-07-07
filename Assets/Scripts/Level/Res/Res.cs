@@ -16,8 +16,7 @@ public class Res : MonoBehaviour
         {
             ResController.IncreaseRes(kindOf);
             //Destroy(gameObject);
-            objectPoolManager.ReturnObject<Res>(gameObject.GetComponent<Res>());
-            if (kindOf == KindOfRes.Coin) print("coin");
+            objectPoolManager.ReturnObject(gameObject.GetComponent<Res>());
         }
     }
 }

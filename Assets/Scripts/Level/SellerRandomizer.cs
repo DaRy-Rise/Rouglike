@@ -24,8 +24,7 @@ public class SellerRandomizer : MonoBehaviour
     }
 
     private void SpawnPrefabs()
-    {
-        
+    {      
         int rand = Random.Range(0, sellerSawnPoints.Count);
         GameObject market = Instantiate(marketPrefab, sellerSawnPoints[rand].transform.position, Quaternion.identity);
         market.transform.parent = sellerSawnPoints[rand].transform;

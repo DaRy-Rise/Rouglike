@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Ability/Sword/DashAbility", fileName = "DashAbility")]
 public class DashAbility : Ability
 {
     public float dashVelocity;
@@ -14,7 +14,6 @@ public class DashAbility : Ability
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         movement.blockMove = true;
         rb.velocity = movement.moveDir.normalized * dashVelocity;
-
     }
     public override void CoolDown(GameObject gameObject)
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Ability
 {
-    enum AbilityState
+    public enum AbilityState
     {
         Ready,
         Active,

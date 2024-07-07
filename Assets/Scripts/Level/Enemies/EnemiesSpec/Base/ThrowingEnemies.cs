@@ -10,7 +10,6 @@ public class ThrowingEnemies : MonoBehaviour
     protected ThrowEnemyWeapon weaponPrefab;
     private ObjectPoolManager objectPoolManager;
 
-
     protected virtual void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
@@ -29,10 +28,7 @@ public class ThrowingEnemies : MonoBehaviour
     public virtual void StartAttack()
     {
         currentCoolDown = coolDownDur;
-        //GameObject spawnedWeapon = Instantiate(weaponPrefab);
-        //spawnedWeapon.transform.position = transform.position;
-        print("start attack");
-        ThrowEnemyWeapon wep = objectPoolManager.GetObject(weaponPrefab, "Fireball");
-        wep.transform.position = transform.position;
+        ThrowEnemyWeapon wep = objectPoolManager.GetObject(weaponPrefab, transform.position);
+        wep.GetComponent<ThrowEnemyWeapon>().SetDirectOptions();
     }
 }

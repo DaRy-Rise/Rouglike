@@ -3,9 +3,9 @@ using UnityEngine;
 public class HalfHealthPotion : ThrowEnemyWeapon
 {
     HalfHealthPlayerEffect playerEffect;
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         playerEffect = FindAnyObjectByType<HalfHealthPlayerEffect>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)

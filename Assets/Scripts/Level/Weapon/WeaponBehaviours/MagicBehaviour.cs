@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class MagicBehaviour : ThrowingWeapon
 {
+    [HideInInspector]
     public MagicController controller;
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         controller = FindAnyObjectByType<MagicController>();
     }
     void Update()

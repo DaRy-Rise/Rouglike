@@ -6,9 +6,9 @@ public class BloodPotion : ThrowEnemyWeapon
     [SerializeField]
     private float duration;
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         playerEffect = FindAnyObjectByType<BloodlyPlayerEffect>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
