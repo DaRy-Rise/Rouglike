@@ -8,9 +8,9 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField]
     private float damage, speed, coolDownDur;
     [SerializeField]
-    private GameObject prefab;
+    private Projectile prefab;
 
-    public GameObject Prefab { get => prefab; private set => prefab = value; } 
+    public Projectile Prefab { get => prefab; private set => prefab = value; } 
     public float Damage { get => damage; set => damage = value; }
     public float Speed { get => speed; set => speed = value; }
     public float CoolDownDur { get => coolDownDur; set => coolDownDur = value; }

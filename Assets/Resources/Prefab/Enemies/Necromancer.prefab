@@ -181,8 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf35d57ca3898c34199e007c508e5eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 0
   enemyData: {fileID: 11400000, guid: a4ee13ae0753efe4a8973dddf9846787, type: 2}
   isNearPlayer: 0
+  isDying: 0
 --- !u!114 &3122843425822645238
 MonoBehaviour:
   m_ObjectHideFlags: 0

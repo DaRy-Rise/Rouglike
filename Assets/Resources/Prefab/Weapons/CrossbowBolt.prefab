@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4874155503384139368}
   - component: {fileID: -9160078167143129747}
   - component: {fileID: 2709660531268667185}
+  - component: {fileID: -1488862885935270570}
   m_Layer: 0
   m_Name: CrossbowBolt
   m_TagString: Weapon
@@ -179,3 +180,15 @@ PolygonCollider2D:
       - {x: 0.16, y: 0.04}
       - {x: 0.089999996, y: 0.07}
   m_UseDelaunayMesh: 0
+--- !u!114 &-1488862885935270570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068010123854222721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3da8563819e30b4fa5293635f78cf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

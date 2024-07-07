@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ThrowBehavior : ThrowingWeapon
 {
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
     }
 
     void Update()

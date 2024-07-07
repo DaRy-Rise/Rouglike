@@ -4895,10 +4895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellerSawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1004727216871279877}
-  - {fileID: 0}
   - {fileID: 2982139558672745704}
   - {fileID: 9103330865207263326}
 --- !u!1 &3790501509044765871

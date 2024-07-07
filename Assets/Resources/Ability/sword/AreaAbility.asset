@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 194319acfcb51f647af305a59c43a955, type: 3}
-  m_Name: DashAbility
+  m_Script: {fileID: 11500000, guid: 2ff2e47e9db15d146b700ae6a86c47ae, type: 3}
+  m_Name: AreaAbility
   m_EditorClassIdentifier: 
-  name: Dash
-  coolDownTime: 2
-  activeTime: 0.5
-  dashVelocity: 50
+  name: Area
+  coolDownTime: 5
+  activeTime: 1
+  area: 1

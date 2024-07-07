@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ThrowController : WeaponController
 {
-    private GameObject spawnedProjectile;
+    private Projectile spawnedProjectile;
+    private ObjectPoolManager objectPoolManager;
     protected override void Start()
     {
         base.Start();
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
     }
 
     protected override void StartAttack()
@@ -22,8 +24,7 @@ public class ThrowController : WeaponController
     }
     private void SpawnArrow()
     {
-        spawnedProjectile = Instantiate(weaponData.Prefab);
-        spawnedProjectile.transform.position = transform.position;
+        spawnedProjectile = objectPoolManager.GetObject(weaponData.Prefab, transform.position);
         spawnedProjectile.GetComponent<ThrowBehavior>().DirectionChecker(playerMovement.lastMovedVector);
     }
 }

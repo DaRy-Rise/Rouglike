@@ -2944,7 +2944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 1c9b49df10243b745b51330fc4a2a1ef, type: 3}
-  isMainMaster: 1
+  isMainMaster: 0
   kindOfMasters: 2
   scale: 3
   paths:
@@ -12311,7 +12311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 2d38e2351d5fc7b4cb1bff07be377263, type: 3}
-  isMainMaster: 0
+  isMainMaster: 1
   kindOfMasters: 0
   scale: 3
   paths:
@@ -17278,6 +17278,7 @@ MonoBehaviour:
   lastMovedVector: {x: 0, y: 0}
   moveSpeed: 0
   scale: 3
+  blockMove: 0
 --- !u!50 &1935024508
 Rigidbody2D:
   serializedVersion: 4
@@ -17341,7 +17342,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -17396,7 +17397,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 773b494d75aa48647b7d59bcaa96e084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef4f4ba01b5a0894c9d778e37fc1bd91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17458,7 +17459,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

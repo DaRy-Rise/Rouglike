@@ -15,7 +15,6 @@ public class PropRandomizes : MonoBehaviour
         SpawnProps();
         if (propTreeSpawnPoints.Count > 0 )
         {
-            print("spawn trees");
             SpawnTreeProps();
         }
     }

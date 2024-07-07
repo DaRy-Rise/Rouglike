@@ -10,9 +10,10 @@ public class EnemyStats : MonoBehaviour
     protected PlayerStats playerStats;
     [SerializeField]
     private Res res;
-    protected Res coin;
+    protected Coin coin;
     protected EnemyMovement movement;
     protected Animator anim;
+    private ObjectPoolManager objectPoolManager;
 
     protected virtual void Awake()
     {
@@ -22,11 +23,12 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void Start()
     {
-        coin = Resources.Load<Res>("Prefab/Res/Coin");
+        coin = Resources.Load<Coin>("Prefab/Res/Coin");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         playerStats = FindAnyObjectByType<PlayerStats>();
         movement = gameObject.GetComponent<EnemyMovement>();
         anim = gameObject.GetComponent<Animator>();
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
     }
     protected virtual void Update()
     {
@@ -92,11 +94,14 @@ public class EnemyStats : MonoBehaviour
     }
     protected virtual void DropRes()
     {
-        Instantiate(res, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        //drop res
+        objectPoolManager.GetObject(res, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
     }
     protected virtual void DropCoin()
     {
-        Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
+        //drop coin
+        //Instantiate(coin, new Vector2(gameObject.transform.position.x+0.5f, gameObject.transform.position.y + 0.3f), Quaternion.identity);
+        objectPoolManager.GetObject(coin, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y + 0.3f));
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {

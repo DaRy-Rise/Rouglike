@@ -7,12 +7,14 @@ public class ThrowingEnemies : MonoBehaviour
     protected float currentCoolDown;
     protected PlayerMovement playerMovement;
     [SerializeField]
-    protected GameObject weaponPrefab;
+    protected ThrowEnemyWeapon weaponPrefab;
+    private ObjectPoolManager objectPoolManager;
 
     protected virtual void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         currentCoolDown = coolDownDur;
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
     }
 
     protected void Update()
@@ -23,10 +25,10 @@ public class ThrowingEnemies : MonoBehaviour
             StartAttack();
         }
     }
-    protected virtual void StartAttack()
+    public virtual void StartAttack()
     {
         currentCoolDown = coolDownDur;
-        GameObject spawnedWeapon = Instantiate(weaponPrefab);
-        spawnedWeapon.transform.position = transform.position;
+        ThrowEnemyWeapon wep = objectPoolManager.GetObject(weaponPrefab, transform.position);
+        wep.GetComponent<ThrowEnemyWeapon>().SetDirectOptions();
     }
 }

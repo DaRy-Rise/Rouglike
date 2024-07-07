@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1363371603717081240}
   - component: {fileID: 5293988289535187619}
   m_Layer: 0
-  m_Name: MagicAttacIcon
+  m_Name: AttackIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,14 +8,16 @@ public class MagicController : WeaponController
     public float chainRadius = 2f;
     public int maxChainCount = 5;
     public LayerMask enemyLayers;
+    private ObjectPoolManager objectPoolManager;
     public GameObject chainLightningEffect;
     protected List<int> affectedId = new List<int>();
-    private GameObject spawnedProjectile;
+    private Projectile spawnedProjectile;
     Collider2D[] enemiesInRange;
 
     protected override void Start()
     {
         base.Start();
+        objectPoolManager = FindAnyObjectByType<ObjectPoolManager>();
     }
 
     protected override void StartAttack()
@@ -32,15 +34,14 @@ public class MagicController : WeaponController
     }
     private void SpawnLightBall()
     {
-        spawnedProjectile = Instantiate(weaponData.Prefab);
-        spawnedProjectile.transform.position = transform.position;
+        spawnedProjectile = objectPoolManager.GetObject(weaponData.Prefab, transform.position);
         spawnedProjectile.GetComponent<MagicBehaviour>().DirectionChecker(playerMovement.lastMovedVector);
     }
     public void InitChainLightning(GameObject enemy)
     {
         Vector3 pos = enemy.transform.position;
         affectedId.Add(enemy.GetInstanceID());
-        StartCoroutine(CreateChainLightning(enemy, enemy.transform.position));
+        StartCoroutine(CreateChainLightning(enemy, pos));
     }
     private IEnumerator CreateChainLightning(GameObject startEnemy, Vector3 startPos)
     {

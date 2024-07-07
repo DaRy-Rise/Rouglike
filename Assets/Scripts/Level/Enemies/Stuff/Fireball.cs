@@ -6,9 +6,9 @@ public class Fireball : ThrowEnemyWeapon
     [SerializeField]
     private float duration;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         playerEffect = FindAnyObjectByType<FirePlayerEffect>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -16,7 +16,7 @@ public class Fireball : ThrowEnemyWeapon
         if (collision.CompareTag("Player"))
         {
             GetEffect();
-            Destroy(gameObject);
+            ReturnToPool();
         }
     }
 

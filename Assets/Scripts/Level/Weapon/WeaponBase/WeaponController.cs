@@ -7,7 +7,7 @@ public class WeaponController : MonoBehaviour
     protected float currentCoolDown;
     protected bool isAttackAlowed = true;
     protected PlayerMovement playerMovement;
-    public static System.Action onRMBClick;
+    public static System.Action onLMBClick;
     private Animator anim;
     protected InputReader inputReader;
 
@@ -19,7 +19,10 @@ public class WeaponController : MonoBehaviour
         inputReader = FindAnyObjectByType<InputReader>();
         inputReader.AttackEvent += StartAttack;
     }
-
+    private void OnDisable()
+    {
+        inputReader.AttackEvent -= StartAttack;
+    }
     protected virtual void Update()
     {
         if (currentCoolDown <= 0f)
@@ -35,7 +38,7 @@ public class WeaponController : MonoBehaviour
     {
         isAttackAlowed = false;
         currentCoolDown = weaponData.CoolDownDur;
-        onRMBClick?.Invoke();
+        onLMBClick?.Invoke();
         anim.SetBool("toAttack", true);
     }
 }

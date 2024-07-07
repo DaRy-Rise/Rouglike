@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3566000388287073826}
   - component: {fileID: 2234581749449144662}
   - component: {fileID: 7585013355595586580}
+  - component: {fileID: 1392442514328190520}
   m_Layer: 0
   m_Name: LightBall
   m_TagString: Untagged
@@ -181,3 +182,15 @@ PolygonCollider2D:
       - {x: 0.08, y: -0.03}
       - {x: 0.08, y: 0.06}
   m_UseDelaunayMesh: 0
+--- !u!114 &1392442514328190520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482306235760610666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3da8563819e30b4fa5293635f78cf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

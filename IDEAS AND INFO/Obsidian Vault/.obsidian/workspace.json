@@ -44,6 +44,16 @@
             }
           },
           {
+            "id": "203f4429c750079d",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.5"
+              }
+            }
+          },
+          {
             "id": "d0b3bc494561f280",
             "type": "leaf",
             "state": {
@@ -52,6 +62,21 @@
                 "file": "Абилки.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "a55d15edb458b79f",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Tree.canvas",
+                "viewState": {
+                  "x": 423,
+                  "y": -719.5,
+                  "zoom": -0.20616351965016477
+                }
               }
             }
           },
@@ -71,7 +96,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -137,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Абилки.md",
+                "file": "Tree.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +179,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Абилки.md",
+                "file": "Tree.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -177,7 +202,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Абилки.md"
+                "file": "Tree.canvas"
               }
             }
           }
@@ -199,11 +224,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5d1431ea0c5f1679",
+  "active": "a55d15edb458b79f",
   "lastOpenFiles": [
-    "Логика Абилок.md",
-    "Абилки.md",
+    "Untitled",
+    "Untitled.md",
     "Tree.canvas",
+    "Абилки.md",
+    "Логика Абилок.md",
     "Pasted image 20240516225337.png",
     "Фазан.md",
     "Structure.canvas",

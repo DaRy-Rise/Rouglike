@@ -114,6 +114,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Ability",
+            "id": "6edb9167-5fd5-4783-a7b7-5f36ad58a72d",
+            "actions": [
+                {
+                    "name": "MoveAbility",
+                    "type": "Button",
+                    "id": "36b2fc67-3fbd-467c-9588-b70708eaf198",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UltaAbility",
+                    "type": "Button",
+                    "id": "1149fdd5-98ce-4d84-9fc1-e598af45ad18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AreaAbility",
+                    "type": "Button",
+                    "id": "93092dc3-c015-44a3-b9a0-ea1663100c4d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2bb73c27-b4d3-429d-8e71-fa2d16562a7d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c3fff4a-c495-4686-bf9c-756c1c7d2208",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UltaAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d36046b6-2ab5-47d6-9d79-0544a36eac6f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AreaAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

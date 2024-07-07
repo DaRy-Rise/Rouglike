@@ -1,7 +1,10 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class ActionIcon : MonoBehaviour
 {
+    [SerializeField]
+    public Ability scriptableObject;
     [HideInInspector]
     public float durDefault;
     [HideInInspector]
@@ -10,21 +13,29 @@ public class ActionIcon : MonoBehaviour
     public int indexOfCell;
     [SerializeField]
     public ActionIconBar iconBar;
-    [HideInInspector]
-    public KindOfIcons kindOfIcons;
+    [SerializeField]
+    private bool isAttackIcon;
     [HideInInspector]
     public bool isAttack;
-    private WeaponController weaponController;
 
 
     protected virtual void Start()
     {
-        weaponController = FindAnyObjectByType<WeaponController>();
-        durDefault = weaponController.weaponData.CoolDownDur;
+        SetDefaultCoolDownValue();
         iconBar.max = durDefault;
         dur = durDefault;
     }
-
+    private void SetDefaultCoolDownValue()
+    {
+        if (isAttackIcon)
+        {
+            durDefault = FindAnyObjectByType<WeaponController>().weaponData.CoolDownDur;
+        }
+        else
+        {
+            durDefault = scriptableObject.coolDownTime;
+        }    
+    }
     protected virtual void Update()
     {
         if (isAttack)

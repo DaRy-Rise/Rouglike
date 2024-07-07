@@ -136,6 +136,74 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Ability"",
+            ""id"": ""6edb9167-5fd5-4783-a7b7-5f36ad58a72d"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""36b2fc67-3fbd-467c-9588-b70708eaf198"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UltaAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""1149fdd5-98ce-4d84-9fc1-e598af45ad18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AreaAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""93092dc3-c015-44a3-b9a0-ea1663100c4d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2bb73c27-b4d3-429d-8e71-fa2d16562a7d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c3fff4a-c495-4686-bf9c-756c1c7d2208"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UltaAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d36046b6-2ab5-47d6-9d79-0544a36eac6f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""AreaAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -156,6 +224,11 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
         m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
         m_Basic_Attack = m_Basic.FindAction("Attack", throwIfNotFound: true);
+        // Ability
+        m_Ability = asset.FindActionMap("Ability", throwIfNotFound: true);
+        m_Ability_MoveAbility = m_Ability.FindAction("MoveAbility", throwIfNotFound: true);
+        m_Ability_UltaAbility = m_Ability.FindAction("UltaAbility", throwIfNotFound: true);
+        m_Ability_AreaAbility = m_Ability.FindAction("AreaAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -267,6 +340,68 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         }
     }
     public BasicActions @Basic => new BasicActions(this);
+
+    // Ability
+    private readonly InputActionMap m_Ability;
+    private List<IAbilityActions> m_AbilityActionsCallbackInterfaces = new List<IAbilityActions>();
+    private readonly InputAction m_Ability_MoveAbility;
+    private readonly InputAction m_Ability_UltaAbility;
+    private readonly InputAction m_Ability_AreaAbility;
+    public struct AbilityActions
+    {
+        private @Controllers m_Wrapper;
+        public AbilityActions(@Controllers wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveAbility => m_Wrapper.m_Ability_MoveAbility;
+        public InputAction @UltaAbility => m_Wrapper.m_Ability_UltaAbility;
+        public InputAction @AreaAbility => m_Wrapper.m_Ability_AreaAbility;
+        public InputActionMap Get() { return m_Wrapper.m_Ability; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AbilityActions set) { return set.Get(); }
+        public void AddCallbacks(IAbilityActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AbilityActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AbilityActionsCallbackInterfaces.Add(instance);
+            @MoveAbility.started += instance.OnMoveAbility;
+            @MoveAbility.performed += instance.OnMoveAbility;
+            @MoveAbility.canceled += instance.OnMoveAbility;
+            @UltaAbility.started += instance.OnUltaAbility;
+            @UltaAbility.performed += instance.OnUltaAbility;
+            @UltaAbility.canceled += instance.OnUltaAbility;
+            @AreaAbility.started += instance.OnAreaAbility;
+            @AreaAbility.performed += instance.OnAreaAbility;
+            @AreaAbility.canceled += instance.OnAreaAbility;
+        }
+
+        private void UnregisterCallbacks(IAbilityActions instance)
+        {
+            @MoveAbility.started -= instance.OnMoveAbility;
+            @MoveAbility.performed -= instance.OnMoveAbility;
+            @MoveAbility.canceled -= instance.OnMoveAbility;
+            @UltaAbility.started -= instance.OnUltaAbility;
+            @UltaAbility.performed -= instance.OnUltaAbility;
+            @UltaAbility.canceled -= instance.OnUltaAbility;
+            @AreaAbility.started -= instance.OnAreaAbility;
+            @AreaAbility.performed -= instance.OnAreaAbility;
+            @AreaAbility.canceled -= instance.OnAreaAbility;
+        }
+
+        public void RemoveCallbacks(IAbilityActions instance)
+        {
+            if (m_Wrapper.m_AbilityActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IAbilityActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AbilityActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AbilityActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public AbilityActions @Ability => new AbilityActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -280,5 +415,11 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+    }
+    public interface IAbilityActions
+    {
+        void OnMoveAbility(InputAction.CallbackContext context);
+        void OnUltaAbility(InputAction.CallbackContext context);
+        void OnAreaAbility(InputAction.CallbackContext context);
     }
 }

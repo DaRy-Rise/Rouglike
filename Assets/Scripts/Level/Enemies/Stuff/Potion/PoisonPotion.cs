@@ -5,9 +5,9 @@ public class PoisonPotion : ThrowEnemyWeapon
     PoisonPlayerEffect playerEffect;
     [SerializeField]
     private float duration;
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         playerEffect = FindAnyObjectByType<PoisonPlayerEffect>();  
     }
     protected override void OnTriggerEnter2D(Collider2D collision)

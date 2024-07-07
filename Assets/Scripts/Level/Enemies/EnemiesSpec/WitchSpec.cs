@@ -9,11 +9,11 @@ public class WitchSpec : ThrowingEnemies
         potions = Resources.LoadAll<GameObject>("Prefab/Enemies/Stuff/Potions");
     }
 
-    protected override void StartAttack()
-    {
-        weaponPrefab = ChoosePotion();
-        base.StartAttack();
-    }
+    //protected override void StartAttack()
+    //{
+    //    //weaponPrefab = ChoosePotion();
+    //    base.StartAttack();
+    //}
     private GameObject ChoosePotion()
     {
         return potions[Random.Range(0, potions.Length)];
