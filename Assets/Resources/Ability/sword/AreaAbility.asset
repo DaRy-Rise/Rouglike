@@ -20,3 +20,4 @@ MonoBehaviour:
   attackRadius: 1
   damagePerSecond: 0.001
   attackDuration: 5
+
