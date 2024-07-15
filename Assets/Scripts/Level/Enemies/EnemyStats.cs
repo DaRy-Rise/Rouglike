@@ -49,6 +49,7 @@ public class EnemyStats : MonoBehaviour
     }
     public virtual void TakeDamage(float damage)
     {
+        print(damage);
         currentHealth -= damage;
         gameObject.GetComponent<SpriteRenderer>().color = Color.black;
         Invoke("ReturnDefaultColor", 0.25f);

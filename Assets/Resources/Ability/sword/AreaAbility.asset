@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff2e47e9db15d146b700ae6a86c47ae, type: 3}
   m_Name: AreaAbility
   m_EditorClassIdentifier: 
+  abilityState: 2
   name: Area
   coolDownTime: 5
-  activeTime: 1
+  activeTime: 2
   area: 1
+  attackRadius: 1
+  damagePerSecond: 0.001
+  attackDuration: 5
+

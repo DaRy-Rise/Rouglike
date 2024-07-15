@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6c8a7e56a5ada49a9e3ee975747c54, type: 3}
   m_Name: UltaAbility
   m_EditorClassIdentifier: 
+  abilityState: 0
   name: Ulta
   coolDownTime: 20
-  activeTime: 3
+  activeTime: 1
+

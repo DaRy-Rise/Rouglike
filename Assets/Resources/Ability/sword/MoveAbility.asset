@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194319acfcb51f647af305a59c43a955, type: 3}
   m_Name: MoveAbility
   m_EditorClassIdentifier: 
+  abilityState: 0
   name: Dash
   coolDownTime: 2
-  activeTime: 0.5
+  activeTime: 0.1
   dashVelocity: 50
