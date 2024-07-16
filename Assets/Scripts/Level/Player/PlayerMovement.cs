@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private string pathToController;
     private InputReader inputReader;
+    [HideInInspector]
     public bool blockMove;
 
     private void Awake()
