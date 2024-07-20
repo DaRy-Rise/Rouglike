@@ -9,7 +9,8 @@ public class Master : MonoBehaviour
     [SerializeField]
     private Sprite masterFace;
     private GameObject tooltip;
-    private bool isTooltipExist;
+    [HideInInspector]
+    public bool isTooltipExist;
     [SerializeField]
     private bool isMainMaster;
     public KindOfMasters kindOfMasters;
@@ -17,64 +18,21 @@ public class Master : MonoBehaviour
     protected Transform player;
     private string side;
     [SerializeField]
-    private float scale;
+    public float scale;
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
-    [SerializeField]
-    private Path[] paths;
-    private Path currentPath;
-    public float speed = 1, maxDis = .1f;
-    private IEnumerator<Transform> pointInPath;
-    [SerializeField]
-    private float pathCoolDownValue, choosePathCoolDownValue;
-    private float pathCoolDown, choosePathCoolDown;
-    private bool isGoing, isStop, isBack, isPause;
-    private Animator animator;
+    public Action onDialog, onDialogEnd;
 
     void Start()
     {
-        pathCoolDown = pathCoolDownValue;
-        choosePathCoolDown = choosePathCoolDownValue;
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         if (isMainMaster)
         {
             DELETEITLATER_SETMAINMASTER();
         }
-
-        animator = GetComponent<Animator>();
-        ChoosePath();
-        if (currentPath == null)
-        {
-            return;
-        }
-
-        pointInPath = currentPath.GetNextPathPoitn();
-        pointInPath.MoveNext();
-
-        if (pointInPath.Current == null)
-        {
-            return;
-        }
-
-        transform.position = pointInPath.Current.position;
     }
-    private void FixedUpdate()
-    {
-        if (choosePathCoolDown <= 0f && !isGoing && !isBack)
-        {
-            int i = UnityEngine.Random.Range(0, paths.Length);
-            currentPath = paths[i];
-            isPause = false;
 
-            isGoing = true;
-            animator.SetBool("isReadyToGo", true);
-        }
-        else
-        {
-            choosePathCoolDown -= Time.deltaTime;
-        }
-    }
     void Update()
     {
        if (isTooltipExist)
@@ -83,42 +41,7 @@ public class Master : MonoBehaviour
             {
                 FindAnyObjectByType<DialogSystem>().StartDialog(masterFace, kindOfMasters, isMainMaster);
             }
-       }
-
-        if (pointInPath == null || pointInPath.Current == null)
-        {
-            return;
-        }
-        if (isBack && currentPath.isStartPoint)
-        {
-            isBack = false;
-            isGoing = false;
-            choosePathCoolDown = choosePathCoolDownValue;
-        }
-        if (pathCoolDown <= 0f && isBack && !isGoing && !isStop && !isPause)
-        {
-            isGoing = true;
-            isPause = false;
-            animator.SetBool("isReadyToGo", true);
-        }
-        else
-        {
-            pathCoolDown -= Time.deltaTime;
-        }
-        if (isGoing && currentPath.isEndPoint && !isBack)
-        {
-            isGoing = false;
-            animator.SetBool("isReadyToGo", false);
-            pathCoolDown = pathCoolDownValue;
-            isBack = true;
-        }
-        if (isGoing)
-        {
-            SetScale();
-            transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
-        }
-        var distanceSquare = (transform.position - pointInPath.Current.position).sqrMagnitude;
-        if (distanceSquare < maxDis * maxDis) pointInPath.MoveNext();
+       }      
     }
     private void DELETEITLATER_SETMAINMASTER()
     {
@@ -147,6 +70,7 @@ public class Master : MonoBehaviour
     {
         if (collision.tag == "Player" && collision.isTrigger)
         {
+            onDialog?.Invoke();
             SetScaleByGameObject(collision.transform);
             if (!isTooltipExist && portal == null)
             {
@@ -154,32 +78,7 @@ public class Master : MonoBehaviour
                 tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
                 isTooltipExist = true;
             }
-            if (isGoing)
-            {
-                isStop = true;
-                isGoing = false;
-                animator.SetBool("isReadyToGo", false);
-            }
         }
-    }
-    private void SetScale()
-    {
-        try
-        {
-            if (transform.position.x - pointInPath.Current.position.x < 0)
-            {
-                transform.localScale = new Vector3(scale, scale, scale);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-scale, scale, scale);
-            }
-        }
-        catch (Exception)
-        {
-            print("its ok");
-        }
-
     }
     private void SetScaleByGameObject(Transform gameObject)
     {
@@ -196,14 +95,11 @@ public class Master : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(tooltip);
-        isTooltipExist = false;
-        if (isStop == true)
+        if(collision.tag == "Player" && collision.isTrigger)
         {
-            isStop = false;
-            SetScale();
-            isGoing = true;
-            animator.SetBool("isReadyToGo", true);
+            Destroy(tooltip);
+            isTooltipExist = false;
+            onDialogEnd?.Invoke();
         }
     }
 
@@ -234,11 +130,5 @@ public class Master : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void ChoosePath()
-    {
-        int i = UnityEngine.Random.Range(0, paths.Length);
-        currentPath = paths[i];
     }
 }
