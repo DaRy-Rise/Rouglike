@@ -5,10 +5,10 @@ using UnityEngine.UIElements;
 
 public class Master : MonoBehaviour
 {
-    private GameObject tooltipPrefab;
+    private GameObject tooltipPrefab, dialogIconPrefab;
     [SerializeField]
     private Sprite masterFace;
-    private GameObject tooltip;
+    private GameObject tooltip, dialogIcon;
     [HideInInspector]
     public bool isTooltipExist;
     [SerializeField]
@@ -22,10 +22,13 @@ public class Master : MonoBehaviour
     private string pathToJson = "Assets/Resources/Json/MastersInfo.json";
     private ParsingJson parser;
     public Action onDialog, onDialogEnd;
+    [SerializeField]
+    private int chanceForDialog;
 
     void Start()
     {
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
+        dialogIconPrefab = Resources.Load<GameObject>("Prefab/Tooltips/dialog_icon");
         player = FindAnyObjectByType<PlayerMovement>().transform;
         if (isMainMaster)
         {
@@ -74,10 +77,15 @@ public class Master : MonoBehaviour
             SetScaleByGameObject(collision.transform);
             if (!isTooltipExist && portal == null)
             {
+                EndDialog();
                 tooltip = Instantiate(tooltipPrefab);
-                tooltip.transform.position = gameObject.transform.position + new Vector3(0.9f, 0.9f, 0);
+                tooltip.transform.position = gameObject.transform.position + new Vector3(0.4f, 0.4f, 0);
                 isTooltipExist = true;
             }
+        }
+        else if (collision.tag == "Master" && collision.isTrigger)
+        {
+            CheckForDialogue(collision);
         }
     }
     private void SetScaleByGameObject(Transform gameObject)
@@ -101,8 +109,36 @@ public class Master : MonoBehaviour
             isTooltipExist = false;
             onDialogEnd?.Invoke();
         }
+        else if (collision.tag == "Master" && collision.isTrigger)
+        {
+            EndDialog();
+        }
     }
 
+    private void CheckForDialogue(Collider2D collision)
+    {
+        int chance = UnityEngine.Random.Range(0,101);
+        if (chanceForDialog>= chance)
+            StartDialogueWithMaster(collision);
+
+    }
+    private void StartDialogueWithMaster(Collider2D collision)
+    {
+        Debug.Log($"{gameObject.name} начал диалог");
+        onDialog?.Invoke();
+        SetScaleByGameObject(collision.transform);
+        dialogIcon = Instantiate(dialogIconPrefab);
+        dialogIcon.transform.position = gameObject.transform.position + new Vector3(0.4f, 0.4f, 0);
+        Invoke("EndDialog", UnityEngine.Random.Range(5, 20));
+    }
+    private void EndDialog()
+    {
+        if (dialogIcon!=null)
+        {
+            Destroy(dialogIcon);
+        }
+        onDialogEnd?.Invoke();
+    }
     public void OpenPortal()
     {
         switch (kindOfMasters)

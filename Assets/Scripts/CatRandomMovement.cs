@@ -37,7 +37,6 @@ public class CatRandomMovement : MonoBehaviour //don't forget to change the scri
         {
             currentCoolDown = 0f;
             SetRandomCooldown(out coolDown);
-            print(coolDown);
             if (agent.remainingDistance <= agent.stoppingDistance) //done with path
             {
                 int randomIndex = UnityEngine.Random.Range(0, chunkCenters.Length); // Выбор случайного чанка

@@ -1,24 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
-using UnityEngine.AI; //important
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-//if you use this code you are contractually obligated to like the YT video
-public class MasterRandomMovement : MonoBehaviour //don't forget to change the script name if you haven't
+public class MasterRandomMovement : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public float range; //radius of sphere
-    [SerializeField]
-    private float minCoolDown, maxCooldown, coolDown;
-    private float currentCoolDown;
-    public Transform[] chunkCenters;//centre of the area the agent wants to move around in
-    //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
-    private float scale;
-    private Vector3 point;
+    public Transform[] chunks; // Чанки, по которым могут перемещаться NPC
+    public float timeMin = 1f; // Минимальный интервал перемещения
+    public float timeMax = 3f; // Максимальный интервал перемещения
+    private NavMeshAgent agent;
     private Animator animator;
-    private Vector3 lastDirection;
+
+    private float scale;
 
     private void OnEnable()
     {
@@ -30,39 +26,16 @@ public class MasterRandomMovement : MonoBehaviour //don't forget to change the s
         GetComponent<Master>().onDialog -= StopMoving;
         GetComponent<Master>().onDialogEnd -= ResumeMoving;
     }
-    void Start()
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         scale = GetComponent<Master>().scale;
         animator = GetComponent<Animator>();
+        StartCoroutine(MoveRandomly());
     }
-
-    void Update()
+    private void Update()
     {
-        if (!agent.isOnNavMesh)
-            return;
-        currentCoolDown += Time.deltaTime;
-        if (!GetComponent<Master>().isTooltipExist)
-        {
-            if (currentCoolDown >= coolDown)
-            {
-                currentCoolDown = 0f;
-                SetRandomCooldown(out coolDown);
-                print(coolDown);
-                if (agent.remainingDistance <= agent.stoppingDistance) //done with path
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, chunkCenters.Length); // Выбор случайного чанка
-                    Vector3 centerPoint = chunkCenters[randomIndex].position;
-                    if (RandomPoint(centerPoint, range, out point)) //pass in our centre point and radius of area
-                    {
-                        lastDirection = (point - transform.position).normalized;
-                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                        agent.SetDestination(point);
-                        SetScale();
-                    }
-                }
-            }
-        }
+        transform.rotation = Quaternion.identity;
         if (IsMoving())
         {
             animator.SetBool("isReadyToGo", true);
@@ -71,29 +44,28 @@ public class MasterRandomMovement : MonoBehaviour //don't forget to change the s
         {
             animator.SetBool("isReadyToGo", false);
         }
-
-        gameObject.transform.rotation = Quaternion.identity;
     }
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    private IEnumerator MoveRandomly()
     {
-        Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range; //random point in a sphere        
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 5.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        while (true)
         {
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
-            result = hit.position;
-            return true;
-        }
+            // Ждем случайный интервал
+            float waitTime = UnityEngine.Random.Range(timeMin, timeMax);
+            yield return new WaitForSeconds(waitTime);
 
-        result = Vector3.zero;
-        return false;
+            // Перемещаем NPC на случайный чанк
+            Transform targetChunk = chunks[UnityEngine.Random.Range(0, chunks.Length)];
+            agent.SetDestination(targetChunk.position);
+            SetScale(targetChunk.position);
+            // Ждать, пока NPC не достигнет цели
+            while (!agent.pathPending && agent.remainingDistance > 0.1f)
+            {
+                yield return null;
+            }
+        }
     }
-    private void SetRandomCooldown(out float coolDown)
-    {
-        coolDown = UnityEngine.Random.Range(minCoolDown, maxCooldown);
-    }
-    private void SetScale()
+
+    private void SetScale(Vector3 point)
     {
         try
         {
@@ -127,6 +99,5 @@ public class MasterRandomMovement : MonoBehaviour //don't forget to change the s
         animator.SetBool("isReadyToGo", true);
         //agent.isStopped = false;
         agent.enabled = true;
-        SetScale();
     }
 }
