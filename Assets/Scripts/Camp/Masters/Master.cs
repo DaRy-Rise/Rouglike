@@ -24,6 +24,8 @@ public class Master : MonoBehaviour
     public Action onDialog, onDialogEnd;
     [SerializeField]
     private int chanceForDialog;
+    private bool isDialog;
+    public float timeOfDialog;
 
     void Start()
     {
@@ -86,6 +88,15 @@ public class Master : MonoBehaviour
         else if (collision.tag == "Master" && collision.isTrigger)
         {
             CheckForDialogue(collision);
+            if (isDialog == true)
+                StartDialogueWithMaster(collision);
+            else if(collision.GetComponent<Master>().isDialog)
+            {
+                print("in else if");
+                isDialog = true;
+                collision.GetComponent<Master>().timeOfDialog = timeOfDialog;
+                StartDialogueWithMaster(collision);
+            }
         }
     }
     private void SetScaleByGameObject(Transform gameObject)
@@ -118,21 +129,26 @@ public class Master : MonoBehaviour
     private void CheckForDialogue(Collider2D collision)
     {
         int chance = UnityEngine.Random.Range(0,101);
-        if (chanceForDialog>= chance)
-            StartDialogueWithMaster(collision);
-
+        if (chanceForDialog >= chance)
+        {
+            timeOfDialog = UnityEngine.Random.Range(5, 20);
+            isDialog = true;
+        }
+        print("after checking: " + isDialog);
     }
-    private void StartDialogueWithMaster(Collider2D collision)
+
+    public void StartDialogueWithMaster(Collider2D collision)
     {
         Debug.Log($"{gameObject.name} начал диалог");
         onDialog?.Invoke();
         SetScaleByGameObject(collision.transform);
         dialogIcon = Instantiate(dialogIconPrefab);
         dialogIcon.transform.position = gameObject.transform.position + new Vector3(0.4f, 0.4f, 0);
-        Invoke("EndDialog", UnityEngine.Random.Range(5, 20));
+        Invoke("EndDialog", timeOfDialog);
     }
-    private void EndDialog()
+    public void EndDialog()
     {
+        isDialog = false;
         if (dialogIcon!=null)
         {
             Destroy(dialogIcon);

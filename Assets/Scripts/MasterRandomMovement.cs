@@ -13,6 +13,7 @@ public class MasterRandomMovement : MonoBehaviour
     public float timeMax = 3f; // Максимальный интервал перемещения
     private NavMeshAgent agent;
     private Animator animator;
+    private bool isStop;
 
     private float scale;
 
@@ -47,7 +48,7 @@ public class MasterRandomMovement : MonoBehaviour
     }
     private IEnumerator MoveRandomly()
     {
-        while (true)
+        while (!isStop)
         {
             // Ждем случайный интервал
             float waitTime = UnityEngine.Random.Range(timeMin, timeMax);
@@ -58,9 +59,12 @@ public class MasterRandomMovement : MonoBehaviour
             agent.SetDestination(targetChunk.position);
             SetScale(targetChunk.position);
             // Ждать, пока NPC не достигнет цели
-            while (!agent.pathPending && agent.remainingDistance > 0.1f)
+            if(!isStop)
             {
-                yield return null;
+                while (!agent.pathPending && agent.remainingDistance > 0.1f)
+                {
+                    yield return null;
+                }
             }
         }
     }
@@ -92,6 +96,7 @@ public class MasterRandomMovement : MonoBehaviour
     {
         animator.SetBool("isReadyToGo", false);
         agent.enabled = false;
+        isStop = true;
         //agent.isStopped = true;
     }
     public void ResumeMoving()
@@ -99,5 +104,7 @@ public class MasterRandomMovement : MonoBehaviour
         animator.SetBool("isReadyToGo", true);
         //agent.isStopped = false;
         agent.enabled = true;
+        isStop = false;
+        MoveRandomly();
     }
 }
