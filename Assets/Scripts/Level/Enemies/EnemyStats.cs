@@ -21,6 +21,14 @@ public class EnemyStats : MonoBehaviour
         currentHealth = enemyData.MaxHealth;
         currentDamage = enemyData.Damage;
     }
+    private void OnEnable()
+    {
+        PlayerStats.onKilled += DestroyAll;
+    }
+    private void OnDisable()
+    {
+        PlayerStats.onKilled -= DestroyAll;
+    }
     protected virtual void Start()
     {
         coin = Resources.Load<Coin>("Prefab/Res/Coin");
@@ -36,15 +44,15 @@ public class EnemyStats : MonoBehaviour
         {
             ReturnEnemy();
         }
-        if (PlayerStats.isKilled)
+    }
+    public void DestroyAll()
+    {
+        //anim.SetBool("toDestroy", true);
+        anim.SetBool("toDie", true);
+        PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
+        foreach (var item in colliders)
         {
-            //anim.SetBool("toDestroy", true);
-            anim.SetBool("toDie", true);
-            PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
-            foreach (var item in colliders)
-            {
-                item.enabled = false;
-            }
+            item.enabled = false;
         }
     }
     public virtual void TakeDamage(float damage)

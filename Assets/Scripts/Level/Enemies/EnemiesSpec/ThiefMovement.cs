@@ -15,7 +15,7 @@ public class ThiefMovement : EnemyMovement
 
     protected override void Update()
     {
-        if (!isNearPlayer && !PlayerStats.isKilled && !isDying && !isStolen)
+        if (!isNearPlayer && !isDying && !isStolen)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);
             if (player.position.x - transform.position.x > 0)
@@ -27,7 +27,7 @@ public class ThiefMovement : EnemyMovement
                 transform.localScale = new Vector3(-scale, scale, scale);
             }
         }
-        if (!PlayerStats.isKilled && isStolen) 
+        if (isStolen) 
         {
             Vector3 direction = transform.position - player.transform.position;
             direction.Normalize();

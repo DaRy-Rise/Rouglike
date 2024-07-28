@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -11,9 +12,10 @@ public class PlayerStats : MonoBehaviour
     [Header("Experience/Level")]
     public float exp = 0, expCap = 10, expCapIncrease;
     public static int level = 1;
-    public static System.Action onNextLevel;
+    public static Action onNextLevel;
     private static PortalController portalController;
     public static bool isKilled;
+    public static Action onKilled;
 
     private void Awake()
     {
@@ -70,7 +72,6 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (!isInvincible && !isKilled)
-
         {
             damageCoolDown = coolDownSec;
             isInvincible = true;
@@ -86,6 +87,7 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
         //Time.timeScale = 0f;
+        onKilled.Invoke();
         SetAnimatorParams();
         isKilled = true;
         print("GAME OVER");

@@ -2,26 +2,24 @@ using UnityEngine;
 
 public class Fireball : ThrowEnemyWeapon
 {
-    FirePlayerEffect playerEffect;
     [SerializeField]
     private float duration;
 
     protected override void Awake()
     {
         base.Awake();
-        playerEffect = FindAnyObjectByType<FirePlayerEffect>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")&&collision.isTrigger)
         {
-            GetEffect();
+            GetEffect(collision);
             ReturnToPool();
         }
     }
 
-    private void GetEffect()
+    private void GetEffect(Collider2D collision)
     {
-        playerEffect.MakeEffect(currentDamage, duration);
+        collision.GetComponent<PlayerEffectsHolder>().MakeEffect(KindOfDebuff.Fire, currentDamage,duration);
     }
 }

@@ -1,4 +1,7 @@
-public class HalfHealthPlayerEffect : PlayerEffect
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Debuffs/HalfHealthDebuff", fileName = "HalfHealthDebuff")]
+public class HalfHealthPlayerEffect : DebufEffect
 {
     private PlayerStats playerStats;
     public override void MakeEffect(float damage, float duration)

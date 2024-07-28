@@ -3,6 +3,8 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private InputReader inputReader;
     [HideInInspector]
     public bool blockMove;
+    public Action<float> changeMovementSpeed; 
 
     private void Awake()
     {
@@ -47,15 +50,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-       InputManagment();
+        if (!PlayerStats.isKilled)
+        {
+            InputManagment();
+        }
+    }
+    public void ChangeMovementSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
     private void FixedUpdate()
     {
-        if (PlayerStats.isKilled) 
+        if (PlayerStats.isKilled)
         {
             moveSpeed = 0;
         }
-        else if (isSwordAttack)
+        if (isSwordAttack)
         {
             moveSpeed = characterData.MoveSpeed - characterData.MoveSpeed * 0.2f;
         }
@@ -83,66 +93,58 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = characterData.MoveSpeed;
         }
-        if (!blockMove)
+        if (!blockMove && !PlayerStats.isKilled)
         {
             Move();
         }
     }
     private void InputManagment()
     {
-        if (!PlayerStats.isKilled)
+        moveDir = inputReader.controls.Basic.Move.ReadValue<Vector2>();
+        if (moveDir != Vector2.zero)
         {
-            moveDir = inputReader.controls.Basic.Move.ReadValue<Vector2>();
-            if (moveDir != Vector2.zero)
+            if (!anim.GetBool("toRun"))
             {
-                if (!anim.GetBool("toRun"))
+                anim.SetBool("toRun", true);
+                if (anim.GetBool("toAttack"))
                 {
-                    anim.SetBool("toRun", true);
-                    if (anim.GetBool("toAttack"))
-                    {
-                        float previousNormalizedTime;
-                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-                        anim.Play("run_attack", 0, previousNormalizedTime);
-                    }
+                    float previousNormalizedTime;
+                    previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                    anim.Play("run_attack", 0, previousNormalizedTime);
                 }
+            }
 
-                if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
-                {
-                    lastMovedVector = new Vector2(moveDir.x, 0f);
-                }
-                else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
-                {
-                    lastMovedVector = new Vector2(0f, moveDir.y);
-                }
-                else
-                {
-                    lastMovedVector = moveDir;
-                }
+            if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.y))
+            {
+                lastMovedVector = new Vector2(moveDir.x, 0f);
+            }
+            else if (Mathf.Abs(moveDir.y) > Mathf.Abs(moveDir.x))
+            {
+                lastMovedVector = new Vector2(0f, moveDir.y);
             }
             else
             {
-                if (anim.GetBool("toRun"))
+                lastMovedVector = moveDir;
+            }
+        }
+        else
+        {
+            if (anim.GetBool("toRun"))
+            {
+                anim.SetBool("toRun", false);
+                if (anim.GetBool("toAttack"))
                 {
-                    anim.SetBool("toRun", false);
-                    if (anim.GetBool("toAttack"))
-                    {
-                        float previousNormalizedTime;
-                        previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-                        anim.Play("static_attack", 0, previousNormalizedTime);
-                    }
+                    float previousNormalizedTime;
+                    previousNormalizedTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                    anim.Play("static_attack", 0, previousNormalizedTime);
                 }
             }
-
-           
         }
     }
     private void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
-        if (!PlayerStats.isKilled)
-        {
-            SetScale();
-        }
+        SetScale();
     }
     private void SetScale()
     {
@@ -177,12 +179,10 @@ public class PlayerMovement : MonoBehaviour
     {
         isSlowEffect = false;
     }
-
     private void RemoveDefaultStone()
     {
         isStoneEffect = false;
     }
-
     public void StopAttack()
     {
         anim.SetBool("toAttack", false);

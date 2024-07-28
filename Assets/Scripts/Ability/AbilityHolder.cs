@@ -1,4 +1,3 @@
-using Assets.Scripts.Ability;
 using System;
 using UnityEngine;
 
@@ -33,33 +32,33 @@ public class AbilityHolder : MonoBehaviour
     }
     private void ReleaseMove()
     {
-        if (moveAbility.abilityState == AbilityState.Ready)
+        if (moveAbility.abilityState == State.Ready)
         {
             print("DASH");
             moveAbility.Activate(gameObject);
-            moveAbility.abilityState = AbilityState.Active;
+            moveAbility.abilityState = State.Active;
             moveAbilityActiveTime = moveAbility.activeTime;
             onSpaceClick.Invoke();
         }
     }
     private void ReleaseArea()
     {
-        if (areaAbility.abilityState == AbilityState.Ready)
+        if (areaAbility.abilityState == State.Ready)
         {
             print("AREA");
             areaAbility.Activate(gameObject);
-            areaAbility.abilityState = AbilityState.Active;
+            areaAbility.abilityState = State.Active;
             areaAbilityActiveTime = areaAbility.activeTime;
             onRMBClick.Invoke();
         }
     }
     private void ReleaseUlta()
     {
-        if (ultaAbility.abilityState == AbilityState.Ready)
+        if (ultaAbility.abilityState == State.Ready)
         {
             print("ULTRA");
             ultaAbility.Activate(gameObject);
-            ultaAbility.abilityState = AbilityState.Active;
+            ultaAbility.abilityState = State.Active;
             ultaAbilityActiveTime = ultaAbility.activeTime;
             onQClick.Invoke();
         }
@@ -74,19 +73,19 @@ public class AbilityHolder : MonoBehaviour
     {
         switch (areaAbility.abilityState)
         {
-            case AbilityState.Active:
+            case State.Active:
                 if (areaAbilityActiveTime > 0)
                 {
                     areaAbilityActiveTime -= Time.deltaTime;
                 }
                 else
                 {
-                    areaAbility.abilityState = AbilityState.Cooldown;
+                    areaAbility.abilityState = State.Cooldown;
                     areaAbility.CoolDown(gameObject);
                     areaAbilityCooldownTime = areaAbility.coolDownTime;
                 }
                 break;
-            case AbilityState.Cooldown:
+            case State.Cooldown:
 
                 if (areaAbilityCooldownTime > 0)
                 {
@@ -94,7 +93,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    areaAbility.abilityState = AbilityState.Ready;
+                    areaAbility.abilityState = State.Ready;
                 }
                 break;
             default:
@@ -105,19 +104,19 @@ public class AbilityHolder : MonoBehaviour
     {
         switch (ultaAbility.abilityState)
         {
-            case AbilityState.Active:
+            case State.Active:
                 if (ultaAbilityActiveTime > 0)
                 {
                     ultaAbilityActiveTime -= Time.deltaTime;
                 }
                 else
                 {
-                    ultaAbility.abilityState = AbilityState.Cooldown;
+                    ultaAbility.abilityState = State.Cooldown;
                     ultaAbility.CoolDown(gameObject);
                     ultaAbilityCooldownTime = ultaAbility.coolDownTime;
                 }
                 break;
-            case AbilityState.Cooldown:
+            case State.Cooldown:
 
                 if (ultaAbilityCooldownTime > 0)
                 {
@@ -125,7 +124,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    ultaAbility.abilityState = AbilityState.Ready;
+                    ultaAbility.abilityState = State.Ready;
                 }
                 break;
             default:
@@ -136,19 +135,19 @@ public class AbilityHolder : MonoBehaviour
     {
         switch (moveAbility.abilityState)
         {
-            case AbilityState.Active:
+            case State.Active:
                 if (moveAbilityActiveTime > 0)
                 {
                     moveAbilityActiveTime -= Time.deltaTime;
                 }
                 else
                 {
-                    moveAbility.abilityState = AbilityState.Cooldown;
+                    moveAbility.abilityState = State.Cooldown;
                     moveAbility.CoolDown(gameObject);
                     moveAbilityCooldownTime = moveAbility.coolDownTime;
                 }
                 break;
-            case AbilityState.Cooldown:
+            case State.Cooldown:
 
                 if (moveAbilityCooldownTime > 0)
                 {
@@ -156,7 +155,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    moveAbility.abilityState = AbilityState.Ready;
+                    moveAbility.abilityState = State.Ready;
                 }
                 break;
             default:

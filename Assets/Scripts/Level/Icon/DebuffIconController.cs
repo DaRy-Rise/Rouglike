@@ -18,24 +18,24 @@ public class DebuffIconController : MonoBehaviour
     {
         GoodPotion.onAntidoteEffect -= Antidote;
     }
-    public int SpawnIcon(KindOfIcons kind, float dur)
+    public int SpawnIcon(KindOfDebuff kind, float dur)
     {
         switch (kind)
         {
-            case KindOfIcons.Poison:
-                Spawn(poisonIcon, dur, KindOfIcons.Poison);             
+            case KindOfDebuff.Poison:
+                Spawn(poisonIcon, dur, KindOfDebuff.Poison);             
                 break;
-            case KindOfIcons.Stone:
-                Spawn(stoneIcon, dur, KindOfIcons.Stone);
+            case KindOfDebuff.Stone:
+                Spawn(stoneIcon, dur, KindOfDebuff.Stone);
                 break;
-            case KindOfIcons.Bloodly:
-                Spawn(bloodIcon, dur, KindOfIcons.Bloodly);
+            case KindOfDebuff.Bloodly:
+                Spawn(bloodIcon, dur, KindOfDebuff.Bloodly);
                 break;
-            case KindOfIcons.Slow:
-                Spawn(slowIcon, dur, KindOfIcons.Slow);
+            case KindOfDebuff.Slow:
+                Spawn(slowIcon, dur, KindOfDebuff.Slow);
                 break;
-            case KindOfIcons.Fire:
-                Spawn(fireIcon, dur, KindOfIcons.Fire);
+            case KindOfDebuff.Fire:
+                Spawn(fireIcon, dur, KindOfDebuff.Fire);
                 break;
             default:
                 break;
@@ -47,7 +47,7 @@ public class DebuffIconController : MonoBehaviour
     {
         index--;
     }
-    private void Spawn(Debuff icon, float dur, KindOfIcons kindOfIcons)
+    private void Spawn(Debuff icon, float dur, KindOfDebuff kindOfIcons)
     {
         effects.Add(Instantiate(icon, cells[index].transform));
         effects[effects.Count - 1].transform.position = cells[index].transform.position;
@@ -85,7 +85,7 @@ public class DebuffIconController : MonoBehaviour
         }
     }
 
-    public void ResetBarDuration(KindOfIcons kindOfIcons)
+    public void ResetBarDuration(KindOfDebuff kindOfIcons)
     {
         foreach (var item in effects)
         {

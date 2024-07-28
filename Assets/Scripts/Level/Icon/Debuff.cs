@@ -11,7 +11,7 @@ public class Debuff : MonoBehaviour
     [SerializeField]
     private IconBar iconBar;
     [HideInInspector]
-    public KindOfIcons kindOfIcons;
+    public KindOfDebuff kindOfIcons;
 
     void Start()
     {

@@ -18,6 +18,11 @@ public class ThrowEnemyWeapon : MonoBehaviour
     {
         SetDirectOptions();
         Invoke("ReturnToPool", 3);
+        PlayerStats.onKilled += ReturnToPool;
+    }
+    private void OnDisable()
+    {
+        PlayerStats.onKilled -= ReturnToPool;
     }
     public void SetDirectOptions()
     {
@@ -49,10 +54,6 @@ public class ThrowEnemyWeapon : MonoBehaviour
     }
     protected void FixedUpdate()
     {
-        if (PlayerStats.isKilled)
-        {
-            ReturnToPool();
-        }
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
 

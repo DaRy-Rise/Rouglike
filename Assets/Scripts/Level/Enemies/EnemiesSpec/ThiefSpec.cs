@@ -15,16 +15,6 @@ public class ThiefSpec : EnemyStats
                 JustDestroy();
             }
         }
-        if (PlayerStats.isKilled)
-        {
-            //anim.SetBool("toDestroy", true);
-            anim.SetBool("toDie", true);
-            PolygonCollider2D[] colliders = GetComponents<PolygonCollider2D>();
-            foreach (var item in colliders)
-            {
-                item.enabled = false;
-            }
-        }
     }
 
     protected override void OnTriggerStay2D(Collider2D collision)
