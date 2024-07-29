@@ -2688,7 +2688,7 @@ MonoBehaviour:
   isMainMaster: 0
   kindOfMasters: 2
   scale: 4
-  chanceForDialog: 50
+  chanceForDialog: 30
   timeOfDialog: 0
 --- !u!212 &657601243
 SpriteRenderer:
@@ -12271,7 +12271,7 @@ MonoBehaviour:
   isMainMaster: 1
   kindOfMasters: 0
   scale: 5
-  chanceForDialog: 50
+  chanceForDialog: 30
   timeOfDialog: 0
 --- !u!95 &1093143829
 Animator:
@@ -17139,7 +17139,7 @@ MonoBehaviour:
   isMainMaster: 0
   kindOfMasters: 1
   scale: 4
-  chanceForDialog: 50
+  chanceForDialog: 30
   timeOfDialog: 0
 --- !u!212 &1774911095
 SpriteRenderer:

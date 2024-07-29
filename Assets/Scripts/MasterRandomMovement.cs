@@ -38,13 +38,9 @@ public class MasterRandomMovement : MonoBehaviour
     {
         transform.rotation = Quaternion.identity;
         if (IsMoving())
-        {
             animator.SetBool("isReadyToGo", true);
-        }
         else
-        {
             animator.SetBool("isReadyToGo", false);
-        }
     }
     private IEnumerator MoveRandomly()
     {
@@ -94,17 +90,19 @@ public class MasterRandomMovement : MonoBehaviour
     }
     public void StopMoving()
     {
+        print("StopMoving");
         animator.SetBool("isReadyToGo", false);
         agent.enabled = false;
         isStop = true;
-        //agent.isStopped = true;
+        StopCoroutine(MoveRandomly());
     }
     public void ResumeMoving()
     {
+        print("ResumeMoving");
         animator.SetBool("isReadyToGo", true);
-        //agent.isStopped = false;
         agent.enabled = true;
         isStop = false;
-        MoveRandomly();
-    }
+        gameObject.SetActive(true);
+        StartCoroutine(MoveRandomly());
+     }
 }

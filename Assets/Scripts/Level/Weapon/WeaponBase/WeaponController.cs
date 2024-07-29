@@ -26,13 +26,9 @@ public class WeaponController : MonoBehaviour
     protected virtual void Update()
     {
         if (currentCoolDown <= 0f)
-        {
             isAttackAlowed = true;
-        } 
         else
-        {
             currentCoolDown -= Time.deltaTime;
-        }
     }
     protected virtual void StartAttack()
     {

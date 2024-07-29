@@ -90,11 +90,11 @@ public class Master : MonoBehaviour
             CheckForDialogue(collision);
             if (isDialog == true)
                 StartDialogueWithMaster(collision);
-            else if(collision.GetComponent<Master>().isDialog)
+            else if(!isDialog && collision.GetComponent<Master>().isDialog)
             {
                 print("in else if");
                 isDialog = true;
-                collision.GetComponent<Master>().timeOfDialog = timeOfDialog;
+                timeOfDialog = collision.GetComponent<Master>().timeOfDialog;
                 StartDialogueWithMaster(collision);
             }
         }
@@ -148,6 +148,7 @@ public class Master : MonoBehaviour
     }
     public void EndDialog()
     {
+        print("EndDialog");
         isDialog = false;
         if (dialogIcon!=null)
         {

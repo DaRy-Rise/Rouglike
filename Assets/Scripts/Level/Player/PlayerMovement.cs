@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         SetAnimatorController();
+        if (SceneManager.sceneCount == 1)
+            moveSpeed = 7;
+        else
+            moveSpeed = characterData.MoveSpeed;
         lastMovedVector = new Vector2(1, 0f);
         UnityEditor.Animations.AnimatorController animatorController = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
         AnimationClip[] animationClips = animatorController.animationClips;
@@ -65,34 +69,26 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = 0;
         }
-        if (isSwordAttack)
-        {
-            moveSpeed = characterData.MoveSpeed - characterData.MoveSpeed * 0.2f;
-        }
-        else if (isWeb)
-        {
-            moveSpeed = 1;
-        }
-        else if(isSlowEffect)
-        {
-            moveSpeed = 2f;
-        }
-        else if (isStoneEffect)
-        {
-            moveSpeed = 0;
-        }
-        else if (isSpeedPotion)
-        {
-            moveSpeed = characterData.MoveSpeed * 1.5f;
-        }
-        else if (SceneManager.sceneCount == 1)
-        {
-            moveSpeed = 7;
-        }
-        else
-        {
-            moveSpeed = characterData.MoveSpeed;
-        }
+        //if (isSwordAttack)
+        //{
+        //    moveSpeed = characterData.MoveSpeed - characterData.MoveSpeed * 0.2f;
+        //}
+        //else if (isWeb)
+        //{
+        //    moveSpeed = 1;
+        //}
+        //else if(isSlowEffect)
+        //{
+        //    moveSpeed = 2f;
+        //}
+        //else if (isStoneEffect)
+        //{
+        //    moveSpeed = 0;
+        //}
+        //else if (isSpeedPotion)
+        //{
+        //    moveSpeed = characterData.MoveSpeed * 1.5f;
+        //}
         if (!blockMove && !PlayerStats.isKilled)
         {
             Move();
