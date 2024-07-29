@@ -46,6 +46,7 @@ public class TreeOfAbilityManager : MonoBehaviour
     }
     public void OpenTreeOfAbility(KindOfMasters kindOfMasters)
     {
+
         kindOfMaster = kindOfMasters;
         isTreeOpen = true;
         DialogSystem.isBoxOpen = false;
