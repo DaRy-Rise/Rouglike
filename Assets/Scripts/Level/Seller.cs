@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class Seller : MonoBehaviour
 {
     private GameObject tooltipPrefab;
@@ -8,9 +8,22 @@ public class Seller : MonoBehaviour
     protected Transform player;
     [SerializeField]
     private float scale;
+    public static Action onOpenMarket;
     private void Start()
     {
         tooltipPrefab = Resources.Load<GameObject>("Prefab/Tooltips/DialogTooltip");
+    }
+    void Update()
+    {
+        if (isTooltipExist)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                onOpenMarket?.Invoke();
+                Destroy(tooltip);
+                isTooltipExist = false;
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,17 +41,13 @@ public class Seller : MonoBehaviour
     private void SetScaleByGameObject(Transform gameObject)
     {
         if (gameObject.position.x - transform.position.x > 0)
-        {
             transform.localScale = new Vector3(scale, scale, scale);
-        }
         else
-        {
             transform.localScale = new Vector3(-scale, scale, scale);
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if ((collision.tag == "Player" && collision.isTrigger))
+        if (collision.tag == "Player" && collision.isTrigger)
         {
             Destroy(tooltip);
             isTooltipExist = false;

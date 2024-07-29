@@ -59,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
             InputManagment();
         }
     }
-    public void ChangeMovementSpeed(float speed)
+    public void StopMovement()
     {
-        moveSpeed = speed;
+        moveSpeed = 0;
     }
     private void FixedUpdate()
     {

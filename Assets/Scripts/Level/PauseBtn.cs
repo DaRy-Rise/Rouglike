@@ -13,13 +13,9 @@ public class PauseBtn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseGame)
-            {
                 ResumeToGame();
-            }
             else
-            {
                 Pause();
-            }
         }
     }
 

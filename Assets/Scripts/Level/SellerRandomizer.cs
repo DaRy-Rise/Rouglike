@@ -6,7 +6,7 @@ public class SellerRandomizer : MonoBehaviour
     [SerializeField]
     private List<GameObject> sellerSawnPoints;
     private GameObject marketPrefab;
-    private int ChanceOfSellerSpawn = 10;
+    private int ChanceOfSellerSpawn = 100;
 
     void Start()
     {
