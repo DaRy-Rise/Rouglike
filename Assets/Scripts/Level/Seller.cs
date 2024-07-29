@@ -20,8 +20,6 @@ public class Seller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 onOpenMarket?.Invoke();
-                Destroy(tooltip);
-                isTooltipExist = false;
             }
         }
     }

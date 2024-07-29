@@ -31,6 +31,7 @@ public class Market : MonoBehaviour
     }
     public void CloseMarket()
     {
+        print("CloseMarket");
         Time.timeScale = 1f;
         backGound.SetActive(false);
         DestroyCards();
@@ -38,7 +39,7 @@ public class Market : MonoBehaviour
     private void SpawnCards()
     {
         //заглушка
-        int count = Random.Range(0, cells.Length);
+        int count = Random.Range(1, cells.Length);
         for (int i = 0; i < count; i++)
         {
             cards.Add(Instantiate(abilityCard, cells[i].transform));
@@ -47,9 +48,11 @@ public class Market : MonoBehaviour
     }
     private void DestroyCards()
     {
+        print("DestroyCards");
         for (int i = 0; i < cards.Count; i++)
         {
             Destroy(cards[i]);
+            cards.Remove(cards[i]);
         }
     }
 }
