@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 5ffbb5fd781a2464aba2748d006dcc66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4099d729dc6783a4aa9c93af18568b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 0}
   durDefault: 0
   dur: 0
   indexOfCell: 0
   iconBar: {fileID: 5303552504726776560}
-  kindOfIcons: 0
+  isAttackIcon: 1
   isAttack: 0
 --- !u!1 &8695429882902866074
 GameObject:

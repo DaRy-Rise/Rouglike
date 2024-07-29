@@ -28,13 +28,9 @@ public class ActionIcon : MonoBehaviour
     private void SetDefaultCoolDownValue()
     {
         if (isAttackIcon)
-        {
             durDefault = FindAnyObjectByType<WeaponController>().weaponData.CoolDownDur;
-        }
         else
-        {
             durDefault = scriptableObject.coolDownTime;
-        }    
     }
     protected virtual void Update()
     {

@@ -65,9 +65,9 @@ public class AbilityHolder : MonoBehaviour
     }
     private void SetAbility()
     {
-        moveAbility = Resources.Load<DashAbility>($"Ability/{GlobalStat.mainMaster}/MoveAbility");
-        areaAbility = Resources.Load<AreaAbility>($"Ability/{GlobalStat.mainMaster}/AreaAbility");
-        ultaAbility = Resources.Load<UltaAbility>($"Ability/{GlobalStat.mainMaster}/UltaAbility");
+        moveAbility = Resources.Load<Ability>($"Ability/{GlobalStat.mainMaster}/MoveAbility");
+        areaAbility = Resources.Load<Ability>($"Ability/{GlobalStat.mainMaster}/AreaAbility");
+        ultaAbility = Resources.Load<Ability>($"Ability/{GlobalStat.mainMaster}/UltaAbility");
     }
     private void AreaAbility()
     {

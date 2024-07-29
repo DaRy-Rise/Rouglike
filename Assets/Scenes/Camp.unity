@@ -2685,7 +2685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 1c9b49df10243b745b51330fc4a2a1ef, type: 3}
   isTooltipExist: 0
-  isMainMaster: 0
+  isMainMaster: 1
   kindOfMasters: 2
   scale: 4
   chanceForDialog: 30
@@ -12268,7 +12268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterFace: {fileID: 21300000, guid: 2d38e2351d5fc7b4cb1bff07be377263, type: 3}
   isTooltipExist: 0
-  isMainMaster: 1
+  isMainMaster: 0
   kindOfMasters: 0
   scale: 5
   chanceForDialog: 30
