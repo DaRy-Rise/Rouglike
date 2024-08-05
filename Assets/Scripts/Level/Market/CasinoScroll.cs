@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CasinoScroll : MonoBehaviour
 {
@@ -17,21 +19,22 @@ public class CasinoScroll : MonoBehaviour
     {
         if (isScrolling)
             return;
-        speed = Random.Range(0, 4);
+
+        //GetComponent<RectTransform>().localPosition = new Vector3(1080,0);
+        //speed = Random.Range(0, 4);
+        speed = 10;
         isScrolling = true;
         if (cells.Count == 0)
             for (int i = 0; i < 50; i++)
-                cells.Add(Instantiate(cellPrefab, transform).GetComponentInChildren<CaseCell>());
-
+                cells.Add(Instantiate(cellPrefab, GetComponent<VerticalLayoutGroup>().transform).GetComponentInChildren<CaseCell>());
         foreach (var cell in cells)
             cell.SetUp();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + Vector3.left * 100, speed * Time.deltaTime * 1500);
+        transform.position += Vector3.up * speed * Time.deltaTime;
         if (speed > 0)
             speed -= Time.deltaTime;
         else

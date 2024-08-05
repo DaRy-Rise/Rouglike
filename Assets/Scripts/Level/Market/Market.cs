@@ -13,7 +13,7 @@ public class Market : MonoBehaviour
 
     private void Start()
     {
-        backGound.SetActive(false);
+        //backGound.SetActive(false);
     }
     private void OnEnable()
     {
