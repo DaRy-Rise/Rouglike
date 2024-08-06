@@ -11,17 +11,12 @@ public class CasinoScroll : MonoBehaviour
     private float speed;
     private bool isScrolling;
     private List<CaseCell> cells = new();
-    void Start()
-    {
-
-    }
     public void Scroll()
-    {
+    {      
         if (isScrolling)
             return;
-
-        //GetComponent<RectTransform>().localPosition = new Vector3(1080,0);
-        //speed = Random.Range(0, 4);
+        if (cells.Count > 0)
+            CleanAll();
         speed = 10;
         isScrolling = true;
         if (cells.Count == 0)
@@ -31,7 +26,6 @@ public class CasinoScroll : MonoBehaviour
             cell.SetUp();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += Vector3.up * speed * Time.deltaTime;
@@ -42,5 +36,11 @@ public class CasinoScroll : MonoBehaviour
             speed = 0;
             isScrolling = false;
         }
+    }
+    void CleanAll()
+    {
+        foreach (var item in cells)
+            Destroy(item);
+        cells.Clear();
     }
 }

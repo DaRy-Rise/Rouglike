@@ -20,8 +20,8 @@ public class CaseCell : MonoBehaviour
     public void SetUp()
     {
         var index = Randomize();
-        GetComponent<Image>().sprite = sprites[index].sprites[Random.Range(0, sprites[index].sprites.Count)];
-        transform.parent.GetComponent<Image>().color = colors[index];
+        GetComponent<SpriteRenderer>().sprite = sprites[index].sprites[Random.Range(0, sprites[index].sprites.Count)];
+        transform.parent.GetComponent<SpriteRenderer>().color = colors[index];
     }
 
     private int Randomize()
