@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Market : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Market : MonoBehaviour
     [SerializeField]
     private GameObject[] cells;
     private List<GameObject> cards = new();
+    [SerializeField]
+    private GameObject gamblingButton, casinoBoards;
+    private bool isUnlock = false;
     //public bool marketOpen;
 
     private void Start()
@@ -23,10 +27,53 @@ public class Market : MonoBehaviour
     {
         Seller.onOpenMarket -= OpenMarket;
     }
+    private void CheckUnlockCondition()
+    {
+        if (true)
+        {
+            isUnlock = true;
+            StartCoroutine(UnlockCasino());
+        }
+    }
+    private IEnumerator UnlockCasino()
+    {
+        gamblingButton.GetComponent<Image>().enabled = false;
+        casinoBoards.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+        casinoBoards.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        yield return new WaitForSecondsRealtime(1f);
+        gamblingButton.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+        gamblingButton.GetComponent<Image>().enabled = true;
+        gamblingButton.GetComponent<Button>().enabled = false;
+        gamblingButton.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        yield return new WaitForSecondsRealtime(1f);
+        gamblingButton.GetComponent<Button>().enabled = true;
+    }
+    //private void UnlockCasino()
+    //{
+    //    casinoBoards.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+    //    Invoke("UnlockButton",1);
+
+    //}
+    //private void UnlockButton()
+    //{
+    //    gamblingButton.SetActive(true);
+    //    gamblingButton.GetComponent<Button>().enabled = false;
+    //    gamblingButton.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+    //    Invoke("UnlockButtonClick", 1);
+    //}
+    //private void UnlockButtonClick()
+    //{
+    //    gamblingButton.SetActive(true);
+    //    gamblingButton.GetComponent<Button>().enabled = true;
+    //}
     public void OpenMarket()
     {
         Time.timeScale = 0f;
         backGound.SetActive(true);
+        //gamblingButton.GetComponent<Animator>().enabled = false;
+        //casinoBoards.GetComponent<Animator>().enabled = false;
+        if (!isUnlock)
+            CheckUnlockCondition();
         SpawnCards();
     }
     public void CloseMarket()
