@@ -39,12 +39,13 @@ public class Market : MonoBehaviour
     {
         gamblingButton.GetComponent<Image>().enabled = false;
         casinoBoards.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
-        casinoBoards.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        casinoBoards.GetComponent<Animator>().Play("BoardsUnlock");
         yield return new WaitForSecondsRealtime(1f);
+        casinoBoards.SetActive(false);
         gamblingButton.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
         gamblingButton.GetComponent<Image>().enabled = true;
         gamblingButton.GetComponent<Button>().enabled = false;
-        gamblingButton.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        gamblingButton.GetComponent<Animator>().Play("Unlock_button");
         yield return new WaitForSecondsRealtime(1f);
         gamblingButton.GetComponent<Button>().enabled = true;
     }
@@ -70,10 +71,10 @@ public class Market : MonoBehaviour
     {
         Time.timeScale = 0f;
         backGound.SetActive(true);
-        //gamblingButton.GetComponent<Animator>().enabled = false;
-        //casinoBoards.GetComponent<Animator>().enabled = false;
         if (!isUnlock)
             CheckUnlockCondition();
+        else
+            casinoBoards.SetActive(false);
         SpawnCards();
     }
     public void CloseMarket()
