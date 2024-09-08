@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class CasinoScroll : MonoBehaviour
 {
@@ -50,14 +52,13 @@ public class CasinoScroll : MonoBehaviour
     }
     private IEnumerator ScrollToEl(GameObject gameObject)
     {
-        while (gameObject.transform.position.y != transform.position.y)
+        while (Mathf.Abs(transform.parent.position.y-gameObject.transform.position.y)>=0.1f)
         {
-            transform.position += Vector3.up * initialSpeed * Time.deltaTime;
-            
+            transform.position += Vector3.up * initialSpeed * Time.unscaledDeltaTime;
             yield return null;
         }
         initialSpeed = 0;
-        print(ShowPrize().gameObject.GetComponent<SpriteRenderer>().sprite.name);
+        StartCoroutine(CenterClosestElement());
     }
     private IEnumerator Scroll()
     {
@@ -66,29 +67,23 @@ public class CasinoScroll : MonoBehaviour
 
         while (elapsedTime < scrollTime)
         {
-            transform.position += Vector3.up * speed * Time.deltaTime;
+            transform.position += Vector3.up * speed * Time.unscaledDeltaTime;
             speed = Mathf.Lerp(initialSpeed, 0, elapsedTime / scrollTime);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
-
-        CenterClosestElement();
-        //print(ShowPrize().gameObject.GetComponent<SpriteRenderer>().sprite.name);
+        Exp();
+        StartCoroutine(CenterClosestElement());
     }
-    private void CenterClosestElement()
+    private IEnumerator CenterClosestElement()
     {
-        var closestElement = ShowPrize().transform;
-        if (closestElement != null)
+        while (Mathf.Abs(close.transform.position.y) < 3.38)
         {
-            float offset = -closestElement.position.y;
-            foreach (var element in cells)
-            {
-                element.transform.position += Vector3.up * offset;
-            }
+            transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
+            yield return null;
         }
     }
-
-    private GameObject ShowPrize()
+    private void Exp()
     {
         VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
         RectTransform layoutRect = layoutGroup.GetComponent<RectTransform>();
@@ -107,20 +102,29 @@ public class CasinoScroll : MonoBehaviour
                 closestElement = child;
             }
         }
-        return closestElement.gameObject;
+        close = closestElement.gameObject;
     }
-    //void Update()
-   // {
-      //  transform.position += Vector3.up * speed * Time.deltaTime;
-      //  if (speed > 0)
-       //     speed -= Time.deltaTime;
-       // else
-      //  {
-       //     speed = 0;
-       //     isScrolling = false;
-       //     ShowPrize();
-       // }
-  //  }
+    private GameObject ShowPrize()
+    {
+        VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
+
+        int count = 0;
+        foreach (RectTransform child in layoutGroup.transform)
+        {
+            if(count == 20)
+            {
+                close = child.gameObject;
+                break;
+            }
+            count++;
+        }
+        return close;
+    }
+    private GameObject close;
+    private void OnDrawGizmos()//рисует кружок атаки в инспекторе
+    {
+        Gizmos.DrawWireSphere(close.gameObject.transform.position, 1f);
+    }
     void CleanAll()
     {
         foreach (var item in cells)
