@@ -33,8 +33,8 @@
 		{"id":"c64e1ce664570cce","type":"text","text":"Ускорение передвижения после рывка на n секунд","x":220,"y":-179,"width":250,"height":101,"color":"1"},
 		{"id":"5d2ae29242eaca1f","type":"text","text":"+1 заряд рывка","x":586,"y":-160,"width":250,"height":60,"color":"1"},
 		{"id":"5027ab6e4ef603b9","type":"text","text":"Pierce на 2 врага","x":-720,"y":-1544,"width":250,"height":60,"color":"4"},
-		{"id":"0c5e7b5da0566d30","x":-372,"y":-1703,"width":250,"height":123,"color":"4","type":"text","text":"Призрачные стрелы (проходящие сквозь препятствия)"},
-		{"id":"e95e42e3b25dc71b","x":-1780,"y":-256,"width":250,"height":60,"type":"text","text":"отражение ударом снаряд врага"}
+		{"id":"0c5e7b5da0566d30","type":"text","text":"Призрачные стрелы (проходящие сквозь препятствия)","x":-372,"y":-1703,"width":250,"height":123,"color":"4"},
+		{"id":"e95e42e3b25dc71b","type":"text","text":"отражение ударом снаряд врага","x":-1780,"y":-256,"width":250,"height":60}
 	],
 	"edges":[
 		{"id":"4a699ce0647a99ce","fromNode":"d95ce2998d7bc054","fromSide":"right","toNode":"056595935fad205d","toSide":"left"},

@@ -69,14 +69,11 @@
             "id": "a55d15edb458b79f",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Tree.canvas",
-                "viewState": {
-                  "x": 423,
-                  "y": -719.5,
-                  "zoom": -0.20616351965016477
-                }
+                "file": "Game Design Document/Идеи которые можно обсудить.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -162,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tree.canvas",
+                "file": "Game Design Document/Идеи которые можно обсудить.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -179,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tree.canvas",
+                "file": "Game Design Document/Идеи которые можно обсудить.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -202,7 +199,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tree.canvas"
+                "file": "Game Design Document/Идеи которые можно обсудить.md"
               }
             }
           }
@@ -215,36 +212,55 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "a55d15edb458b79f",
   "lastOpenFiles": [
-    "Untitled",
+    "Game Design Document/8. Звуки и музыка.md",
+    "Game Design Document/Идеи которые можно обсудить.md",
+    "Game Design Document/6. Геймплей.md",
+    "Game Design Document/2. Стиль и правила артов.md",
+    "Game Design Document/1. Описание.md",
+    "Game Design Document/4.1 Персонажи.md",
+    "Game Design Document/7. UI.md",
+    "Game Design Document/6.3 Прогрессия игрока.md",
+    "Game Design Document/6.4 Челлендж.md",
+    "Game Design Document/6.2 Предметы и усиления.md",
+    "Game Design Document/6.1 Механики.md",
+    "Game Design Document/4.3 Тема.md",
+    "Game Design Document/4. Цели игры.md",
+    "Game Design Document/5. Прогрессия сюжета.md",
+    "Game Design Document/4.2 Сюжет.md",
+    "Game Design Document/3. Игровой мир.md",
     "Untitled.md",
-    "Tree.canvas",
+    "3.md",
     "Абилки.md",
-    "Логика Абилок.md",
-    "Pasted image 20240516225337.png",
-    "Фазан.md",
-    "Structure.canvas",
-    "Сюжет.md",
-    "Ideas.md",
-    "Current goals.md",
-    "Працюемо.md",
-    "Player.md",
-    "Level progress.md",
-    "Global level.md",
+    "Game Design Document",
     "Оружие.md",
+    "Сюжет.md",
+    "Працюемо.md",
+    "Current goals.md",
+    "Global level.md",
+    "Ideas.md",
+    "Pasted image 20240516225337.png",
+    "Pasted image 20240831234340.png",
     "Артбук.md",
-    "Механики.md",
-    "Enemies.md",
-    "Masters.md"
+    "images/Pasted image 20231120012155.png",
+    "images/Pasted image 20231119221457.png",
+    "images/forest_expand.jpg",
+    "images/house2.png",
+    "images/Pasted image 20231120013418.png",
+    "images/Pasted image 20231120013313.png",
+    "images/Pasted image 20231120013303.png",
+    "images/Pasted image 20231120012210.png",
+    "Structure.canvas",
+    "Tree.canvas"
   ]
 }
