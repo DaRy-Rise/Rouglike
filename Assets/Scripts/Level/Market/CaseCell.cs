@@ -16,6 +16,8 @@ public class CaseCell : MonoBehaviour
     private int[] chances;
     [SerializeField]
     private Color[] colors;
+    [HideInInspector]
+    public int id;
 
     public void SetUp()
     {

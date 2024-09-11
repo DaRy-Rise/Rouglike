@@ -14,6 +14,8 @@ public class CasinoScroll : MonoBehaviour
     private float initialSpeed, scrollTime;
     private bool isScrolling;
     private List<CaseCell> cells = new();
+    private GameObject close;
+
     public void OnEnable()
     {
         SpawnCells();
@@ -21,8 +23,11 @@ public class CasinoScroll : MonoBehaviour
     public void SpawnCells()
     {
         if (cells.Count == 0)
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 100; i++)
+            {
                 cells.Add(Instantiate(cellPrefab, GetComponent<VerticalLayoutGroup>().transform).GetComponentInChildren<CaseCell>());
+                cells[i].id = i;
+            }
         foreach (var cell in cells)
             cell.SetUp();
     }
@@ -32,7 +37,7 @@ public class CasinoScroll : MonoBehaviour
         {
             initialSpeed = 20;
             StopCoroutine(Scroll());
-            StartCoroutine(ScrollToEl(ShowPrize()));
+            StartCoroutine(ScrollToEl(FastChoosePrize()));
             return;
         }        
         if (cells.Count > 0)
@@ -45,11 +50,7 @@ public class CasinoScroll : MonoBehaviour
         isScrolling = true;
         StartCoroutine(Scroll());
     }
-    private void ScrollToElement()
-    {
-        initialSpeed = 20;
-        StartCoroutine(ScrollToEl(ShowPrize()));
-    }
+
     private IEnumerator ScrollToEl(GameObject gameObject)
     {
         while (Mathf.Abs(transform.parent.position.y-gameObject.transform.position.y)>=0.1f)
@@ -58,7 +59,7 @@ public class CasinoScroll : MonoBehaviour
             yield return null;
         }
         initialSpeed = 0;
-        StartCoroutine(CenterClosestElement());
+        StartCoroutine(CenterClosestElement(close));
     }
     private IEnumerator Scroll()
     {
@@ -72,18 +73,28 @@ public class CasinoScroll : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
-        Exp();
-        StartCoroutine(CenterClosestElement());
+        StartCoroutine(CenterClosestElement(GetNearestToCenter()));
     }
-    private IEnumerator CenterClosestElement()
+    private IEnumerator CenterClosestElement(GameObject prize)
     {
-        while (Mathf.Abs(close.transform.position.y) < 3.38)
+        if(Mathf.Abs(prize.transform.position.y) < 3.38)
         {
-            transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
-            yield return null;
+            while (Mathf.Abs(prize.transform.position.y) < 3.38)
+            {
+                transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
+                yield return null;
+            }
+        }
+        else if(Mathf.Abs(prize.transform.position.y) > 3.4)
+        {
+            while (Mathf.Abs(prize.transform.position.y) < 3.38)
+            {
+                transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
+                yield return null;
+            }
         }
     }
-    private void Exp()
+    private GameObject GetNearestToCenter()
     {
         VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
         RectTransform layoutRect = layoutGroup.GetComponent<RectTransform>();
@@ -102,16 +113,17 @@ public class CasinoScroll : MonoBehaviour
                 closestElement = child;
             }
         }
-        close = closestElement.gameObject;
+        //close = closestElement.gameObject;
+        return closestElement.gameObject;
     }
-    private GameObject ShowPrize()
+    private GameObject FastChoosePrize()
     {
         VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
 
         int count = 0;
         foreach (RectTransform child in layoutGroup.transform)
         {
-            if(count == 20)
+            if(count == 20+GetNearestToCenter().GetComponentInChildren<CaseCell>().id)
             {
                 close = child.gameObject;
                 break;
@@ -120,10 +132,11 @@ public class CasinoScroll : MonoBehaviour
         }
         return close;
     }
-    private GameObject close;
+
     private void OnDrawGizmos()//рисует кружок атаки в инспекторе
     {
-        Gizmos.DrawWireSphere(close.gameObject.transform.position, 1f);
+        if(close != null)
+            Gizmos.DrawWireSphere(close.gameObject.transform.position, 1f);
     }
     void CleanAll()
     {
