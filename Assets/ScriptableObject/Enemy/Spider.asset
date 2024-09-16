@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483462b2328b7b5489771689b97f481f, type: 3}
   m_Name: Spider
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   maxHealth: 10
   damage: 5
   chanceOfRes: 80
+  chanceOfCoin: 0

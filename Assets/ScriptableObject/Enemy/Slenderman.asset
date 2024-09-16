@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483462b2328b7b5489771689b97f481f, type: 3}
   m_Name: Slenderman
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   maxHealth: 30
   damage: 15
   chanceOfRes: 70
+  chanceOfCoin: 0

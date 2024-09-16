@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483462b2328b7b5489771689b97f481f, type: 3}
   m_Name: WhiteRat
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 1
   maxHealth: 1
   damage: 1
   chanceOfRes: 10

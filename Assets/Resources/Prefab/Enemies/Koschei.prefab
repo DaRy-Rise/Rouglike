@@ -388,7 +388,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 1.84, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8986262171334130421}
@@ -458,8 +458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf35d57ca3898c34199e007c508e5eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 0
   enemyData: {fileID: 11400000, guid: 925ef67a29d5cb74c9715b508e29daf0, type: 2}
   isNearPlayer: 0
+  isDying: 0
 --- !u!50 &539224502908869445
 Rigidbody2D:
   serializedVersion: 4
