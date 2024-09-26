@@ -119,6 +119,7 @@ public class EnemyStats : MonoBehaviour
         {
             movement.isNearPlayer = true;
             PlayerStats player = collision.GetComponent<PlayerStats>();
+            print("ENEMY DAMAGE");
             player.TakeDamage(currentDamage);
         }
     }

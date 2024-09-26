@@ -59,10 +59,12 @@ public class ThrowEnemyWeapon : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")&&collision.isTrigger)
         {
             PlayerStats player = collision.GetComponent<PlayerStats>();
             ReturnToPool();
+            print("ENEMY WEAPON DAMAGE");
+
             player.TakeDamage(currentDamage);
         }
     }

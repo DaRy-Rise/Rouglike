@@ -59,6 +59,7 @@ public class PlayerEffectsHolder : MonoBehaviour
                 {
                     effect.coolDown = effect.coolDownDefault;
                     FindAnyObjectByType<PlayerStats>().TakeDamageFromEffect(effect.valueOfGettingDamage);
+                    print("EFFECT DAMAGE");
                 }
                 break;
             default:

@@ -10,8 +10,9 @@ public class DevilLava : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         gameObject.GetComponent<Rigidbody2D>().WakeUp();
-        if (collision.tag == "Player")
+        if (collision.tag == "Player"&&collision.isTrigger)
         {
+            print("DEVIL LAVA DAMAGE");
             PlayerStats player = collision.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
         }

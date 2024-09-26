@@ -77,17 +77,18 @@ public class CasinoScroll : MonoBehaviour
     }
     private IEnumerator CenterClosestElement(GameObject prize)
     {
-        if(Mathf.Abs(prize.transform.position.y) < 3.38)
+        print("CenterClosestElement  " + prize.GetComponentInChildren<CaseCell>().GetComponent<SpriteRenderer>().name + " "+prize.transform.position.y);
+        if(Mathf.Abs(prize.transform.position.y) < 32.8)
         {
-            while (Mathf.Abs(prize.transform.position.y) < 3.38)
+            while (Mathf.Abs(prize.transform.position.y) < 32.8)
             {
                 transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
                 yield return null;
             }
         }
-        else if(Mathf.Abs(prize.transform.position.y) > 3.4)
+        else if(Mathf.Abs(prize.transform.position.y) > 32.8)
         {
-            while (Mathf.Abs(prize.transform.position.y) < 3.38)
+            while (Mathf.Abs(prize.transform.position.y) < 32.8)
             {
                 transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
                 yield return null;
