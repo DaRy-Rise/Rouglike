@@ -77,18 +77,20 @@ public class CasinoScroll : MonoBehaviour
     }
     private IEnumerator CenterClosestElement(GameObject prize)
     {
-        print("CenterClosestElement  " + prize.GetComponentInChildren<CaseCell>().GetComponent<SpriteRenderer>().name + " "+prize.transform.position.y);
-        if(Mathf.Abs(prize.transform.position.y) < 32.8)
+        Transform child = prize.transform.GetChild(0);
+        print("CenterClosestElement  " + child.GetComponent<SpriteRenderer>().sprite + " "+prize.transform.position.y);
+        close = prize;
+        if(Mathf.Abs(prize.transform.position.y) < 3.38)
         {
-            while (Mathf.Abs(prize.transform.position.y) < 32.8)
+            while (Mathf.Abs(prize.transform.position.y) < 3.38)
             {
                 transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
                 yield return null;
             }
         }
-        else if(Mathf.Abs(prize.transform.position.y) > 32.8)
+        else if(Mathf.Abs(prize.transform.position.y) > 3.38)
         {
-            while (Mathf.Abs(prize.transform.position.y) < 32.8)
+            while (Mathf.Abs(prize.transform.position.y) < 3.38)
             {
                 transform.position += Vector3.up * 1 * Time.unscaledDeltaTime;
                 yield return null;
@@ -97,25 +99,42 @@ public class CasinoScroll : MonoBehaviour
     }
     private GameObject GetNearestToCenter()
     {
-        VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
-        RectTransform layoutRect = layoutGroup.GetComponent<RectTransform>();
-        float centerY = layoutRect.rect.height / 2;
-        Transform closestElement = null;
-        float smallestDistance = float.MaxValue;
+        //VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
+        //RectTransform layoutRect = layoutGroup.GetComponent<RectTransform>();
+        //float centerY = layoutRect.rect.height / 2;
+        //Transform closestElement = null;
+        //float smallestDistance = float.MaxValue;
 
+        //foreach (RectTransform child in layoutGroup.transform)
+        //{
+        //    float childCenterY = child.localPosition.y + child.rect.height / 2;
+        //    float distance = Mathf.Abs(childCenterY - centerY);
+
+        //    if (distance < smallestDistance)
+        //    {
+        //        smallestDistance = distance;
+        //        closestElement = child;
+        //    }
+        //}
+        ////close = closestElement.gameObject;
+        //return closestElement.gameObject;
+
+        GameObject nearest = null;
+        float closestDistance = float.MaxValue;
+        VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
         foreach (RectTransform child in layoutGroup.transform)
         {
-            float childCenterY = child.localPosition.y + child.rect.height / 2;
-            float distance = Mathf.Abs(childCenterY - centerY);
+            // Вычисляем расстояние по оси Y
+            float distance = Mathf.Abs(child.anchoredPosition.y - 3.38f);
 
-            if (distance < smallestDistance)
+            if (distance < closestDistance)
             {
-                smallestDistance = distance;
-                closestElement = child;
+                closestDistance = distance;
+                nearest = child.gameObject;
             }
         }
-        //close = closestElement.gameObject;
-        return closestElement.gameObject;
+
+        return nearest;
     }
     private GameObject FastChoosePrize()
     {
