@@ -182,6 +182,134 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Buttons",
+            "id": "af88bb12-3b18-4747-af65-e8bfd4601c12",
+            "actions": [
+                {
+                    "name": "VerticalChoosingUp",
+                    "type": "Button",
+                    "id": "85779873-cb04-4813-838f-093a05f48a72",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VerticalChoosingDown",
+                    "type": "Button",
+                    "id": "808229d9-150e-4524-99ea-9737a8819ff1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HorizontChoosingUp",
+                    "type": "Button",
+                    "id": "243678df-36af-428f-b57d-8b4e3e752e21",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HorizontChoosingDown",
+                    "type": "Button",
+                    "id": "b6655219-4cee-4298-9f27-3fedd043d758",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Choose",
+                    "type": "Button",
+                    "id": "41090f4e-610f-4efe-898e-4fbcc685b41b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "5407db6a-275c-4e1e-93d3-5f192ac1c2d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "47660fe4-a45c-49ad-886b-7437dbfa35f8",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalChoosingUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc172968-de0f-442f-b865-fa9dbb4abc0c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontChoosingUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "523e89cf-8f5a-4e42-b072-4ffef3322c16",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalChoosingDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23acc5ca-ba68-458f-99ad-ec4ca32323ca",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontChoosingDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8114d5f9-d6c2-4f5b-b8ef-89695c7fc82f",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3593c11-f43b-439e-87b3-65e4f7cb8c68",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

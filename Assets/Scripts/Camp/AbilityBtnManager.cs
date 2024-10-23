@@ -10,30 +10,19 @@ public class AbilityBtnManager : MonoBehaviour
     {
         ChooseButton();
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             abilityManager.CloseTree();
-        }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
             if (selectedIndexLine == maxLine && selectedIndexLine != 5)
-            {
                 abilityManager.Upgrade(selectedIndexColumn, selectedIndexLine);
-            }
-        }
-
     }
     private void ChooseButton()
     {
-
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             selectedIndexColumn--;
             selectedIndexLine = 0;
             if (selectedIndexColumn < 0)
-            {
                 selectedIndexColumn = 0;
-
-            }
             SetButtonState();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
@@ -41,30 +30,23 @@ public class AbilityBtnManager : MonoBehaviour
             selectedIndexColumn++;
             selectedIndexLine = 0;
             if (selectedIndexColumn > 2)
-            {
                 selectedIndexColumn = 4;
-            }
             SetButtonState();
         }
-
         SetMaxLineValue();
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             selectedIndexLine--;
             if (selectedIndexLine < 0)
-            {
                 selectedIndexLine = 0;
-            }
             SetButtonState();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             selectedIndexLine++;
             if (selectedIndexLine > maxLine)
-            {
                 selectedIndexLine = maxLine;
-            }
             SetButtonState();
         }
     }
@@ -125,10 +107,8 @@ public class AbilityBtnManager : MonoBehaviour
     public void SetButtonState()
     {
         foreach (var item in abilityManager.abilitiesPref)
-        {
             if (item != null)
                 item.GetComponent<SpriteRenderer>().color = Color.white;
-        }
         abilityManager.abilitiesPref[selectedIndexColumn, selectedIndexLine].GetComponent<SpriteRenderer>().color = Color.red;
         SetInfo();
     }

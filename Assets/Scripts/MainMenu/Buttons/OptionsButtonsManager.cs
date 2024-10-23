@@ -3,78 +3,100 @@ using UnityEngine.UI;
 
 public class OptionsButtonsManager : MonoBehaviour
 {
+    private InputReader inputReader;
     [SerializeField]
-    private Button returnBtn, sound, language;
-    [SerializeField]
-    private Sprite returnImage, choosedReturnImage, soundImage, choosedSoundImage, languageImage, choosedLanguageImage;
-    private int selectedIndex = 0;
+    GameObject selector,menuButtonManager, displayMenu;
+    OptionsSelectorState currentState;
+    Vector2 soundPoint = new(4.1f, 0.22f);
+    Vector3 languagePoint = new(4.1f, -0.88f);
+    Vector3 displayPoint = new(4.1f, -1.97f);
+    private void OnDisable()
+    {
+        inputReader.VerticalUpChoosingEvent -= MoveUp;
+        inputReader.VerticalDownChoosingEvent -= MoveDown;
+        inputReader.EnterEvent -= ChooseOptions;
+        inputReader.ExitEvent -= CloseOptions;
+    }
+    private void Awake()
+    {
+        inputReader = FindAnyObjectByType<InputReader>();
+    }
+    private void OnEnable()
+    {
+        menuButtonManager.SetActive(false);
+        inputReader.VerticalUpChoosingEvent += MoveUp;
+        inputReader.VerticalDownChoosingEvent += MoveDown;
+        inputReader.EnterEvent += ChooseOptions;
+        inputReader.ExitEvent += CloseOptions;
+        ChangePosition(soundPoint);
+    }
     void Start()
     {
-        SetButtonState();
+        currentState = OptionsSelectorState.Sound;
+        inputReader = FindAnyObjectByType<InputReader>();
     }
+    private void MoveUp()
+    {
+        switch (currentState)
+        {
+            case OptionsSelectorState.Sound:
+                break;
+            case OptionsSelectorState.Language:
+                ChangePosition(soundPoint);
+                currentState = OptionsSelectorState.Sound;
+                break;
+            case OptionsSelectorState.Display:
+                ChangePosition(languagePoint);
+                currentState = OptionsSelectorState.Language;
+                break;
+            default:
+                break;
+        }
+    }
+    private void MoveDown()
+    {
 
-    void Update()
-    {
-        ChooseButton();
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        switch (currentState)
         {
-            switch (selectedIndex)
-            {
-                case 0:
-                    CloseOptions();
-                    break;
-                case 1:
-                    TurnSound();
-                    break;
-                case 2:
-                    SetLanguage();
-                    break;
-                default:
-                    break;
-            }
+            case OptionsSelectorState.Sound:
+                ChangePosition(languagePoint);
+                currentState = OptionsSelectorState.Language;
+                break;
+            case OptionsSelectorState.Language:
+                ChangePosition(displayPoint);
+                currentState = OptionsSelectorState.Display;
+                break;
+            case OptionsSelectorState.Display:
+                break;
+            default:
+                break;
         }
     }
-    private void ChooseButton()
+    public void ChangePosition(Vector2 position)
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-            selectedIndex--;
-            if (selectedIndex < 0)
-                selectedIndex = 0;
-            SetButtonState();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            selectedIndex++;
-            if (selectedIndex > 2)
-                selectedIndex = 2;
-            SetButtonState();
-        }
-    }
-    private void SetButtonState()
-    {
-        if (selectedIndex == 0)
-        {
-            returnBtn.image.sprite = choosedReturnImage;
-            sound.image.sprite = soundImage;
-            language.image.sprite = languageImage;
-        }
-        else if (selectedIndex == 1)
-        {
-            returnBtn.image.sprite = returnImage;
-            sound.image.sprite = choosedSoundImage;
-            language.image.sprite = languageImage;
-        }
-        else
-        {
-            returnBtn.image.sprite = returnImage;
-            sound.image.sprite = soundImage;
-            language.image.sprite = choosedLanguageImage;
-        }
+        selector.gameObject.transform.position = position;
     }
     public void CloseOptions()
     {
+        menuButtonManager.SetActive(true);
         gameObject.SetActive(false);
+    }
+    public void ChooseOptions()
+    {
+        switch (currentState)
+        {
+            case OptionsSelectorState.Sound:
+                TurnSound();
+                break;
+            case OptionsSelectorState.Language:
+                SetLanguage();
+                break;
+            case OptionsSelectorState.Display:
+                ChangeDisplay();
+                break;
+            default:
+                break;
+        }
     }
     public void TurnSound()
     {
@@ -84,4 +106,14 @@ public class OptionsButtonsManager : MonoBehaviour
     {
         print("language");
     }
+    public void ChangeDisplay()
+    {
+        displayMenu.SetActive(true);
+    }
+}
+enum OptionsSelectorState
+{
+    Sound,
+    Language,
+    Display
 }

@@ -99,34 +99,27 @@ public class TreeOfAbilityManager : MonoBehaviour
         else
         {
             for (int i = 0; i < abilityValue; i++)
-            {
                 abilitiesPref[n, i] = (Instantiate(staticPulse, treeOfAbility.transform.position + new Vector3(points[n, i].X, points[n, abilityValue - 1].Y) + transform.forward, Quaternion.identity, treeOfAbility.transform));
-            }
+
             if (abilityValue != 5)
-            {
                 abilitiesPref[n, abilityValue] = (Instantiate(pulse, treeOfAbility.transform.position + new Vector3(points[n, abilityValue].X, points[n, abilityValue].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
-            }
+
             if (abilityValue < 4)
-            {
                 abilitiesPref[n, abilityValue + 1] = (Instantiate(destroyed, treeOfAbility.transform.position + new Vector3(points[0, abilityValue + 1].X, points[n, abilityValue + 1].Y) + treeOfAbility.transform.forward, Quaternion.identity, treeOfAbility.transform));
-            }
+
         }
     }
     private void DestroyAbility()
     {
         foreach (var item in abilitiesPref)
-        {
             Destroy(item);
-        }
     }
     public void Upgrade(int c, int l)
     {
         if (l < 4)
-        {
             abilitiesPref[c, l + 1].GetComponent<Animator>().SetBool("upgrade", true);
-        }
+
         if (kindOfMaster == KindOfMasters.Sword)
-        {
             switch (c)
             {
                 case 0:
@@ -141,9 +134,7 @@ public class TreeOfAbilityManager : MonoBehaviour
                 default:
                     break;
             }
-        }
         else if (kindOfMaster == KindOfMasters.Magic)
-        {
             switch (c)
             {
                 case 0:
@@ -158,9 +149,7 @@ public class TreeOfAbilityManager : MonoBehaviour
                 default:
                     break;
             }
-        }
         else
-        {
             switch (c)
             {
                 case 0:
@@ -175,7 +164,6 @@ public class TreeOfAbilityManager : MonoBehaviour
                 default:
                     break;
             }
-        }
     }
     public void SetStaticPulse()
     {

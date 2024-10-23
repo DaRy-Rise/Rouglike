@@ -204,6 +204,134 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Buttons"",
+            ""id"": ""af88bb12-3b18-4747-af65-e8bfd4601c12"",
+            ""actions"": [
+                {
+                    ""name"": ""VerticalChoosingUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""85779873-cb04-4813-838f-093a05f48a72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VerticalChoosingDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""808229d9-150e-4524-99ea-9737a8819ff1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HorizontChoosingUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""243678df-36af-428f-b57d-8b4e3e752e21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HorizontChoosingDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6655219-4cee-4298-9f27-3fedd043d758"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Choose"",
+                    ""type"": ""Button"",
+                    ""id"": ""41090f4e-610f-4efe-898e-4fbcc685b41b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""5407db6a-275c-4e1e-93d3-5f192ac1c2d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""47660fe4-a45c-49ad-886b-7437dbfa35f8"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalChoosingUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc172968-de0f-442f-b865-fa9dbb4abc0c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizontChoosingUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""523e89cf-8f5a-4e42-b072-4ffef3322c16"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalChoosingDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23acc5ca-ba68-458f-99ad-ec4ca32323ca"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizontChoosingDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8114d5f9-d6c2-4f5b-b8ef-89695c7fc82f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3593c11-f43b-439e-87b3-65e4f7cb8c68"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -229,6 +357,14 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Ability_MoveAbility = m_Ability.FindAction("MoveAbility", throwIfNotFound: true);
         m_Ability_UltaAbility = m_Ability.FindAction("UltaAbility", throwIfNotFound: true);
         m_Ability_AreaAbility = m_Ability.FindAction("AreaAbility", throwIfNotFound: true);
+        // Buttons
+        m_Buttons = asset.FindActionMap("Buttons", throwIfNotFound: true);
+        m_Buttons_VerticalChoosingUp = m_Buttons.FindAction("VerticalChoosingUp", throwIfNotFound: true);
+        m_Buttons_VerticalChoosingDown = m_Buttons.FindAction("VerticalChoosingDown", throwIfNotFound: true);
+        m_Buttons_HorizontChoosingUp = m_Buttons.FindAction("HorizontChoosingUp", throwIfNotFound: true);
+        m_Buttons_HorizontChoosingDown = m_Buttons.FindAction("HorizontChoosingDown", throwIfNotFound: true);
+        m_Buttons_Choose = m_Buttons.FindAction("Choose", throwIfNotFound: true);
+        m_Buttons_Exit = m_Buttons.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -402,6 +538,92 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         }
     }
     public AbilityActions @Ability => new AbilityActions(this);
+
+    // Buttons
+    private readonly InputActionMap m_Buttons;
+    private List<IButtonsActions> m_ButtonsActionsCallbackInterfaces = new List<IButtonsActions>();
+    private readonly InputAction m_Buttons_VerticalChoosingUp;
+    private readonly InputAction m_Buttons_VerticalChoosingDown;
+    private readonly InputAction m_Buttons_HorizontChoosingUp;
+    private readonly InputAction m_Buttons_HorizontChoosingDown;
+    private readonly InputAction m_Buttons_Choose;
+    private readonly InputAction m_Buttons_Exit;
+    public struct ButtonsActions
+    {
+        private @Controllers m_Wrapper;
+        public ButtonsActions(@Controllers wrapper) { m_Wrapper = wrapper; }
+        public InputAction @VerticalChoosingUp => m_Wrapper.m_Buttons_VerticalChoosingUp;
+        public InputAction @VerticalChoosingDown => m_Wrapper.m_Buttons_VerticalChoosingDown;
+        public InputAction @HorizontChoosingUp => m_Wrapper.m_Buttons_HorizontChoosingUp;
+        public InputAction @HorizontChoosingDown => m_Wrapper.m_Buttons_HorizontChoosingDown;
+        public InputAction @Choose => m_Wrapper.m_Buttons_Choose;
+        public InputAction @Exit => m_Wrapper.m_Buttons_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_Buttons; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ButtonsActions set) { return set.Get(); }
+        public void AddCallbacks(IButtonsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ButtonsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ButtonsActionsCallbackInterfaces.Add(instance);
+            @VerticalChoosingUp.started += instance.OnVerticalChoosingUp;
+            @VerticalChoosingUp.performed += instance.OnVerticalChoosingUp;
+            @VerticalChoosingUp.canceled += instance.OnVerticalChoosingUp;
+            @VerticalChoosingDown.started += instance.OnVerticalChoosingDown;
+            @VerticalChoosingDown.performed += instance.OnVerticalChoosingDown;
+            @VerticalChoosingDown.canceled += instance.OnVerticalChoosingDown;
+            @HorizontChoosingUp.started += instance.OnHorizontChoosingUp;
+            @HorizontChoosingUp.performed += instance.OnHorizontChoosingUp;
+            @HorizontChoosingUp.canceled += instance.OnHorizontChoosingUp;
+            @HorizontChoosingDown.started += instance.OnHorizontChoosingDown;
+            @HorizontChoosingDown.performed += instance.OnHorizontChoosingDown;
+            @HorizontChoosingDown.canceled += instance.OnHorizontChoosingDown;
+            @Choose.started += instance.OnChoose;
+            @Choose.performed += instance.OnChoose;
+            @Choose.canceled += instance.OnChoose;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+        }
+
+        private void UnregisterCallbacks(IButtonsActions instance)
+        {
+            @VerticalChoosingUp.started -= instance.OnVerticalChoosingUp;
+            @VerticalChoosingUp.performed -= instance.OnVerticalChoosingUp;
+            @VerticalChoosingUp.canceled -= instance.OnVerticalChoosingUp;
+            @VerticalChoosingDown.started -= instance.OnVerticalChoosingDown;
+            @VerticalChoosingDown.performed -= instance.OnVerticalChoosingDown;
+            @VerticalChoosingDown.canceled -= instance.OnVerticalChoosingDown;
+            @HorizontChoosingUp.started -= instance.OnHorizontChoosingUp;
+            @HorizontChoosingUp.performed -= instance.OnHorizontChoosingUp;
+            @HorizontChoosingUp.canceled -= instance.OnHorizontChoosingUp;
+            @HorizontChoosingDown.started -= instance.OnHorizontChoosingDown;
+            @HorizontChoosingDown.performed -= instance.OnHorizontChoosingDown;
+            @HorizontChoosingDown.canceled -= instance.OnHorizontChoosingDown;
+            @Choose.started -= instance.OnChoose;
+            @Choose.performed -= instance.OnChoose;
+            @Choose.canceled -= instance.OnChoose;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
+        }
+
+        public void RemoveCallbacks(IButtonsActions instance)
+        {
+            if (m_Wrapper.m_ButtonsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IButtonsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ButtonsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ButtonsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ButtonsActions @Buttons => new ButtonsActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -421,5 +643,14 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnMoveAbility(InputAction.CallbackContext context);
         void OnUltaAbility(InputAction.CallbackContext context);
         void OnAreaAbility(InputAction.CallbackContext context);
+    }
+    public interface IButtonsActions
+    {
+        void OnVerticalChoosingUp(InputAction.CallbackContext context);
+        void OnVerticalChoosingDown(InputAction.CallbackContext context);
+        void OnHorizontChoosingUp(InputAction.CallbackContext context);
+        void OnHorizontChoosingDown(InputAction.CallbackContext context);
+        void OnChoose(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }
