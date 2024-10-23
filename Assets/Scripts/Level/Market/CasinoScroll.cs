@@ -79,8 +79,6 @@ public class CasinoScroll : MonoBehaviour
     }
     private IEnumerator CenterClosestElement(GameObject prize)
     {
-        Transform child = prize.transform.GetChild(0);
-        print("CenterClosestElement  " + child.GetComponent<SpriteRenderer>().sprite + " "+prize.transform.position.y);
         close = prize;
         float point = 0.55f;
         if(Mathf.Abs(prize.transform.position.y) < point)
@@ -117,6 +115,23 @@ public class CasinoScroll : MonoBehaviour
 
         return nearest;
     }
+    private GameObject GetNearestCaseCellToCenter()
+    {
+        GameObject nearest = null;
+        float closestDistance = float.MaxValue;
+        VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
+        foreach (var child in cells)
+        {
+            float distance = Mathf.Abs(child.transform.position.y - 0.006f);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                nearest = child.gameObject;
+            }
+        }
+
+        return nearest;
+    }
     private GameObject FastChoosePrize()
     {
         VerticalLayoutGroup layoutGroup = GetComponent<VerticalLayoutGroup>();
@@ -124,7 +139,7 @@ public class CasinoScroll : MonoBehaviour
         int count = 0;
         foreach (RectTransform child in layoutGroup.transform)
         {
-            if(count == 20+GetNearestToCenter().GetComponentInChildren<CaseCell>().id)
+            if (count == 20+ GetNearestCaseCellToCenter().GetComponent<CaseCell>().id)
             {
                 close = child.gameObject;
                 break;
