@@ -71,7 +71,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Game Design Document/Идеи которые можно обсудить.md",
+                "file": "Абилки.md",
                 "mode": "source",
                 "source": false
               }
@@ -159,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Game Design Document/Идеи которые можно обсудить.md",
+                "file": "Абилки.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Game Design Document/Идеи которые можно обсудить.md",
+                "file": "Абилки.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -199,7 +199,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Game Design Document/Идеи которые можно обсудить.md"
+                "file": "Абилки.md"
               }
             }
           }
@@ -223,11 +223,17 @@
   },
   "active": "a55d15edb458b79f",
   "lastOpenFiles": [
-    "Game Design Document/8. Звуки и музыка.md",
-    "Game Design Document/Идеи которые можно обсудить.md",
-    "Game Design Document/6. Геймплей.md",
+    "Логика Абилок.md",
+    "Абилки.md",
     "Game Design Document/2. Стиль и правила артов.md",
+    "Game Design Document/3. Игровой мир.md",
+    "Game Design Document/4. Цели игры.md",
     "Game Design Document/1. Описание.md",
+    "Game Design Document/4.2 Сюжет.md",
+    "Game Design Document/5. Прогрессия сюжета.md",
+    "Game Design Document/Идеи которые можно обсудить.md",
+    "Game Design Document/8. Звуки и музыка.md",
+    "Game Design Document/6. Геймплей.md",
     "Game Design Document/4.1 Персонажи.md",
     "Game Design Document/7. UI.md",
     "Game Design Document/6.3 Прогрессия игрока.md",
@@ -235,13 +241,8 @@
     "Game Design Document/6.2 Предметы и усиления.md",
     "Game Design Document/6.1 Механики.md",
     "Game Design Document/4.3 Тема.md",
-    "Game Design Document/4. Цели игры.md",
-    "Game Design Document/5. Прогрессия сюжета.md",
-    "Game Design Document/4.2 Сюжет.md",
-    "Game Design Document/3. Игровой мир.md",
     "Untitled.md",
     "3.md",
-    "Абилки.md",
     "Game Design Document",
     "Оружие.md",
     "Сюжет.md",
@@ -251,7 +252,6 @@
     "Ideas.md",
     "Pasted image 20240516225337.png",
     "Pasted image 20240831234340.png",
-    "Артбук.md",
     "images/Pasted image 20231120012155.png",
     "images/Pasted image 20231119221457.png",
     "images/forest_expand.jpg",
