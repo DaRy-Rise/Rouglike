@@ -16,7 +16,9 @@
                 "file": "Фазан.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Фазан"
             }
           },
           {
@@ -28,7 +30,9 @@
                 "file": "Сюжет.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Сюжет"
             }
           },
           {
@@ -40,7 +44,9 @@
                 "file": "Абилки.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Абилки"
             }
           },
           {
@@ -50,7 +56,9 @@
               "type": "release-notes",
               "state": {
                 "currentVersion": "1.6.5"
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.6.5"
             }
           },
           {
@@ -62,7 +70,9 @@
                 "file": "Абилки.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Абилки"
             }
           },
           {
@@ -71,10 +81,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Абилки.md",
+                "file": "Працюемо.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Працюемо"
+            }
+          },
+          {
+            "id": "92abd0a81f2ef7c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Вещи.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Вещи"
             }
           },
           {
@@ -89,11 +115,13 @@
                   "y": -692.2598081443339,
                   "zoom": 1.1102230246251565e-16
                 }
-              }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Tree"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -113,7 +141,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -128,7 +158,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -136,7 +168,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -159,7 +193,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Абилки.md",
+                "file": "Працюемо.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +201,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Працюемо"
             }
           },
           {
@@ -176,10 +212,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Абилки.md",
+                "file": "Працюемо.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Працюемо"
             }
           },
           {
@@ -190,7 +228,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -199,8 +239,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Абилки.md"
-              }
+                "file": "Працюемо.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Працюемо"
             }
           }
         ]
@@ -221,36 +263,38 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a55d15edb458b79f",
+  "active": "92abd0a81f2ef7c4",
   "lastOpenFiles": [
+    "Працюемо.md",
+    "Вещи.md",
+    "Оружие.md",
+    "Механики.md",
     "Логика Абилок.md",
+    "Артбук.md",
     "Абилки.md",
-    "Game Design Document/2. Стиль и правила артов.md",
+    "Tree.canvas",
+    "Structure.canvas",
+    "Player.md",
+    "Pasted image 20240516225337.png",
+    "Masters.md",
+    "Ideas.md",
+    "Level progress.md",
+    "Global level.md",
+    "Current goals.md",
+    "Enemies.md",
     "Game Design Document/3. Игровой мир.md",
-    "Game Design Document/4. Цели игры.md",
     "Game Design Document/1. Описание.md",
+    "Game Design Document/2. Стиль и правила артов.md",
+    "Game Design Document/Идеи которые можно обсудить.md",
+    "Game Design Document/4. Цели игры.md",
     "Game Design Document/4.2 Сюжет.md",
     "Game Design Document/5. Прогрессия сюжета.md",
-    "Game Design Document/Идеи которые можно обсудить.md",
     "Game Design Document/8. Звуки и музыка.md",
     "Game Design Document/6. Геймплей.md",
     "Game Design Document/4.1 Персонажи.md",
     "Game Design Document/7. UI.md",
     "Game Design Document/6.3 Прогрессия игрока.md",
-    "Game Design Document/6.4 Челлендж.md",
-    "Game Design Document/6.2 Предметы и усиления.md",
-    "Game Design Document/6.1 Механики.md",
-    "Game Design Document/4.3 Тема.md",
-    "Untitled.md",
-    "3.md",
     "Game Design Document",
-    "Оружие.md",
-    "Сюжет.md",
-    "Працюемо.md",
-    "Current goals.md",
-    "Global level.md",
-    "Ideas.md",
-    "Pasted image 20240516225337.png",
     "Pasted image 20240831234340.png",
     "images/Pasted image 20231120012155.png",
     "images/Pasted image 20231119221457.png",
@@ -259,8 +303,6 @@
     "images/Pasted image 20231120013418.png",
     "images/Pasted image 20231120013313.png",
     "images/Pasted image 20231120013303.png",
-    "images/Pasted image 20231120012210.png",
-    "Structure.canvas",
-    "Tree.canvas"
+    "images/Pasted image 20231120012210.png"
   ]
 }
